@@ -1,0 +1,49 @@
+.main {
+    height: 825px;
+    display: flex;
+}
+
+.right {
+    display: flex;
+    flex: 1;
+    height: 100%;
+}
+
+.left {
+    background-color: #77E7CD;
+    display: flex;
+    flex: 1;
+    height: 100%;
+    flex-direction: column;
+}
+
+.description {
+    font-family: Kanit;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 53.82px;
+    text-align: center;    
+}
+
+.title {
+    font-family: Kameron;
+    font-size: 100px;
+    font-weight: 400;
+    line-height: 118.7px;
+    text-align: left;
+}
+
+.logo {
+    width: 205.79px;
+    height: 268.2px;
+    top: 157px;
+    left: 44px;
+    gap: 0px;
+    opacity: 0px;
+}
+
+.logo-title {
+    margin-left: 44px;
+    margin-top: 157px;
+    display: flex;
+}

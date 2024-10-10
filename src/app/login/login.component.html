@@ -1,2 +1,26 @@
-<p>logiasdasdn works!</p>
-<p>logiasdasdasdasdn works!</p>
+<div class="main">
+    <div class="left">
+        <div class="logo-title">
+            <img src="assets/icons/logo.png" alt="Icono" class="logo">
+            <h1 class="title">RX DIGITAL</h1>
+        </div>
+        <p class="description">PRESCRIPCIONES MÉDICAS DIGITALES</p>
+    </div>
+    <div class="right">
+        <div class="login">
+            <h1>BIENVENIDO/A A NUESTRO SISTEMA DE RECETAS DIGITALES</h1>
+            <div>
+                <form #formRef="ngForm">
+                    <!-- <mat-form-field class="example-full-width">
+                        <mat-label>Email</mat-label>
+                        <input matInput ngModel required value="{email}">
+                      </mat-form-field> -->
+                    <input type="email" name="email" ngModel required>
+                    <input type="password" name="contraseña" ngModel required email>
+                    <!-- <button [disabled]="formRef.invalid" (click)="login()">Iniciar Sesión</button> -->
+                    <button (click)="login()">Iniciar Sesión</button>
+                </form>                  
+            </div>
+        </div>
+    </div>
+</div>
