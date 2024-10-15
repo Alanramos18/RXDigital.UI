@@ -2,7 +2,7 @@
     <div class="left">
         <div class="logo-title">
             <img src="assets/icons/logo.png" alt="Icono" class="logo">
-            <h1 class="title">RX DIGITAL</h1>
+            <h1 class="title"> RX DIGITAL</h1>
         </div>
         <p class="description">PRESCRIPCIONES MÉDICAS DIGITALES</p>
     </div>
@@ -15,9 +15,12 @@
                         <mat-label>Email</mat-label>
                         <input matInput ngModel required value="{email}">
                       </mat-form-field> -->
+                    <h2>E-mail</h2>
                     <input type="email" name="email" ngModel required>
+                    <h2>Contraseña</h2>
                     <input type="password" name="contraseña" ngModel required email>
                     <!-- <button [disabled]="formRef.invalid" (click)="login()">Iniciar Sesión</button> -->
+                     <h2></h2>
                     <button (click)="login()">Iniciar Sesión</button>
                 </form>                  
             </div>

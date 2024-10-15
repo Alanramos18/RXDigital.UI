@@ -6,14 +6,17 @@
 .right {
     display: flex;
     flex: 1;
-    height: 100%;
+    height: 100vh;
+    width: 50%;
 }
 
 .left {
     background-color: #77E7CD;
     display: flex;
     flex: 1;
-    height: 100%;
+    height: 100vh;
+    width: 50%;
+    
     flex-direction: column;
 }
 
