@@ -1,0 +1,42 @@
+.buscar-paciente-container {
+    padding: 20px;
+  
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .search-container {
+      display: flex;
+      align-items: center;
+      margin: 20px 0;
+  
+      input {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 250px;
+      }
+  
+      button {
+        margin-left: 10px;
+        padding: 10px;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+      }
+    }
+  
+    .agregar-btn {
+      background-color: #4CAF50;
+      color: rgb(238, 238, 238);
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+  
