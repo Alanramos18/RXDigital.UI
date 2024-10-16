@@ -1,0 +1,66 @@
+<div class="emitir-receta-container">
+    <div class="header">
+      <h1>Datos de la nueva receta</h1>
+    </div>
+  
+    <div class="section">
+      <div class="datos-medico">
+        <h2>DATOS DEL MÉDICO</h2>
+        <label>Nombre</label>
+        <input type="text" [(ngModel)]="medico.nombre" />
+        <label>Matrícula</label>
+        <input type="text" [(ngModel)]="medico.matricula" />
+      </div>
+  
+      <div class="datos-paciente">
+        <h2>DATOS DEL PACIENTE</h2>
+        <label>Nombre</label>
+        <input type="text" [(ngModel)]="paciente.nombre" />
+        <label>DNI</label>
+        <input type="text" [(ngModel)]="paciente.dni" />
+        <label>Obra social</label>
+        <input type="text" [(ngModel)]="paciente.obraSocial" />
+      </div>
+    </div>
+  
+    <div class="section">
+      <div class="datos-medicamento">
+        <h2>DATOS DEL MEDICAMENTO</h2>
+        <label>Lote de fabricación</label>
+        <input type="text" [(ngModel)]="medicamento.lote" />
+        <label>Nombre comercial</label>
+        <input type="text" [(ngModel)]="medicamento.nombreComercial" />
+        <label>Concentración</label>
+        <input type="text" [(ngModel)]="medicamento.concentracion" />
+      </div>
+  
+      <div class="informacion">
+        <h2>INFORMACIÓN</h2>
+        <label>Diagnóstico</label>
+        <input type="text" [(ngModel)]="informacion.diagnostico" />
+        <label>Indicaciones</label>
+        <input type="text" [(ngModel)]="informacion.indicaciones" />
+      </div>
+    </div>
+  
+    <div class="forma-envio">
+      <label>Enviar receta por:</label>
+      <div>
+        <div class = "forma-whatsapp">
+            <label for="whatsapp">Whatsapp</label>
+            <input type="checkbox" id="whatsapp" [(ngModel)]="enviarPorWhatsapp" />
+        </div>
+  
+        <div class = "forma-email">
+            <label for="email">E-Mail</label>
+            <input type="checkbox" id="email" [(ngModel)]="enviarPorEmail" />
+        </div>
+      </div>
+    </div>
+  
+    <div class="buttons">
+      <button (click)="emitirReceta()">Emitir</button>
+      <button (click)="cancelar()">Cancelar</button>
+    </div>
+  </div>
+  
