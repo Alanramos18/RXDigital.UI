@@ -12,6 +12,7 @@ export class VerRecetasPacienteComponent {
 }*/
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Receta } from '../models/receta';
 
 @Component({
   selector: 'app-ver-recetas-paciente',
@@ -22,7 +23,7 @@ import { CommonModule } from '@angular/common';
 })
 export class VerRecetasPacienteComponent {
   searchQuery: string = '';
-  recetas: any[] = [
+  recetas: Receta[] = [
     {
       codigo: 'RX001',//cambiar por la base de datos
       fechaEmision: new Date('2024-01-01'),
