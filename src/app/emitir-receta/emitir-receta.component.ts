@@ -15,18 +15,19 @@ export class EmitirRecetaComponent {
 
     medico = {
     nombre: '',
+    especialidad:'',
     matricula: ''
   };
 
   paciente = {
     nombre: '',
     dni: '',
-    obraSocial: ''
+    
   };
 
   medicamento = {
-    lote: '',
     nombreComercial: '',
+    presentacion:'',
     concentracion: ''
   };
 
