@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // Import necesario
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-emitir-receta',
@@ -9,6 +10,9 @@ import { FormsModule } from '@angular/forms'; // Import necesario
   styleUrl: './emitir-receta.component.scss'
 })
 export class EmitirRecetaComponent {
+
+  constructor(private router: Router) {}
+
     medico = {
     nombre: '',
     matricula: ''
@@ -44,10 +48,12 @@ export class EmitirRecetaComponent {
       enviarPorEmail: this.enviarPorEmail
     });
     // Lógica para emitir la receta
+    this.router.navigate(['/emision-correcta']);
   }
 
   cancelar() {
     // Lógica para cancelar la operación
     console.log('Operación cancelada');
+    this.router.navigate(['/cancelar-receta']);
   }
 }
