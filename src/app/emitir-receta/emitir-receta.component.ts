@@ -36,17 +36,22 @@ export class EmitirRecetaComponent {
     indicaciones: ''
   };
 
-  enviarPorWhatsapp = false;
-  enviarPorEmail = true;
+  formaEnvio: string = 'email'; // Valor por defecto
 
   emitirReceta() {
+
+    if (this.formaEnvio === 'whatsapp') {
+      // Lógica para enviar por Whatsapp
+    } else if (this.formaEnvio === 'email') {
+      // Lógica para enviar por E-Mail
+    }
+
     console.log('Receta emitida:', {
       medico: this.medico,
       paciente: this.paciente,
       medicamento: this.medicamento,
       informacion: this.informacion,
-      enviarPorWhatsapp: this.enviarPorWhatsapp,
-      enviarPorEmail: this.enviarPorEmail
+    
     });
     // Lógica para emitir la receta
     this.router.navigate(['/emision-correcta']);

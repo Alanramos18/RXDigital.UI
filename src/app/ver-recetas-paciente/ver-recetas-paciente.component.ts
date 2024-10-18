@@ -13,6 +13,7 @@ export class VerRecetasPacienteComponent {
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Receta } from '../models/receta';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ver-recetas-paciente',
@@ -22,6 +23,9 @@ import { Receta } from '../models/receta';
   styleUrls: ['./ver-recetas-paciente.component.scss']
 })
 export class VerRecetasPacienteComponent {
+
+  constructor(private router: Router) {}
+
   searchQuery: string = '';
   recetas: Receta[] = [
     {
@@ -50,6 +54,7 @@ export class VerRecetasPacienteComponent {
   generarReceta() {
     // Implementar la lógica para generar una nueva receta
     console.log('Generar receta');
+    this.router.navigate(['/emitir-receta']);
   }
 
   paciente = {//tiene ser de la base de datos la info paciente
