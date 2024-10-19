@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RxDigitalService } from '../services/rx-digital.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,14 +15,23 @@ export class LoginComponent {
   email: string = "";
   password: string = "";
 
+  constructor(private rxService: RxDigitalService, private router: Router) {}
+
   login() {
-    console.log("Holis que onda");
     // 1° validar validacion
 
     // 2° llamar al login backend
-
-    // 3° validar el llamado
-    //if ok entonces navigate a la prox pantalla dependiendo el rol
-    //if mal entonces mostrar error
+    this.rxService.login(this.email, this.password).subscribe({
+      next: (res) => {
+        console.log(res);
+        if (res.Role === 2)
+        {
+          this.router.navigate(['/buscar-paciente']);
+        }
+      },
+      error: (err) => {
+        console.log('Hubo un error. Por favor intenta mas tarde')
+      }
+    });
   }
 }

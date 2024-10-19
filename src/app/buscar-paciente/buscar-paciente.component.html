@@ -5,7 +5,7 @@
     <div class="Bienvenida">
       <h1>Bienvenido/a</h1></div>
     <div class="search-container">
-      <input type="text" placeholder="Ingrese DNI del paciente" ngModel>
+      <input type="text" placeholder="Ingrese DNI del paciente" [(ngModel)]="dniPaciente">
       <button (click)="buscarPaciente()">🔍</button>
     </div>
     <button class="agregar-btn" (click)="agregarPaciente()">Agregar paciente nuevo</button>

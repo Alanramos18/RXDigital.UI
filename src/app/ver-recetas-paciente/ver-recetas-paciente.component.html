@@ -13,11 +13,11 @@
         <h3>Datos del Paciente</h3>
         <div class="campo">
           <label for="dni">DNI:</label>
-          <span>{{ paciente.dni }}</span>
+          <span>{{ paciente.id }}</span>
         </div>
         <div class="campo">
           <label for="nombre">Nombre y Apellido:</label>
-          <span>{{ paciente.nombreApellido }}</span>
+          <span>{{ paciente.firstName }} {{ paciente.lastName }}</span>
         </div>
       </div>
 
@@ -49,12 +49,12 @@
         </thead>
         <tbody>
           <tr *ngFor="let receta of recetas">
-            <td>{{ receta.codigo }}</td>
-            <td>{{ receta.fechaEmision | date }}</td>
-            <td>{{ receta.fechaVencimiento | date }}</td>
-            <td>{{ receta.diagnostico }}</td>
-            <td>{{ receta.medicamento }}</td>
-            <td>{{ receta.concentracion }}</td>
+            <td>{{ receta.prescriptionId }}</td>
+            <td>{{ fechaEmision | date }}</td>
+            <td>{{ receta.expirationDate | date }}</td>
+            <td>{{ receta.diagnostic }}</td>
+            <td>{{ receta.medicineName }}</td>
+            <td>{{ receta.concentration }}</td>
             <td>
               <div class = 'receta-actions'>
                 <button class="btn-edit">✏️</button>
