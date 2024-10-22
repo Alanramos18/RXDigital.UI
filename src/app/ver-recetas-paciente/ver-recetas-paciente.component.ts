@@ -40,14 +40,14 @@ export class VerRecetasPacienteComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('ngOnInit: El componente se ha inicializado');
-    this.rxService.getPrescriptions(12345678).subscribe({
+    this.rxService.getPrescriptions(67890123).subscribe({
       next: (res) => {
         this.recetas = res;
       },
       error: (err) => console.log('Err')
     });
 
-    this.rxService.getPatientInfo(12345678).subscribe({
+    this.rxService.getPatientInfo(67890123).subscribe({
       next: (res) => {
         this.paciente = res;
       },

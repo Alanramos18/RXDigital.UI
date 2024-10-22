@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RxDigitalService } from '../services/rx-digital.service';
 import { Router } from '@angular/router';
+import { Roles } from '../models/roles.enums';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -18,15 +20,26 @@ export class LoginComponent {
   constructor(private rxService: RxDigitalService, private router: Router) {}
 
   login() {
-    // 1° validar validacion
-
-    // 2° llamar al login backend
     this.rxService.login(this.email, this.password).subscribe({
       next: (res) => {
-        console.log(res);
-        if (res.Role === 2)
-        {
-          this.router.navigate(['/buscar-paciente']);
+        localStorage.setItem('token', res);
+
+        const decodedToken: any = jwtDecode(res);
+
+        localStorage.setItem('roleId', decodedToken['RoleId']);
+
+        switch(Number(decodedToken['RoleId'])) {
+          case Roles.Admin:
+            this.router.navigate(['/asdasdasdas']);
+            break;
+
+          case Roles.Medico:
+            this.router.navigate(['/buscar-paciente']);
+            break;
+
+          case Roles.Farmaceutico:
+            this.router.navigate(['/asdadasd']);
+            break;
         }
       },
       error: (err) => {
