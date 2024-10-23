@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RxDigitalService } from '../services/rx-digital.service';
+import { MedicService } from '../services/medic.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-buscar-paciente',
@@ -10,24 +12,34 @@ import { RxDigitalService } from '../services/rx-digital.service';
   templateUrl: './buscar-paciente.component.html',
   styleUrl: './buscar-paciente.component.scss'
 })
-export class BuscarPacienteComponent {
+export class BuscarPacienteComponent implements OnInit {
   dniPaciente: number;
   nombreUsuario: string = 'Nombre del médico'; // Esto sería dinámico.
 
-  constructor(private rxService: RxDigitalService, private router: Router) {}
+  constructor(private rxService: RxDigitalService, private medicService: MedicService, private router: Router, @Inject(PLATFORM_ID) private platformId: Object) {}
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      var userId = localStorage.getItem('userId');
+      this.rxService.getMedicInfo(userId).subscribe({
+        next: (res) => {
+          this.medicService.setMedicData(res);
+          console.log(this.medicService.getMedicData())
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+    }
+  }
 
   buscarPaciente() {
-    // Pseudocódigo para buscar paciente
-    /*
-      this.pacienteService.buscarPaciente(this.dniPaciente).subscribe(paciente => {
-        // Redirigir a la pantalla de Ver recetas del paciente
-      });
-    */
-
       this.rxService.getPatientInfo(this.dniPaciente).subscribe({
         next: (res) => {
           if(res.id > 0)
           {
+            this.medicService.setPatientData(res);
+
             this.router.navigate(['ver-recetas-paciente']);
           }
         },

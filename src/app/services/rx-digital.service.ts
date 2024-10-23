@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Receta } from '../models/receta';
 import { Paciente } from '../models/paciente';
+import { Medico } from '../models/medico';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,11 @@ export class RxDigitalService {
     const url = `${this.apiUrl}/patient/prescriptions/${patientId}`;
 
     return this.http.get<Receta[]>(url);
+  }
+
+  getMedicInfo(userId: string): Observable<Medico> {
+    const url = `${this.apiUrl}/doctor/getByUserId/${userId}`;
+
+    return this.http.get<Medico>(url);
   }
 }

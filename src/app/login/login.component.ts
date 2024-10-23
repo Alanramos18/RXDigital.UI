@@ -22,11 +22,13 @@ export class LoginComponent {
   login() {
     this.rxService.login(this.email, this.password).subscribe({
       next: (res) => {
+
         localStorage.setItem('token', res);
 
         const decodedToken: any = jwtDecode(res);
 
         localStorage.setItem('roleId', decodedToken['RoleId']);
+        localStorage.setItem('userId', decodedToken['UserId']);
 
         switch(Number(decodedToken['RoleId'])) {
           case Roles.Admin:
