@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Receta } from '../models/receta';
 import { Paciente } from '../models/paciente';
 import { Medico } from '../models/medico';
+import { Medicamento } from '../models/medicamento';
+import { RecetaNueva } from '../models/receta-nueva';
 
 @Injectable({
   providedIn: 'root'
@@ -38,4 +40,16 @@ export class RxDigitalService {
 
     return this.http.get<Medico>(url);
   }
+
+  getMedicine(medicineName: string): Observable<Medicamento[]> {
+    const url = `${this.apiUrl}/doctor/searchMedicines?medicineName=${medicineName}`;
+
+    return this.http.get<Medicamento[]>(url);
+  } 
+
+  emitPrescription(body: RecetaNueva): Observable<number> {
+    const url = `${this.apiUrl}/doctor/create-prescription`;
+
+    return this.http.post<number>(url, body);
+  } 
 }

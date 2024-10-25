@@ -36,7 +36,7 @@ export class BuscarPacienteComponent implements OnInit {
   buscarPaciente() {
       this.rxService.getPatientInfo(this.dniPaciente).subscribe({
         next: (res) => {
-          if(res.id > 0)
+          if(res.patientId > 0)
           {
             this.medicService.setPatientData(res);
 

@@ -21,6 +21,10 @@ export class MedicService {
     return this.medic;
   }
 
+  getMedicFullName(): string {
+    return `${this.medic.lastName}, ${this.medic.firstName}`;  
+  }
+
   clearMedicData() {
     this.medic = null;
   }

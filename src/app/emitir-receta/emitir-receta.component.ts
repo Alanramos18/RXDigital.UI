@@ -1,6 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // Import necesario
 import { Router } from '@angular/router';
+import { MedicService } from '../services/medic.service';
+import { Medico } from '../models/medico';
+import { Paciente } from '../models/paciente';
+import { RxDigitalService } from '../services/rx-digital.service';
+import { Medicamento } from '../models/medicamento';
+import { RecetaNueva } from '../models/receta-nueva';
 
 @Component({
   selector: 'app-emitir-receta',
@@ -9,52 +15,56 @@ import { Router } from '@angular/router';
   templateUrl: './emitir-receta.component.html',
   styleUrl: './emitir-receta.component.scss'
 })
-export class EmitirRecetaComponent {
+export class EmitirRecetaComponent implements OnInit{
 
-  constructor(private router: Router) {}
+  medico: Medico;
+  paciente: Paciente;
+  medicamento: Medicamento;
 
-    medico = {
-    nombre: '',
-    especialidad:'',
-    matricula: ''
-  };
+  listaMedicamentos: Medicamento[];
+  nombreMedicamento: string;
+  diagnostic: string;
+  indications: string;
 
-  paciente = {
-    nombre: '',
-    dni: '',
-    
-  };
+  constructor(private router: Router, private rxDigitalService: RxDigitalService, private medicService: MedicService) {
+  }
 
-  medicamento = {
-    nombreComercial: '',
-    presentacion:'',
-    concentracion: ''
-  };
-
-  informacion = {
-    diagnostico: '',
-    indicaciones: ''
-  };
+  ngOnInit(): void {
+    this.medico = this.medicService.getMedicData();
+    this.paciente = this.medicService.getPatientData();
+  }
 
   formaEnvio: string = 'email'; // Valor por defecto
 
+  getMedicine() {
+    this.rxDigitalService.getMedicine(this.nombreMedicamento).subscribe({
+      next: (res) => {
+        this.listaMedicamentos = res;
+
+        this.medicamento = this.listaMedicamentos[0];
+      },
+      error: (err) => console.log(err)
+    })
+  }
+
   emitirReceta() {
+    let receta: RecetaNueva = new RecetaNueva();
 
     if (this.formaEnvio === 'whatsapp') {
-      // Lógica para enviar por Whatsapp
+      receta.channels = 1;
     } else if (this.formaEnvio === 'email') {
-      // Lógica para enviar por E-Mail
+      receta.channels = 2;
     }
+    receta.doctorRegistration = this.medico.registrationId;
+    receta.patientId = this.paciente.patientId;
+    receta.medicineId = this.medicamento.medicineId;
+    receta.diagnostic = this.diagnostic;
+    receta.indications = this.indications;
 
-    console.log('Receta emitida:', {
-      medico: this.medico,
-      paciente: this.paciente,
-      medicamento: this.medicamento,
-      informacion: this.informacion,
-    
+    this.rxDigitalService.emitPrescription(receta).subscribe({
+      next: (res) => this.router.navigate(['/emision-correcta']),
+      error: (err) => console.log(err)
     });
-    // Lógica para emitir la receta
-    this.router.navigate(['/emision-correcta']);
   }
 
   cancelar() {

@@ -17,24 +17,6 @@ export class VerRecetasPacienteComponent implements OnInit {
   recetas: Receta[];
   fechaEmision: Date = new Date('2024-06-01');
   paciente: Paciente;
-  // recetas: Receta[] = [
-  //   {
-  //     codigo: 'RX001',//cambiar por la base de datos
-  //     fechaEmision: new Date('2024-01-01'),
-  //     fechaVencimiento: new Date('2024-06-01'),
-  //     diagnostico: 'Hipertensión',
-  //     medicamento: 'Losartan',
-  //     concentracion: '50mg'
-  //   },
-  //   {
-  //     codigo: 'RX002',
-  //     fechaEmision: new Date('2024-03-15'),
-  //     fechaVencimiento: new Date('2024-09-15'),
-  //     diagnostico: 'Diabetes',
-  //     medicamento: 'Metformina',
-  //     concentracion: '500mg'
-  //   }
-  // ];
 
   constructor(private rxService: RxDigitalService, private router: Router) {}
 

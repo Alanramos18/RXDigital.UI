@@ -7,20 +7,29 @@
       <div class="datos-medico">
         <h2>DATOS DEL MÉDICO</h2>
         <label>Nombre Completo</label>
-        <input type="text" [(ngModel)]="medico.nombre" />
+        <span type="text">
+          {{ medico.lastName }}, {{ medico.firstName }}
+        </span>
         <label>Especialidad</label>
-        <input type="text" [(ngModel)]="medico.especialidad" />
+        <span type="text">
+          {{ medico.speciality }}
+        </span>
         <label>Matrícula</label>
-        <input type="text" [(ngModel)]="medico.matricula" />
+        <span type="text">
+          {{ medico.registrationId }}
+        </span>
       </div>
   
       <div class="datos-paciente">
         <h2>DATOS DEL PACIENTE</h2>
         <label>Nombre Completo</label>
-        <input type="text" [(ngModel)]="paciente.nombre" />
+        <span type="text">
+          {{ paciente.lastName }}, {{ paciente.firstName }} 
+        </span>
         <label>DNI</label>
-        <input type="text" [(ngModel)]="paciente.dni" />
-        
+        <span type="text">
+          {{ paciente.patientId }}
+        </span>  
       </div>
     </div>
   
@@ -28,19 +37,24 @@
       <div class="datos-medicamento">
         <h2>DATOS DEL MEDICAMENTO</h2>
         <label>Nombre comercial</label>
-        <input type="text" [(ngModel)]="medicamento.nombreComercial" />
+        <input type="text" [(ngModel)]="nombreMedicamento" />
+        <button (click)="getMedicine()">Buscar</button>
         <label>Presentación</label>
-        <input type="text" [(ngModel)]="medicamento.presentacion" />
+        <span type="text">
+          {{ medicamento.presentation }}
+        </span>  
         <label>Concentración</label>
-        <input type="text" [(ngModel)]="medicamento.concentracion" />
+        <span type="text">
+          {{ medicamento.concentration }} mg
+        </span>  
       </div>
   
       <div class="informacion">
         <h2>INFORMACIÓN</h2>
         <label>Diagnóstico</label>
-        <input type="text" [(ngModel)]="informacion.diagnostico" />
+        <input type="text" [(ngModel)]="diagnostic" />
         <label>Indicaciones</label>
-        <input type="text" [(ngModel)]="informacion.indicaciones" />
+        <input type="text" [(ngModel)]="indications" />
       </div>
     </div>
   

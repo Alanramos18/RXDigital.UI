@@ -18,5 +18,5 @@ export const routes: Routes = [
     { path: 'emision-correcta', component: EmisionCorrectaComponent, canActivate: [authGuard] },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: '**', redirectTo: '/login' }
-];
+];  
 
