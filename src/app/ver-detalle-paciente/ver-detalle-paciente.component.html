@@ -1,0 +1,68 @@
+<div class="detalle-paciente">
+    <div class="header">
+      <div class="logo">Nombre del sistema</div>
+      <div class="user-info">
+        <img src="ruta/foto-usuario.jpg" alt="Foto de usuario" class="user-photo" />
+        <span class="user-name">Nombre usuario</span>
+      </div>
+    </div>
+  
+    <h2>Detalles del paciente</h2>
+    <div class="patient-details">
+      <div class="detail-row">
+        <label>Nombre completo:</label>
+        <span>{{ paciente.nombreCompleto }}</span>
+      </div>
+      <div class="detail-row">
+        <label>DNI:</label>
+        <span>{{ paciente.dni }}</span>
+      </div>
+      <div class="detail-row">
+        <label>Fecha de nacimiento:</label>
+        <span>{{ paciente.fechaNacimiento | date }}</span>
+      </div>
+      <div class="detail-row">
+        <label>Sexo:</label>
+        <span>{{ paciente.sexo }}</span>
+      </div>
+      <div class="detail-row">
+        <label>Nacionalidad:</label>
+        <span>{{ paciente.nacionalidad }}</span>
+      </div>
+      <div class="detail-row">
+        <label>Domicilio:</label>
+        <span>{{ paciente.domicilio }}</span>
+      </div>
+      <div class="detail-row">
+        <label>Celular:</label>
+        <span>{{ paciente.celular }}</span>
+      </div>
+      <div class="detail-row">
+        <label>Teléfono fijo:</label>
+        <span>{{ paciente.telefonoFijo }}</span>
+      </div>
+      <div class="detail-row">
+        <label>Email:</label>
+        <span>{{ paciente.email }}</span>
+      </div>
+      <div class="detail-row">
+        <label>Obra social:</label>
+        <span>{{ paciente.obraSocial }}</span>
+      </div>
+      <div class="detail-row">
+        <label>Estado de habilitación (H/D):</label>
+        <span>{{ paciente.estadoHabilitacion }}</span>
+      </div>
+      <div class="detail-row">
+        <label>Número de afiliado:</label>
+        <span>{{ paciente.numeroAfiliado }}</span>
+      </div>
+      <div class="detail-row">
+        <label>Fecha de inscripción:</label>
+        <span>{{ paciente.fechaInscripcion | date }}</span>
+      </div>
+    </div>
+    
+    <button (click)="volver()">Volver</button>
+  </div>
+  
