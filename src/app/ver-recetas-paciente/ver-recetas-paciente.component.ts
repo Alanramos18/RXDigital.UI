@@ -37,6 +37,11 @@ export class VerRecetasPacienteComponent implements OnInit {
     });
   }
 
+  verDetallePaciente(){
+    console.log('Ver detalle paciente');
+    this.router.navigate(['/ver-detalle-paciente']);
+  }
+
   searchRecipe() {
     // Implementar la lógica de búsqueda según searchQuery
     console.log(`Buscando receta con código: ${this.searchQuery}`);
@@ -47,6 +52,31 @@ export class VerRecetasPacienteComponent implements OnInit {
     console.log('Generar receta');
     this.router.navigate(['/emitir-receta']);
   }
+
+  verDetalleReceta() {
+    // Implementar la lógica para generar una nueva receta
+    console.log('Ver detalle receta');
+    //this.router.navigate(['/ver-detalle-receta']);
+  }
+  
+  modificarReceta() {
+    // Implementar la lógica para generar una nueva receta
+    console.log('Modificar receta');
+    //this.router.navigate(['/modificar-receta']);
+  }
+
+  eliminarReceta() {
+    // Implementar la lógica para generar una nueva receta
+    console.log('Eliminar receta');
+    this.router.navigate(['/eliminar-receta']);
+  }
+
+  clonarReceta() {
+    // Implementar la lógica para generar una nueva receta
+    console.log('Clonar receta');
+    //this.router.navigate(['/clonar-receta']);
+  }
+
 }
 
 

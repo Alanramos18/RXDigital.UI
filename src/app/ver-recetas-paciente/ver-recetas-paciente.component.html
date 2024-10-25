@@ -22,7 +22,7 @@
       </div>
 
       <div class="patient-actions">
-        <button class="btn-view-details">📄</button>
+        <button class="btn-view-details" (click)="verDetallePaciente()">📄</button>
         <button class="btn-edit">✏️</button>
         <button class="btn-delete">🗑️</button>
       </div>
@@ -57,10 +57,10 @@
             <td>{{ receta.concentration }}</td>
             <td>
               <div class = 'receta-actions'>
-                <button class="btn-edit">✏️</button>
-                <button class="btn-delete">🗑️</button>
-                <button class="btn-clone">📑</button> <!-- Botón para clonar -->
-                <button class="btn-view-details">📄</button> <!-- Botón para ver detalle -->
+                <button class="btn-edit" (click)="modificarReceta()">✏️</button>
+                <button class="btn-delete" (click)="eliminarReceta()">🗑️</button>
+                <button class="btn-clone" (click)="clonarReceta()">📑</button> <!-- Botón para clonar -->
+                <button class="btn-view-details" (click)="verDetalleReceta()">📄</button> <!-- Botón para ver detalle -->
               </div>
             </td>
           </tr>
