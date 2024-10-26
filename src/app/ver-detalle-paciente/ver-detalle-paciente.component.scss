@@ -1,0 +1,86 @@
+.detalle-paciente {
+    .header {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      background-color: #f4f4f4;
+      
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+      }
+      
+      .user-info {
+        display: flex;
+        align-items: center;
+        
+        .user-photo {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          margin-right: 10px;
+        }
+  
+        .user-name {
+          font-size: 16px;
+        }
+      }
+    }
+  
+    h2 {
+      margin-top: 20px;
+      text-align: center;
+    }
+  
+    .patient-details {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+      padding: 20px;
+  
+      .detail-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: #e0e0e0;
+        border-radius: 5px;
+        
+        label {
+          font-weight: bold;
+        }
+      }
+    }
+  /*
+    button {
+      display: block;
+      margin: 30px auto;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      
+      &:hover {
+        background-color: #0056b3;
+      }
+    }*/
+    button {
+        position: fixed;  // Cambiar a posición fija
+        bottom: 30px;     // Distancia desde el borde inferior
+        right: 30px;      // Distancia desde el borde derecho
+        display: block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        
+        &:hover {
+            background-color: #0056b3;
+        }
+    }
+    
+  }
+  

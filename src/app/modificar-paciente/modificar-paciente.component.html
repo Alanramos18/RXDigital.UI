@@ -1,0 +1,46 @@
+<div class="modificar-paciente">
+  <div class="header">
+    <div class="logo">RX Digital</div>
+    <div class="user-info">
+      <img src="ruta/foto-usuario.jpg" alt="Foto de usuario" class="user-photo" />
+      <span class="user-name">Nombre usuario</span>
+    </div>
+  </div>
+
+  <h2>Modificar paciente</h2>
+
+  <div class="patient-details">
+    <!-- Columna izquierda para mostrar contenido -->
+    <div class="column">
+      <div class="detail-row"><label>Nombre completo:</label><span>{{ paciente.lastName }}, {{ paciente.firstName }}</span></div>
+      <div class="detail-row"><label>DNI:</label><span>{{ paciente.patientId }}</span></div>
+      <div class="detail-row"><label>Fecha de nacimiento:</label><span>{{ paciente.birthDay | date }}</span></div>
+      <div class="detail-row">
+        <label>Sexo:</label>
+        <input type="text" name="sexo" [(ngModel)]="paciente.gender" />
+      </div>
+      <div class="detail-row"><label>Nacionalidad:</label><span>{{ paciente.nationality }}</span></div>
+      <div class="detail-row"><label>Domicilio:</label><input type="text" [(ngModel)]="paciente.domicilio" /></div>
+
+      <div class="detail-row"><label>Fecha de inscripción:</label><span>Hoy..</span></div>
+    </div>
+
+    <!-- Columna derecha para entrada de datos -->
+    <div class="column">
+      <div class="detail-row"><label>Celular:</label><input type="text" [(ngModel)]="paciente.cellphone" /></div>
+      <div class="detail-row"><label>Teléfono fijo:</label><input type="text" [(ngModel)]="paciente.homePhone" /></div>
+      <div class="detail-row"><label>E-Mail:</label><input type="email" ngModel /></div>
+      <div class="detail-row"><label>Obra social:</label><input type="text" [(ngModel)]="paciente.socialPlan" /></div>
+      <div class="detail-row"><label>Estado de habilitación (H/D):</label><input type="text" ngModel /></div>
+      <div class="detail-row">
+        <label>Número de afiliado:</label>
+        <span>{{ paciente.socialNumber }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button type="button" class="btn-modificar" (click)="onModificar()">Modificar</button>
+    <button type="button" class="btn-cancelar" (click)="onCancel()">Cancelar</button>
+  </div>
+</div>

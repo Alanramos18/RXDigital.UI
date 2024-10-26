@@ -8,11 +8,13 @@ import { EmisionCorrectaComponent } from './emision-correcta/emision-correcta.co
 //import { authGuard } from './guard/auth.guard';
 import { VerDetallePacienteComponent } from './ver-detalle-paciente/ver-detalle-paciente.component';
 import { EliminarRecetaComponent } from './eliminar-receta/eliminar-receta.component';
+import { ModificarPacienteComponent } from './modificar-paciente/modificar-paciente.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path:'ver-recetas-paciente', component: VerRecetasPacienteComponent}, //, canActivate: [authGuard] },
     { path: 'ver-detalle-paciente', component: VerDetallePacienteComponent}, //, canActivate: [authGuard] },
+    { path:'modificar-paciente', component:ModificarPacienteComponent},
     { path:'buscar-paciente', component:BuscarPacienteComponent}, //, canActivate: [authGuard] },
     { path:'emitir-receta', component:EmitirRecetaComponent}, //canActivate: [authGuard] },
     { path: 'cancelar-receta', component: CancelarRecetaComponent},// canActivate: [authGuard] },
