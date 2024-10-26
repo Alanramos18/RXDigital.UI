@@ -13,25 +13,26 @@ export class VerDetalleRecetaComponent {
 
   constructor(private router: Router) {}
 
-  @Input() codigoReceta: string = '1234';
-  @Input() fechaEmision: string = '2024-10-25';
-  @Input() fechaExpiracion: string = '2025-10-25';
+  @Input() codigoReceta: string = 'MG1256';
+  @Input() fechaEmision: string = '18/08/2024';
+  @Input() fechaExpiracion: string = '18/11/2024';
 
-  @Input() medicoNombre: string = 'Melina';
-  @Input() medicoMatricula: string = '4567';
+  @Input() medicoNombre: string = 'Sofía Golé';
+  @Input() medicoEspecialidad: string = 'Medicina Familiar';
+  @Input() medicoMatricula: string = 'M.N.86170';
 
-  @Input() pacienteNombre: string = 'Juan perez';
-  @Input() pacienteDNI: string = '87654';
+  @Input() pacienteNombre: string = 'Franco Colapinto';
+  @Input() pacienteDNI: string = '42.836.125';
   @Input() pacienteObraSocial: string = '1233';
 
-  @Input() medicamentoLote: string = '';
-  @Input() medicamentoNombreComercial: string = '';
-  @Input() medicamentoConcentracion: string = '';
+  @Input() medicamentoNombreComercial: string = 'Metformina';
+  @Input() medicamentoPresentacion: string = 'Tabletas';
+  @Input() medicamentoConcentracion: string = '850 mg';
 
-  @Input() informacionDiagnostico: string = '';
-  @Input() informacionIndicaciones: string = '';
+  @Input() informacionDiagnostico: string = 'Diabetes Mellitus';
+  @Input() informacionIndicaciones: string = 'Tomar un comprimido una vez al día con alguna comida';
 
-  @Input() viaComunicacion: string = '';
+  @Input() viaComunicacion: string = 'Whatsapp';
 
   volver() {
     console.log("Volver a la pantalla anterior");

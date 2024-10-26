@@ -17,6 +17,7 @@
         width: 45%;
         padding: 5px;
         margin-bottom: 5px;
+        height: 20px;
     }
 
     input {
@@ -25,6 +26,8 @@
         margin-bottom: 5px;
         border-radius: 5px;
         border: 1px solid #ccc;
+        background-color: #F0E9E9;
+        height: 20px;
     }
 }
 
@@ -44,7 +47,7 @@
         margin-bottom: 10px;
         background-color: #f2f2f2;
         justify-content: center;
-        //align-items: center;
+        align-items: center;
 
         h2 {
             width: 100%;
@@ -56,18 +59,21 @@
         }
 
         label {
-            width: 90%;
+            width: 30%;
             //padding: 5px;
-            //margin-bottom: 5px;
+            margin-bottom: 5px;
             text-align: start;
+            height: 20px;
         }
 
         input {
-            width: 90%;
+            width: 60%;
             //padding: 5px;
-            //margin-bottom: 5px;
+            margin-bottom: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
+            background-color: #F0E9E9;
+            height: 20px;
         }
     }
 
