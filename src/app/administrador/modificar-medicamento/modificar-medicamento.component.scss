@@ -1,0 +1,122 @@
+.container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 0 auto;
+  
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  
+      .logo {
+        width: 100px;
+        height: 100px;
+        background: #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #666;
+        margin-right: 10px;
+      }
+  
+      h1 {
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+    }
+  
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+  
+      button {
+        background-color: #d3d3d3;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-weight: bold;
+        &:hover {
+          background-color: #bbb;
+        }
+      }
+    }
+  
+    .form-container {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+  
+      h2 {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+  
+      .search-bar {
+        display: flex;
+        margin-bottom: 15px;
+  
+        input {
+          flex: 1;
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 5px 0 0 5px;
+        }
+  
+        button {
+          padding: 8px;
+          border: 1px solid #ccc;
+          background-color: #eee;
+          border-radius: 0 5px 5px 0;
+          cursor: pointer;
+        }
+      }
+  
+      label {
+        font-weight: bold;
+        margin-top: 10px;
+        display: block;
+      }
+  
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+  
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+  
+        .modify {
+          background-color: #28a745;
+          color: white;
+          border: none;
+          padding: 10px 15px;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+  
+        .cancel {
+          background-color: #dc3545;
+          color: white;
+          border: none;
+          padding: 10px 15px;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  

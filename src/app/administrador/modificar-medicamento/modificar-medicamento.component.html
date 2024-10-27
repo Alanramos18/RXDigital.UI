@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="header">
+      <div class="logo">
+        <p>Logo del sistema</p>
+      </div>
+      <h1>GESTIONAR MEDICAMENTOS</h1>
+    </div>
+    
+    <div class="button-group">
+      <button (click)="agregarMedicamento()">Agregar</button>
+      <button (click)="modificarMedicamento()">Modificar</button>
+      <button (click)="eliminarMedicamento()">Eliminar</button>
+    </div>
+  
+    <div class="form-container">
+      <h2>Modificar medicamento</h2>
+      <div class="search-bar">
+        <input type="text" placeholder="Buscar medicamento..."/>
+        <button><i class="fa fa-search"></i></button>
+      </div>
+  
+      <form>
+        <label>Nombre</label>
+        <input type="text" [(ngModel)]="medicamento.nombre" name="nombre" />
+  
+        <label>Marca</label>
+        <input type="text" [(ngModel)]="medicamento.marca" name="marca" />
+  
+        <label>Forma farmacéutica</label>
+        <input type="text" [(ngModel)]="medicamento.formaFarmaceutica" name="formaFarmaceutica" />
+  
+        <label>Dosis</label>
+        <input type="text" [(ngModel)]="medicamento.dosis" name="dosis" />
+  
+        <label>Lote de fabricación</label>
+        <input type="text" [(ngModel)]="medicamento.loteFabricacion" name="loteFabricacion" />
+  
+        <label>Fecha de caducidad</label>
+        <input type="date" [(ngModel)]="medicamento.fechaCaducidad" name="fechaCaducidad" />
+  
+        <div class="buttons">
+          <button type="submit" class="modify" (click)="guardarCambios()">Modificar</button>
+          <button type="button" class="cancel" (click)="cancelarCambios()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

@@ -8,7 +8,11 @@ import { EmisionCorrectaComponent } from './emision-correcta/emision-correcta.co
 //import { authGuard } from './guard/auth.guard';
 import { VerDetallePacienteComponent } from './ver-detalle-paciente/ver-detalle-paciente.component';
 import { EliminarRecetaComponent } from './eliminar-receta/eliminar-receta.component';
+import { VerDetalleRecetaComponent } from './ver-detalle-receta/ver-detalle-receta.component';
 import { ModificarPacienteComponent } from './modificar-paciente/modificar-paciente.component';
+
+import { GestionarMedicamentosComponent } from './administrador/gestionar-medicamentos/gestionar-medicamentos.component';
+import { ModificarMedicamentoComponent } from './administrador/modificar-medicamento/modificar-medicamento.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -20,6 +24,7 @@ export const routes: Routes = [
     { path: 'cancelar-receta', component: CancelarRecetaComponent},// canActivate: [authGuard] },
     { path: 'emision-correcta', component: EmisionCorrectaComponent},// canActivate: [authGuard] },
     { path: 'eliminar-receta', component: EliminarRecetaComponent},// canActivate: [authGuard] },
+    { path: 'ver-detalle-receta', component: VerDetalleRecetaComponent},// canActivate: [authGuard] },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: '**', redirectTo: '/login' }
 ];  
