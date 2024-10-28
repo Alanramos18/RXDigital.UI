@@ -25,6 +25,8 @@ export const routes: Routes = [
     { path: 'emision-correcta', component: EmisionCorrectaComponent},// canActivate: [authGuard] },
     { path: 'eliminar-receta', component: EliminarRecetaComponent},// canActivate: [authGuard] },
     { path: 'ver-detalle-receta', component: VerDetalleRecetaComponent},// canActivate: [authGuard] },
+    { path: 'gestionar-medicamentos', component: GestionarMedicamentosComponent /*, canActivate: [authGuard]*/ },
+    { path: 'modifcar-medicamento', component: ModificarMedicamentoComponent /*, canActivate: [authGuard]*/ },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: '**', redirectTo: '/login' }
 ];  
