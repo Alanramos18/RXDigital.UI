@@ -28,6 +28,8 @@ export const routes: Routes = [
     { path: 'gestionar-medicamentos', component: GestionarMedicamentosComponent /*, canActivate: [authGuard]*/ },
     { path: 'modifcar-medicamento', component: ModificarMedicamentoComponent /*, canActivate: [authGuard]*/ },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path: '**', redirectTo: '/login' }
+    { path: '**', redirectTo: '/login' },
+    //
+    
 ];  
 
