@@ -3,7 +3,8 @@
 
     <div class="fecha">
         <label>Fecha de emisión:</label>
-        <input type="text" [value]="fechaEmision" readonly>
+        <label [innerHTML]="fechaEmision" readonly></label>
+       <!-- <label type="text" [value]="fechaEmision" readonly ></label>-->
     </div>
     <div class="fecha">
         <label>Fecha de expiración:</label>
