@@ -10,5 +10,8 @@ export class Paciente {
     homePhone: string;
     socialWorkName: string;
     socialPlan: string;
-    domicilio: string;
+    Address: string;
+    email: string;
+    InscriptionDate: Date;
+    IsAvailable: boolean;
 }

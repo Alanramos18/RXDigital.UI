@@ -12,26 +12,12 @@ import { isPlatformBrowser } from '@angular/common';
   templateUrl: './buscar-paciente.component.html',
   styleUrl: './buscar-paciente.component.scss'
 })
-export class BuscarPacienteComponent implements OnInit {
+export class BuscarPacienteComponent {
   dniPaciente: number;
   nombreUsuario: string = 'Nombre del médico'; // Esto sería dinámico.
 
-  constructor(private rxService: RxDigitalService, private medicService: MedicService, private router: Router, @Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(private rxService: RxDigitalService, private medicService: MedicService, private router: Router) {}
 
-  ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      var userId = localStorage.getItem('userId');
-      this.rxService.getMedicInfo(userId).subscribe({
-        next: (res) => {
-          this.medicService.setMedicData(res);
-          console.log(this.medicService.getMedicData())
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      });
-    }
-  }
 
   buscarPaciente() {
       this.rxService.getPatientInfo(this.dniPaciente).subscribe({
