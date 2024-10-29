@@ -32,8 +32,7 @@
       </div>
       <div class="detail-row">
         <label>Domicilio:</label>
-        <!-- <span>{{ paciente.domicilio }}</span> -->
-        <span>Avenida Siempre Viva 123</span>
+        <span>{{ paciente.Address }}</span>
       </div>
       <div class="detail-row">
         <label>Celular:</label>
@@ -45,8 +44,7 @@
       </div>
       <div class="detail-row">
         <label>Email:</label>
-        <!-- <span>{{ paciente.email }}</span> -->
-        <span>karinaaaaaaaaaaaa&#64;HOTMAIL.com</span>
+        <span>{{ paciente.email }}</span>
       </div>
       <div class="detail-row">
         <label>Obra social:</label>
@@ -54,8 +52,7 @@
       </div>
       <div class="detail-row">
         <label>Estado de habilitación (H/D):</label>
-        <!-- <span>{{ paciente.estadoHabilitacion }}</span> -->
-        <span>Habilitashion</span>
+        <span>{{ paciente.IsAvailable ? 'Habilitado' : 'No Habilitado' }}</span>
       </div>
       <div class="detail-row">
         <label>Número de afiliado:</label>
@@ -63,8 +60,7 @@
       </div>
       <div class="detail-row">
         <label>Fecha de inscripción:</label>
-        <!-- <span>{{ paciente.fechaInscripcion | date }}</span> -->
-        <span>Hoy, ah re</span>
+        <span>{{ paciente.InscriptionDate | date }}</span>
       </div>
     </div>
     
