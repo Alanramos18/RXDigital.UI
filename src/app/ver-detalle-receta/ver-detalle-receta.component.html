@@ -1,11 +1,17 @@
 <div class="contenedor">
     <h2>Receta: {{codigoReceta}}</h2>
 
+    <div class="detail-row">
+        <label>Fecha de emisión:</label>
+        <label readonly>{{ fechaEmision }}</label>
+      </div>
+<!--
     <div class="fecha">
         <label>Fecha de emisión:</label>
         <label [innerHTML]="fechaEmision" readonly></label>
-       <!-- <label type="text" [value]="fechaEmision" readonly ></label>-->
+        <label type="text" [value]="fechaEmision" readonly ></label>
     </div>
+-->
     <div class="fecha">
         <label>Fecha de expiración:</label>
         <input type="text" [value]="fechaExpiracion" readonly>
