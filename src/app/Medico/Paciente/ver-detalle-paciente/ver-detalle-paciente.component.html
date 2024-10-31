@@ -32,7 +32,7 @@
       </div>
       <div class="detail-row">
         <label>Domicilio:</label>
-        <span>{{ paciente.Address }}</span>
+        <span>{{ paciente.address }}</span>
       </div>
       <div class="detail-row">
         <label>Celular:</label>
@@ -52,7 +52,7 @@
       </div>
       <div class="detail-row">
         <label>Estado de habilitación (H/D):</label>
-        <span>{{ paciente.IsAvailable ? 'Habilitado' : 'No Habilitado' }}</span>
+        <span>{{ paciente.isAvailable ? 'Habilitado' : 'No Habilitado' }}</span>
       </div>
       <div class="detail-row">
         <label>Número de afiliado:</label>
@@ -60,7 +60,7 @@
       </div>
       <div class="detail-row">
         <label>Fecha de inscripción:</label>
-        <span>{{ paciente.InscriptionDate | date }}</span>
+        <span>{{ paciente.inscriptionDate | date }}</span>
       </div>
     </div>
     

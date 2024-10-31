@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // Import necesario
 import { Router } from '@angular/router';
-import { MedicService } from '../services/medic.service';
-import { Medico } from '../models/medico';
-import { Paciente } from '../models/paciente';
-import { RxDigitalService } from '../services/rx-digital.service';
-import { Medicamento } from '../models/medicamento';
-import { RecetaNueva } from '../models/receta-nueva';
+import { Medico } from '../../../models/medico';
+import { Paciente } from '../../../models/paciente';
+import { RxDigitalService } from '../../../services/rx-digital.service';
+import { Medicamento } from '../../../models/medicamento';
+import { RecetaNueva } from '../../../models/receta-nueva';
+import { MedicService } from '../../../services/medic.service';
+import { CommonModule } from '@angular/common';
+import { SearchModalComponent } from '../modal/search-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-emitir-receta',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule, SearchModalComponent],
   templateUrl: './emitir-receta.component.html',
   styleUrl: './emitir-receta.component.scss'
 })
@@ -21,12 +24,12 @@ export class EmitirRecetaComponent implements OnInit{
   paciente: Paciente;
   medicamento: Medicamento;
 
-  listaMedicamentos: Medicamento[];
-  nombreMedicamento: string;
+  showModal: boolean = false;
   diagnostic: string;
   indications: string;
 
-  constructor(private router: Router, private rxDigitalService: RxDigitalService, private medicService: MedicService) {
+  constructor(private router: Router, private rxDigitalService: RxDigitalService,
+    private medicService: MedicService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -35,17 +38,6 @@ export class EmitirRecetaComponent implements OnInit{
   }
 
   formaEnvio: string = 'email'; // Valor por defecto
-
-  getMedicine() {
-    this.rxDigitalService.getMedicine(this.nombreMedicamento).subscribe({
-      next: (res) => {
-        this.listaMedicamentos = res;
-
-        this.medicamento = this.listaMedicamentos[0];
-      },
-      error: (err) => console.log(err)
-    })
-  }
 
   emitirReceta() {
     let receta: RecetaNueva = new RecetaNueva();
@@ -71,5 +63,26 @@ export class EmitirRecetaComponent implements OnInit{
     // Lógica para cancelar la operación
     console.log('Operación cancelada');
     this.router.navigate(['/cancelar-receta']);
+  }
+
+  onItemSelected(med: Medicamento) {
+    this.medicamento = med;
+    this.showModal = false;
+  }
+
+  clearSelection() {
+    this.medicamento = null;
+  }
+
+  openModal() {
+    const dialogRef = this.dialog.open(SearchModalComponent, {
+      width: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe({
+      next: (med) => {
+        this.medicamento = med
+      }
+    });
   }
 }
