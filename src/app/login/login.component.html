@@ -7,8 +7,8 @@
         <p class="description">PRESCRIPCIONES MÉDICAS DIGITALES</p>
     </div>
     <div class="right">
-        <div class="login">
-            <h1>BIENVENIDO/A A NUESTRO SISTEMA DE RECETAS DIGITALES</h1>
+        <div class="login"><br>
+            <h1 class="bienvenida">BIENVENIDO/A A NUESTRO SISTEMA DE RECETAS DIGITALES</h1>
             <div>
                 <form #formRef="ngForm">
                     <!-- <mat-form-field class="example-full-width">
@@ -16,15 +16,17 @@
                         <inpuemail matInput ngModel required value="{email}">
                       </mat-form-field> -->
                      
-                    <h2>E-mail</h2>
-                    
+                    <p style="width: 400.500 ; height:10px;">E-mail</p>
                     <input type="email" name="email" [(ngModel)]="email" required>
-                    <h2>Contraseña</h2>
-                    <input type="password" name="contraseña" [(ngModel)]="password" required email>
+                    <p style="width: 400.500 ; height:10px;">Contraseña</p>
+                    <input type="password" name="contraseña" [(ngModel)]="password" required email><br>
                     <!-- <button [disabled]="formRef.invalid" (click)="login()">Iniciar Sesión</button> -->
-                     <h2></h2>
+                    
                     <button (click)="login()">Iniciar Sesión</button>
-                </form>                  
+                    
+                </form>    
+                <p class="debajoBoton">¿Olvidaste tu contaseña?</p>
+                <p class="debajoBoton">¿No tienes una cuenta? <span class="registrate">Registrate</span></p>              
             </div>
         </div>
     </div>
