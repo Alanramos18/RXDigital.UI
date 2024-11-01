@@ -36,17 +36,26 @@
     <div class="section">
       <div class="datos-medicamento">
         <h2>DATOS DEL MEDICAMENTO</h2>
-        <label>Nombre comercial</label>
-        <input type="text" [(ngModel)]="nombreMedicamento" />
-        <button (click)="getMedicine()">Buscar</button>
-        <label>Presentación</label>
-        <span type="text">
-          {{ medicamento.presentation }}
-        </span>  
-        <label>Concentración</label>
-        <span type="text">
-          {{ medicamento.concentration }} mg
-        </span>  
+
+        <div *ngIf="!medicamento">
+          <button (click)="openModal()">Elegir Medicamento</button>
+        </div>
+
+        <div *ngIf="medicamento">
+          <label>Nombre comercial</label>
+          <span type="text">
+            {{ medicamento.commercialName }}
+          </span> 
+          <label>Presentación</label>
+          <span type="text">
+            {{ medicamento.presentation }}
+          </span>  
+          <label>Concentración</label>
+          <span type="text">
+            {{ medicamento.concentration }} mg
+          </span>  
+        </div>
+        <button (click)="clearSelection()">✖</button>
       </div>
   
       <div class="informacion">

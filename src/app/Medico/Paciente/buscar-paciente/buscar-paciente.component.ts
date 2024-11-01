@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit, PLATFORM_ID, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RxDigitalService } from '../services/rx-digital.service';
-import { MedicService } from '../services/medic.service';
+import { RxDigitalService } from '../../../services/rx-digital.service';
+import { MedicService } from '../../../services/medic.service';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
