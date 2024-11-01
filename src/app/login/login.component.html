@@ -22,11 +22,15 @@
                     <input type="password" name="contraseña" [(ngModel)]="password" required email><br>
                     <!-- <button [disabled]="formRef.invalid" (click)="login()">Iniciar Sesión</button> -->
                     
-                    <button (click)="login()">Iniciar Sesión</button>
+                    <button class="boton"(click)="login()">Iniciar Sesión</button>
                     
                 </form>    
-                <p class="debajoBoton">¿Olvidaste tu contaseña?</p>
-                <p class="debajoBoton">¿No tienes una cuenta? <span class="registrate">Registrate</span></p>              
+                <p class="debajoBoton"><a (click)="recuperarCuenta()" style="color:black">¿Olvidaste tu contaseña?</a></p>
+                <p class="debajoBoton">¿No tienes una cuenta? 
+                    <span class="registrate">
+                    <a (click)="register()" style="color: #20CAA2" >Registrate</a>
+                    </span>
+                </p>              
             </div>
         </div>
     </div>
