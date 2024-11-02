@@ -1,70 +1,87 @@
-<div class="contenedor">
+<div class="header">
+    <img src="assets/icons/RpDigital.png">
+    <div class="user-info">
+        <img src="assets/icons/foto1.png" alt="Foto de usuario" class="user-photo" />
+        <span class="user-name">Nombre usuario</span>
+    </div>
+</div>
+<div class="detalle-receta">
+    <h2>Detalles de la receta</h2>
     <h2>Receta: {{codigoReceta}}</h2>
 
     <div class="fecha">
         <label>Fecha de emisión:</label>
-        <label [innerHTML]="fechaEmision" readonly></label>
-       <!-- <label type="text" [value]="fechaEmision" readonly ></label>-->
+        <span>{{ fechaEmision }}</span>
     </div>
     <div class="fecha">
         <label>Fecha de expiración:</label>
-        <input type="text" [value]="fechaExpiracion" readonly>
+        <span>{{ fechaExpiracion }}</span>
     </div>
 
-    <div class="cuadro">
-    <div class="seccion">
+    <div class="receta-details">
         <h2>Datos del Médico</h2>
-        <label>Nombre:</label>
-        <input type="text" [value]="medicoNombre" readonly>
-
-        <label>Especialidad:</label>
-        <input type="text" [value]="medicoEspecialidad" readonly>
-
-        <label>Matrícula:</label>
-        <input type="text" [value]="medicoMatricula" readonly>
+        <div class="detail-row">
+            <label>Nombre completo:</label>
+            <span>{{ medicoNombre }}</span>
+        </div>
+        <div class="detail-row">
+            <label>Especialidad:</label>
+            <span>{{ medicoEspecialidad }}</span>
+        </div>
+        <div class="detail-row">
+            <label>Matricula:</label>
+            <span>{{medicoMatricula}}</span>
+        </div>
     </div>
 
-    <div class="seccion">
+    <div class="receta-details">
         <h2>Datos del Paciente</h2>
-        <label>Nombre:</label>
-        <input type="text" [value]="pacienteNombre" readonly>
-
-        <label>DNI:</label>
-        <input type="text" [value]="pacienteDNI" readonly>
-
-        <label>Obra social:</label>
-        <input type="text" [value]="pacienteObraSocial" readonly>
-    </div>
-    </div>
-
-    <div class="cuadro">
-    <div class="seccion">
-        <h2>Datos del Medicamento</h2>
-        <label>Nombre comercial:</label>
-        <input type="text" [value]="medicamentoNombreComercial" readonly>
-
-        <label>Presentación:</label>
-        <input type="text" [value]="medicamentoPresentacion" readonly>
-        
-        <label>Concentración:</label>
-        <input type="text" [value]="medicamentoConcentracion" readonly>
+        <div class="detail-row">
+            <label>Nombre completo:</label>
+            <span>{{ pacienteNombre }}</span>
+        </div>
+        <div class="detail-row">
+            <label>DNI:</label>
+            <span>{{ pacienteDNI }}</span>
+        </div>
+        <div class="detail-row">
+            <label>Obra Social:</label>
+            <span>{{pacienteObraSocial}}</span>
+        </div>
     </div>
 
-    <div class="seccion">
+    <div class="receta-details">
         <h2>Información</h2>
-        <label>Diagnóstico:</label>
-        <input type="text" [value]="informacionDiagnostico" readonly>
-
-        <label>Indicaciones:</label>
-        <input type="text" [value]="informacionIndicaciones" readonly>
+        <div class="detail-row">
+            <label>Diagnóstico:</label>
+            <span>{{ informacionDiagnostico }}</span>
+        </div>
+        <div class="detail-row">
+            <label>Comentarios:</label>
+            <span>Aca va info de consejos</span>
+        </div>
     </div>
+
+    <div class="receta-details">
+        <h2>Datos del Medicamento</h2>
+        <div class="detail-row">
+            <label>Nombre comercial:</label>
+            <span>{{ medicamentoNombreComercial }}</span>
+        </div>
+        <div class="detail-row">
+            <label>Presentación:</label>
+            <span>{{ medicamentoPresentacion }}</span>
+        </div>
+        <div class="detail-row">
+            <label>Concentración:</label>
+            <span>{{medicamentoConcentracion}}</span>
+        </div>
     </div>
 
     <div class="enviar-por">
-        <label>Enviar receta por:</label>
-        <input type="text" [value]="viaComunicacion" readonly>
+        <label>Enviar por:</label>
+        <span>{{viaComunicacion}}</span>
     </div>
 
     <button (click)="volver()">Volver</button>
 </div>
- 
