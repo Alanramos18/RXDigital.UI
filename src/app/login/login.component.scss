@@ -17,6 +17,7 @@
     flex: 1;
     height: 100vh;
     width: 50%;
+    overflow: hidden;
     
     flex-direction: column;
 }
@@ -85,7 +86,7 @@
  background-color: #77E7CD;
 margin-top: 30px;
 margin-bottom: 20px;
-padding: 80 px;
+padding: 10px 20px 10px 20px;
 
 }
 

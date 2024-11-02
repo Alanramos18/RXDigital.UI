@@ -4,11 +4,12 @@ import { Router } from '@angular/router';
 import { RxDigitalService } from '../../../services/rx-digital.service';
 import { MedicService } from '../../../services/medic.service';
 import { isPlatformBrowser } from '@angular/common';
+import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
 
 @Component({
   selector: 'app-buscar-paciente',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, EncabezadoComponent],
   templateUrl: './buscar-paciente.component.html',
   styleUrl: './buscar-paciente.component.scss'
 })

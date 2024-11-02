@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { VerRecetasPacienteComponent } from './ver-recetas-paciente/ver-recetas-paciente.component';
+import { VerRecetasPacienteComponent } from './Medico/Paciente/ver-recetas-paciente/ver-recetas-paciente.component';
 import { BuscarPacienteComponent } from './Medico/Paciente/buscar-paciente/buscar-paciente.component';
 import { EmitirRecetaComponent } from './Medico/Receta/emitir-receta/emitir-receta.component';
 import { CancelarRecetaComponent } from './Medico/Receta/cancelar-receta/cancelar-receta.component';

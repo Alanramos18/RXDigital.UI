@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { VerRecetasPacienteComponent } from '../../../ver-recetas-paciente/ver-recetas-paciente.component';
+import { VerRecetasPacienteComponent } from '../../Paciente/ver-recetas-paciente/ver-recetas-paciente.component';
 
 @Component({
   selector: 'app-eliminar-receta',

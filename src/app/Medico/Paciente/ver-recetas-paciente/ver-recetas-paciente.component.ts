@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Receta } from '../models/receta';
+import { Receta } from '../../../models/receta';
 import { Router } from '@angular/router';
-import { RxDigitalService } from '../services/rx-digital.service';
-import { Paciente } from '../models/paciente';
-import { MedicService } from '../services/medic.service';
-import { Medico } from '../models/medico';
+import { RxDigitalService } from '../../../services/rx-digital.service';
+import { Paciente } from '../../../models/paciente';
+import { MedicService } from '../../../services/medic.service';
+import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
+//import { Medico } from '../../../models/medico';
 
 @Component({
   selector: 'app-ver-recetas-paciente',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,EncabezadoComponent],
   templateUrl: './ver-recetas-paciente.component.html',
   styleUrls: ['./ver-recetas-paciente.component.scss']
 })

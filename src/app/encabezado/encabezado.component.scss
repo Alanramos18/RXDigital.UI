@@ -1,0 +1,25 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    color: #000000;
+    
+  
+    .user-info {
+      display: flex;
+      align-items: center;
+  
+      .user-photo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+  
+      .user-name {
+        font-size: 30px;
+        margin-right: 50px;
+      }
+    }
+  }

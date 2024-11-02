@@ -1,17 +1,28 @@
-<div class="detalle-receta">
+<app-encabezado></app-encabezado> 
+<h2 style="text-align: center; font-size: 35px; text-decoration: underline solid;">DETALLES DE RECETA</h2>
 
+
+<div class="detalle-receta">
+  
+  <div class="sectionReceta">
+    <p><strong>Código de Receta:</strong> {{ receta.codigo }}</p>
+    <p><strong>Fecha de emisión:</strong> {{ receta.fechaEmision }}</p>
+    <p><strong>Fecha de vencimiento:</strong> {{ receta.fechaVencimiento}}</p>
+  </div>
     <!-- Datos del Paciente -->
     <h2>Datos del Paciente</h2>
     <div class="section">
-      <p><strong>Nombre:</strong> {{ paciente.nombre }}</p>
+      <p><strong>Apellido y Nombre:</strong> {{ paciente.nombre }}</p>
       <p><strong>DNI:</strong> {{ paciente.dni }}</p>
       <p><strong>Obra Social:</strong> {{ paciente.obraSocial }}</p>
+      <p><strong>Plan de Obra Social:</strong> {{ paciente.obraSocial }}</p>
+      <p><strong>Número de afiliado:</strong> {{ paciente.obraSocial }}</p>
     </div>
   
     <!-- Datos del Médico -->
     <h2>Datos del Médico</h2>
     <div class="section">
-      <p><strong>Nombre:</strong> {{ medico.nombre }}</p>
+      <p><strong>Apellido y Nombre:</strong> {{ medico.nombre }}</p>
       <p><strong>Especialidad:</strong> {{ medico.especialidad }}</p>
       <p><strong>Matrícula:</strong> {{ medico.matricula }}</p>
     </div>
@@ -28,10 +39,10 @@
     <table>
       <thead>
         <tr>
-          <th>Nombre</th>
+          <th>Nombre Comercial</th>
           <th>Presentación</th>
           <th>Concentración</th>
-          <th>Cantidad</th>
+          
           <th>Indicaciones</th>
         </tr>
       </thead>
@@ -40,7 +51,7 @@
           <td>{{ medicamento.nombre }}</td>
           <td>{{ medicamento.presentacion }}</td>
           <td>{{ medicamento.concentracion }}</td>
-          <td>{{ medicamento.cantidad }}</td>
+          
           <td>{{ medicamento.indicaciones }}</td>
         </tr>
       </tbody>
@@ -52,7 +63,13 @@
       <p><strong>Envío:</strong> {{ receta.formaEnvio }}</p>
     </div>
   
-    <button (click)="volver()">Volver</button>
+    
 
+  </div><br>
+  
+  
+  <div class= "contenedorBoton"> 
+    <button (click)="volver()">Volver a Historial Paciente</button>
   </div>
+  
   

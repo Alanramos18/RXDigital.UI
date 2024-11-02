@@ -1,31 +1,28 @@
 <div class="container">
-  <header class="header">
-    <img src="assets/icons/rxDigital.png" class="rxDigital">
-    <div class="user-info">
-      <img src="assets/icons/foto1.png" class="user-photo">
-      <span class="user-name">{{ medicName }}</span>
-    </div>
-  </header>
+  <app-encabezado></app-encabezado>
 
   <main class="main-content">
     <section class="patient-info">
       <div class="datos-paciente">
-        <h3>Datos del Paciente</h3>
+        <h3>DATOS DEL PACIENTE</h3>
+        <div class="campo">
+          <label for="nombre">Apellido y Nombre:</label>
+          <span>{{ paciente.lastName }}, {{ paciente.firstName }} </span>
+        </div>
         <div class="campo">
           <label for="dni">DNI:</label>
           <span>{{ paciente.patientId }}</span>
         </div>
-        <div class="campo">
-          <label for="nombre">Nombre y Apellido:</label>
-          <span>{{ paciente.firstName }} {{ paciente.lastName }}</span>
+        <div class="patient-actions">
+          <button class="btn-view-details" (click)="verDetallePaciente()">📄</button>
+          <button class="btn-edit">✏️</button>
+          <button class="btn-delete">🗑️</button>
         </div>
+
+        
       </div>
 
-      <div class="patient-actions">
-        <button class="btn-view-details" (click)="verDetallePaciente()">📄</button>
-        <button class="btn-edit">✏️</button>
-        <button class="btn-delete">🗑️</button>
-      </div>
+      
     </section>
 
     <section class="prescription-history">

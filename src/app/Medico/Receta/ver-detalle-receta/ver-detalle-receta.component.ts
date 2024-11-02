@@ -1,11 +1,14 @@
 import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
+
+
 
 @Component({
   selector: 'app-ver-detalle-receta',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,EncabezadoComponent], 
   templateUrl: './ver-detalle-receta.component.html',
   styleUrl: './ver-detalle-receta.component.scss'
 })
@@ -13,6 +16,7 @@ import { CommonModule } from '@angular/common';
 export class VerDetalleRecetaComponent {
 
   constructor(private router: Router) { }
+  
 
   paciente = {
     nombre: 'Juan Pérez',
@@ -31,9 +35,12 @@ export class VerDetalleRecetaComponent {
     comentarios: 'Tomar el medicamento después de las comidas',
     formaEnvio: 'Email y WhatsApp',
     medicamentos: [
-      { nombre: 'Medicamento A', presentacion: 'Tableta', concentracion: '500mg', cantidad: 30, indicaciones: 'Tomar 1 tableta cada 8 horas' },
+      { nombre: 'Medicamento A', presentacion: 'Tableta', concentracion: '500mg', cantidad: 30, indicaciones: 'Tomar 1 tableta cada 8' },
       { nombre: 'Medicamento B', presentacion: 'Jarabe', concentracion: '100ml', cantidad: 2, indicaciones: 'Tomar 5ml cada 6 horas' }
-    ]
+    ],
+    codigo: 'AB125',
+     fechaEmision: '14/09/2024',
+     fechaVencimiento: '14/12/2024'
   };
 
   volver() {
