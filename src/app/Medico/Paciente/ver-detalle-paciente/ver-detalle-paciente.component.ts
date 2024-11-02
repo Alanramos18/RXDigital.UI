@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RxDigitalService } from '../services/rx-digital.service';
+import { RxDigitalService } from '../../../services/rx-digital.service';
 import { CommonModule } from '@angular/common';
-import { Paciente } from '../models/paciente';
+import { Paciente } from '../../../models/paciente';
+import { MedicService } from '../../../services/medic.service';
 
 @Component({
   selector: 'app-ver-detalle-paciente',
@@ -18,20 +19,12 @@ export class VerDetallePacienteComponent implements OnInit {
   paciente: Paciente;  // Define un modelo para el paciente en un archivo separado si es necesario
 
   constructor(
-    private route: ActivatedRoute,
-    private rxService: RxDigitalService
+    private medicData: MedicService
   ) {}
 
   ngOnInit(): void {
-    // const pacienteId = this.route.snapshot.paramMap.get('id');
-    this.obtenerDetallePaciente(56789012);
-  }
-
-  obtenerDetallePaciente(id: number): void {
-    this.rxService.getPatientInfo(id).subscribe({
-      next: (data) => this.paciente = data,
-      error: (err) => console.error('Error al obtener los detalles del paciente', err)
-    });
+    this.paciente = this.medicData.getPatientData();
+    console.log(this.paciente)
   }
 
   volver(): void {

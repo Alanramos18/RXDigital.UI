@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit, PLATFORM_ID, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RxDigitalService } from '../services/rx-digital.service';
-import { MedicService } from '../services/medic.service';
+import { RxDigitalService } from '../../../services/rx-digital.service';
+import { MedicService } from '../../../services/medic.service';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
@@ -12,26 +12,12 @@ import { isPlatformBrowser } from '@angular/common';
   templateUrl: './buscar-paciente.component.html',
   styleUrl: './buscar-paciente.component.scss'
 })
-export class BuscarPacienteComponent implements OnInit {
+export class BuscarPacienteComponent {
   dniPaciente: number;
   nombreUsuario: string = 'Nombre del médico'; // Esto sería dinámico.
 
-  constructor(private rxService: RxDigitalService, private medicService: MedicService, private router: Router, @Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(private rxService: RxDigitalService, private medicService: MedicService, private router: Router) {}
 
-  ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      var userId = localStorage.getItem('userId');
-      this.rxService.getMedicInfo(userId).subscribe({
-        next: (res) => {
-          this.medicService.setMedicData(res);
-          console.log(this.medicService.getMedicData())
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      });
-    }
-  }
 
   buscarPaciente() {
       this.rxService.getPatientInfo(this.dniPaciente).subscribe({

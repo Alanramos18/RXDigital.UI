@@ -4,6 +4,7 @@ import { RxDigitalService } from '../services/rx-digital.service';
 import { Router } from '@angular/router';
 import { Roles } from '../models/roles.enums';
 import { jwtDecode } from 'jwt-decode';
+import { MedicService } from '../services/medic.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent {
   email: string = "";
   password: string = "";
 
-  constructor(private rxService: RxDigitalService, private router: Router) {}
+  constructor(private rxService: RxDigitalService, private medicService: MedicService, private router: Router) {}
 
   login() {
     this.rxService.login(this.email, this.password).subscribe({
@@ -27,10 +28,10 @@ export class LoginComponent {
 
         const decodedToken: any = jwtDecode(res);
 
-        localStorage.setItem('roleId', decodedToken['RoleId']);
-        localStorage.setItem('userId', decodedToken['UserId']);
+        this.medicService.setRole(decodedToken['RoleId']);
+        this.medicService.setUserId(decodedToken['UserId']);
 
-        switch(Number(decodedToken['RoleId'])) {
+        switch(Number(this.medicService.getRole())) {
           case Roles.Admin:
             this.router.navigate(['/asdasdasdas']);
             break;
@@ -49,4 +50,11 @@ export class LoginComponent {
       }
     });
   }
+  register(){
+    this.router.navigate(['/buscar-paciente']);
+  }
+  recuperarCuenta(){
+    this.router.navigate(['/buscar-paciente']);
+  }
+  
 }

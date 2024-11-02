@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { MedicService } from '../services/medic.service';
+import { MedicService } from '../../../services/medic.service';
 
 @Component({
   selector: 'app-emision-correcta',

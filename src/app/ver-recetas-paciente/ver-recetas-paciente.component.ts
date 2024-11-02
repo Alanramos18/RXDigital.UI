@@ -4,6 +4,8 @@ import { Receta } from '../models/receta';
 import { Router } from '@angular/router';
 import { RxDigitalService } from '../services/rx-digital.service';
 import { Paciente } from '../models/paciente';
+import { MedicService } from '../services/medic.service';
+import { Medico } from '../models/medico';
 
 @Component({
   selector: 'app-ver-recetas-paciente',
@@ -17,23 +19,19 @@ export class VerRecetasPacienteComponent implements OnInit {
   recetas: Receta[];
   fechaEmision: Date = new Date('2024-06-01');
   paciente: Paciente;
+  medicName: string;
 
-  constructor(private rxService: RxDigitalService, private router: Router) {}
+  constructor(private rxService: RxDigitalService, private medicService: MedicService, private router: Router) {}
 
   ngOnInit(): void {
-    console.log('ngOnInit: El componente se ha inicializado');
-    this.rxService.getPrescriptions(67890123).subscribe({
+    this.paciente = this.medicService.getPatientData();
+    this.medicName = this.medicService.getMedicFullName();
+    
+    this.rxService.getPrescriptions(this.paciente.patientId).subscribe({
       next: (res) => {
         this.recetas = res;
       },
       error: (err) => console.log('Err')
-    });
-
-    this.rxService.getPatientInfo(67890123).subscribe({
-      next: (res) => {
-        this.paciente = res;
-      },
-      error: (err) => console.log('Hubo un error. Por favor intenta mas tarde')
     });
   }
 
