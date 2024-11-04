@@ -1,15 +1,16 @@
 .emitir-receta-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 20px;
-  
+    
+    
     .header {
-      background-color: #cccccc;
+      background-color: #77E7CD;
+      color: black;
       width: 100%;
       text-align: center;
-      padding: 10px;
-      margin-bottom: 20px;
+      //padding: 0px;
+      margin-bottom: 5px;
+      margin-top: 15px;
     }
   
     .section {

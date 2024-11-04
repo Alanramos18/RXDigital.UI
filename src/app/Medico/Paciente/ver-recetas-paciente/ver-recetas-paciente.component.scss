@@ -1,36 +1,14 @@
 .container {
   width: 100%;
-  padding: 20px;
+  
   box-sizing: border-box;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #ffffff;
-  color: #000000;
-  padding: 15px;
 
-  .user-info {
-    display: flex;
-    align-items: center;
-
-    .user-photo {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
-
-    .user-name {
-      font-size: 1.2em;
-    }
-  }
-}
 
 .main-content {
   margin-top: 20px;
+  padding: 20px;
 
   .patient-info {
     background-color: #ffffff;
@@ -52,12 +30,14 @@
         margin-left: 10px;
         cursor: pointer;
       }
+      text-align: center;
     }
   }
 
   .prescription-history {
     h2 {
       margin-bottom: 10px;
+      font-size: 27px;
     }
 
     .search-bar {
@@ -84,8 +64,8 @@
     table {
       width: 100%;
       border-collapse: collapse;
-
       th,
+      
       td {
         padding: 10px;
         border: 1px solid #ccc;
@@ -93,6 +73,9 @@
 
       th {
         background-color: #f1f1f1;
+        
+        
+        
       }
 
       td {
@@ -117,19 +100,24 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 22px;
     }
   }
 }
 
 .datos-paciente {
-  background-color: #f2dede;
+  background-color: #77E7CD;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  font-size: 19px;
 
   h3 {
-    font-size: 18px;
+    font-size: 20px;
+    text-align: center;
     margin-bottom: 10px;
+    text-decoration: black solid underline;
   }
 
   .campo {

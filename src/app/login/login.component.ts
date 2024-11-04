@@ -50,4 +50,11 @@ export class LoginComponent {
       }
     });
   }
+  register(){
+    this.router.navigate(['/buscar-paciente']);
+  }
+  recuperarCuenta(){
+    this.router.navigate(['/buscar-paciente']);
+  }
+  
 }

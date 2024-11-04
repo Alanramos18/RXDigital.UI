@@ -1,11 +1,10 @@
 <div class="buscar-paciente-container">
-    <div class="header">
-      <img src="assets/icons/rxDigital.png" alt="Icono" class="rxDigital">
-    </div>
+    <app-encabezado></app-encabezado>
     <div class="Bienvenida">
-      <h1>Bienvenido/a</h1></div>
+      <h1>BIENVENIDO/A</h1>
+    </div>
     <div class="search-container">
-      <input type="text" placeholder="Ingrese DNI del paciente" [(ngModel)]="dniPaciente">
+      <input style="font-size: 25px; width: 500px;" type="text" placeholder="Ingrese DNI del paciente" [(ngModel)]="dniPaciente">
       <button (click)="buscarPaciente()">🔍</button>
     </div>
     <button class="agregar-btn" (click)="agregarPaciente()">Agregar paciente nuevo</button>

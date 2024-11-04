@@ -1,99 +1,118 @@
-.contenedor {
-    width: 100%;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-.fecha, .enviar-por {
-    display: flex;
-    width: 25%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    justify-content: center;
-
-    label {
-        width: 45%;
-        padding: 5px;
-        margin-bottom: 5px;
-        height: 20px;
-    }
-
-    input {
-        width: 45%;
-        padding: 5px;
-        margin-bottom: 5px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        background-color: #F0E9E9;
-        height: 20px;
-    }
-}
-
-.cuadro {
-    display: flex;
-    flex-direction: row;
-    padding: 5px;
+.detalle-receta {
+    font-family: Arial, sans-serif;
     width: 90%;
+    margin: 50px;
+    margin-bottom: 0px;
 
-    .seccion {
-        display: flex;
-        flex-wrap: wrap;
-        width: 45%;
-        border-radius: 10px;
-        margin-inline: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        background-color: #f2f2f2;
-        justify-content: center;
-        align-items: center;
-
-        h2 {
-            width: 100%;
-            background-color: #ccc;
-            padding: 5px;
-            border-radius: 10px;
-            text-align: center;
-            height: 30px;
-        }
-
-        label {
-            width: 30%;
-            //padding: 5px;
-            margin-bottom: 5px;
-            text-align: start;
-            height: 20px;
-        }
-
-        input {
-            width: 60%;
-            //padding: 5px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            background-color: #F0E9E9;
-            height: 20px;
-        }
+    
+    align-items: center;
+    
+    padding: 20px;
+    background-color: #99e0cf;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+  
+    h2 {
+      color: black;
+      margin-top: 20px;
+      border-bottom: 2px solid #616161;
+      padding-bottom: 5px;
+      font-size: 30px;
+    }
+  
+    .section {
+      margin-top: 10px;
+      p {
+        margin: 4px 0;
+        font-size: 20px;
+      }
+    }
+  
+    table {
+      width: 70%;
+      margin-top: 10px;
+      border-collapse: collapse;
+  
+      th, td {
+        padding: 8px;
+        text-align: left;
+        border: 1px solid  black;
+        font-size: 20px;
+      }
+  
+      th {
+        background-color:  lightgray;
+        text-align: center;
+      }
+      td{
+        max-width: 200px;       // Define el ancho máximo de la celda (ajústalo según tus necesidades)
+        word-wrap: break-word;  // Permite que las palabras largas se ajusten en múltiples líneas
+        white-space: normal;
+        background-color: white;    // Permite que el texto se divida en varias líneas
+      }
     }
 
-    button {
-        padding: 10px 20px;
-        background-color: #77E7CD;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
+    
 
-        &:hover {
-            background-color: #66c7b0;
-        }
-    }
-   
+  }
+ 
+.contenedorBoton{
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    //position: fixed;  // Cambiar a posición fija
+    bottom: 30px;     // Distancia desde el borde inferior
+    right: 30px;      // Distancia desde el borde derecho
+    display: block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 40px;
+    margin-bottom: 20px;
+    
+    
 }
-.detail-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #e0e0e0;
-    border-radius: 5px;}
+}
+.sectionReceta{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 4px dashed black;
+  
+  padding: 5px;
+  
+      p {
+        
+        margin: 4px 0;
+        font-size: 25px;
+        
+       
+      }
+
+
+}
+.form-group {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.form-group label {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  height: 25px;
+  margin-bottom: 15px;
+}
+

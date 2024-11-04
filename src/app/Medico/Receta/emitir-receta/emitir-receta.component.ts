@@ -10,11 +10,12 @@ import { MedicService } from '../../../services/medic.service';
 import { CommonModule } from '@angular/common';
 import { SearchModalComponent } from '../modal/search-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
 
 @Component({
   selector: 'app-emitir-receta',
   standalone: true,
-  imports: [FormsModule, CommonModule, SearchModalComponent],
+  imports: [FormsModule, CommonModule, SearchModalComponent,EncabezadoComponent],
   templateUrl: './emitir-receta.component.html',
   styleUrl: './emitir-receta.component.scss'
 })

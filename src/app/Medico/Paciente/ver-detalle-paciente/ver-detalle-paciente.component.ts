@@ -4,14 +4,13 @@ import { RxDigitalService } from '../../../services/rx-digital.service';
 import { CommonModule } from '@angular/common';
 import { Paciente } from '../../../models/paciente';
 import { MedicService } from '../../../services/medic.service';
+import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
 
 @Component({
   selector: 'app-ver-detalle-paciente',
   templateUrl: './ver-detalle-paciente.component.html',
   standalone: true,
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule,EncabezadoComponent],
   styleUrls: ['./ver-detalle-paciente.component.scss']
 })
 export class VerDetallePacienteComponent implements OnInit {
