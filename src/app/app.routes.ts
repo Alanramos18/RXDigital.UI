@@ -13,6 +13,7 @@ import { ModificarPacienteComponent } from './modificar-paciente/modificar-pacie
 
 import { GestionarMedicamentosComponent } from './administrador/gestionar-medicamentos/gestionar-medicamentos.component';
 import { ModificarMedicamentoComponent } from './administrador/modificar-medicamento/modificar-medicamento.component';
+import { AgregarPacienteComponent } from './Medico/Paciente/agregar-paciente/agregar-paciente.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -27,6 +28,8 @@ export const routes: Routes = [
     { path: 'ver-detalle-receta', component: VerDetalleRecetaComponent},// canActivate: [authGuard] },
     { path: 'gestionar-medicamentos', component: GestionarMedicamentosComponent /*, canActivate: [authGuard]*/ },
     { path: 'modifcar-medicamento', component: ModificarMedicamentoComponent /*, canActivate: [authGuard]*/ },
+    { path: 'agregar-paciente', component: AgregarPacienteComponent /*, canActivate: [authGuard]*/ },
+
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: '**', redirectTo: '/login' },
     //

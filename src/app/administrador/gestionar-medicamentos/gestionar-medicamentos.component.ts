@@ -28,3 +28,5 @@ export class GestionarMedicamentosComponent {
     console.log('Volver');
   }
 }
+
+
