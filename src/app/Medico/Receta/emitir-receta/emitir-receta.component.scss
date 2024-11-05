@@ -1,90 +1,87 @@
-.emitir-receta-container {
-    display: flex;
-    flex-direction: column;
-    
-    
-    .header {
-      background-color: #77E7CD;
-      color: black;
-      width: 100%;
-      text-align: center;
-      //padding: 0px;
-      margin-bottom: 5px;
-      margin-top: 15px;
+.detalle-receta {
+  font-family: Arial, sans-serif;
+  width: 90%;
+  margin: 50px;
+  margin-bottom: 0px;
+
+
+  align-items: center;
+
+  padding: 20px;
+  background-color: #99e0cf;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 50px;
+
+  h2 {
+    color: black;
+    margin-top: 20px;
+    border-bottom: 2px solid #616161;
+    padding-bottom: 5px;
+    font-size: 30px;
+  }
+
+  .section {
+    margin-top: 10px;
+
+    p {
+      margin: 4px 0;
+      font-size: 25px;
     }
-  
-    .section {
-      display: flex;
-      justify-content: space-around;
-      width: 100%;
-      margin-bottom: 20px;
-  
-      div {
-        background-color: #f2f2f2;
-        padding: 20px;
-        border-radius: 10px;
-        width: 45%;
-  
-        h2 {
-          background-color: #cccccc;
-          padding: 10px;
-          border-radius: 5px;
-          text-align: center;
-        }
-  
-        label {
-          display: block;
-          margin-top: 10px;
-          margin-bottom: 5px;
-        }
-  
-        input {
-          width: 100%;
-          padding: 5px;
-          margin-bottom: 10px;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-        }
-      }
-    }
-  
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-  
-      button {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-  
-      button:first-of-type {
-        background-color: #28a745;
-        color: white;
-      }
-  
-      button:last-of-type {
-        background-color: #cccccc;
-      }
+    
+    textarea{
+      font-size: 20px;
+      width: 600px; // Ajusta el ancho deseado
+      height: auto;
+      resize: none; // Evita que el usuario cambie el tamaño si no quieres que lo haga
+      line-height: 1.5; // Opcional, ajusta el espacio entre líneas
+      overflow: auto; // Muestra la barra de desplazamiento si se excede el texto
     }
   }
 
-.envio-receta {
-  margin-bottom: 30px;
-  display: flex;
-  align-items: start;
-  gap: 10px;
-  flex-direction: column;
+  .forma-envio {
+    width: 300px;
 
-  background-color: #f2f2f2;
-  padding: 20px 40px;
-  border-radius: 10px;
+    p {
+      margin: 4px 0;
+      font-size: 25px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0;
+      font-size: 25px;
+    }
+
+    input[type="radio"] {
+      transform: scale(2); // Cambia 1.5 al valor que prefieras
+      margin-right: 10px; // Para separar el texto si es necesario
+    }
+  }
 }
 
-.envio-receta div {
+.buttons {
   display: flex;
-  align-items: center;
-  gap: 5px;
+  justify-content: center;
+  gap: 20px;
+
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 25px;
+    margin-top: 50px;
+  }
+
+  button:first-of-type {
+    background-color: #04d635;
+    color: white;
+    margin-right: 30px;
+  }
+
+  button:last-of-type {
+    background-color: #d40808;
+    color: white;
+  }
 }
