@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { RxDigitalService } from '../../../services/rx-digital.service';
-import { CommonModule } from '@angular/common';
-import { Paciente } from '../../../models/paciente';
 import { MedicService } from '../../../services/medic.service';
 import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
 
