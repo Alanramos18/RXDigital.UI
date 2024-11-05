@@ -1,62 +1,83 @@
-<div class="detalle-paciente">
-    <app-encabezado></app-encabezado>
-  
-    <h2>Detalles del paciente</h2>
-    <div class="patient-details">
-      <div class="detail-row">
-        <label>Nombre completo:</label>
-        <span>{{ paciente.lastName }}, {{ paciente.firstName }}</span>
-      </div>
-      <div class="detail-row">
-        <label>DNI:</label>
-        <span>{{ paciente.patientId }}</span>
-      </div>
-      <div class="detail-row">
-        <label>Fecha de nacimiento:</label>
-        <span>{{ paciente.birthDay | date }}</span>
-      </div>
-      <div class="detail-row">
-        <label>Sexo:</label>
-        <span>{{ paciente.gender }}</span>
-      </div>
-      <div class="detail-row">
-        <label>Nacionalidad:</label>
-        <span>{{ paciente.nationality }}</span>
-      </div>
-      <div class="detail-row">
-        <label>Domicilio:</label>
-        <span>{{ paciente.address }}</span>
-      </div>
-      <div class="detail-row">
-        <label>Celular:</label>
-        <span>{{ paciente.cellphone }}</span>
-      </div>
-      <div class="detail-row">
-        <label>Teléfono fijo:</label>
-        <span>{{ paciente.homePhone }}</span>
-      </div>
-      <div class="detail-row">
-        <label>Email:</label>
-        <span>{{ paciente.email }}</span>
-      </div>
-      <div class="detail-row">
-        <label>Obra social:</label>
-        <span>{{ paciente.socialWorkName }}</span>
-      </div>
-      <div class="detail-row">
-        <label>Estado de habilitación (H/D):</label>
-        <span>{{ paciente.isAvailable ? 'Habilitado' : 'No Habilitado' }}</span>
-      </div>
-      <div class="detail-row">
-        <label>Número de afiliado:</label>
-        <span>{{ paciente.socialNumber }}</span>
-      </div>
-      <div class="detail-row">
-        <label>Fecha de inscripción:</label>
-        <span>{{ paciente.inscriptionDate | date }}</span>
-      </div>
+<app-encabezado></app-encabezado>
+
+<div class="ver-detalle-paciente">
+
+  <h2>Detalles del paciente</h2>
+  <form>
+    <div>
+      <label for="firstName">Nombres:</label>
+      <span>{{ paciente.firstName }}</span>
+    </div>
+    <div>
+      <label for="lastName">Apellidos:</label>
+      <span>{{ paciente.lastName }}</span>
+    </div>
+    <div>
+      <label for="patientId">DNI:</label>
+      <span>{{ paciente.patientId }}</span>
+    </div>
+    <div>
+      <label for="birthDay">Fecha de Nacimiento:</label>
+      <span>{{ paciente.birthDay | date: 'mediumDate' }}</span>
+    </div>
+    <div>
+      <label for="gender">Sexo:</label>
+      <span>{{ paciente.gender}}</span>
+    </div>
+    <div>
+      <label for="nationality">Nacionalidad:</label>
+      <span>{{ paciente.nationality}}</span>
+    </div>
+    <div>
+      <label for="address">Direccion:</label>
+      <span>{{ paciente.address}}</span>
+    </div>
+
+    <div>
+      <label for="locality">Localidad:</label>
+      <span>{{ paciente.locality}}</span>
+    </div>
+    <div>
+      <label for="province">Provincia:</label>
+      <span>{{ paciente.province}}</span>
+    </div>
+    <div>
+      <label for="cellphone">Celular:</label>
+      <span>{{ paciente.cellphone}}</span>
+    </div>
+
+    <div>
+      <label for="homePhone">Telefono fijo:</label>
+      <span>{{ paciente.homePhone}}</span>
+    </div>
+    <div>
+      <label for="email">E-Mail:</label>
+      <span>{{ paciente.email}}</span>
+    </div>
+    <div>
+      <label for="socialPlan">Obra Social:</label>
+      <span>{{ paciente.socialPlan }}</span>
+    </div>
+    <div>
+      <label for="socialWorkName">Plan de obra social:</label>
+      <span>{{ paciente.socialWorkName }}</span>
+    </div>
+    <div>
+      <label for="socialNumber">Número de afiliado:</label>
+      <span>{{ paciente.socialNumber }}</span>
+    </div>
+    <div>
+      <label for="isAvailable">Estado de habilitacion:</label>
+      <span>{{ paciente.isAvailable ? 'Sí' : 'No' }}</span>
+    </div>
+    <div>
+      <label for="inscriptionDate">Fecha de Inscripción:</label>
+      <span>{{ paciente.inscriptionDate | date: 'mediumDate' }}</span>
     </div>
     
-    <button (click)="volver()">Volver</button>
-  </div>
+  
+    
+    <button type="button" (click)="volver()">Volver</button>
+  </form>
+</div>
   

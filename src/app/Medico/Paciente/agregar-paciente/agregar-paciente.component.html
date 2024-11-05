@@ -1,0 +1,90 @@
+<app-encabezado></app-encabezado>
+<div class="agregar-paciente">
+    
+  
+    <h2>Datos del nuevo paciente</h2>
+  
+    <form [formGroup]="pacienteForm" (ngSubmit)="onSubmit()">
+      <div class="formulario">
+        <div class="campo">
+          <label for="firstName">Nombres</label>
+          <input id="firstName" type="text" formControlName="firstName" required>
+        </div>
+        <div class="campo">
+            <label for="firstName">Apellidos</label>
+            <input id="lastName" type="text" formControlName="lastName" required>
+          </div>
+        <div class="campo">
+          <label for="patientId">DNI</label>
+          <input id="patientId" type="text" formControlName="patientId" required>
+        </div>
+        <div class="campo">
+          <label for="birthDay">Fecha de nacimiento</label>
+          <input id="birthDay" type="date" formControlName="birthDay" required>
+        </div>
+        <div class="campo">
+          <label for="gender">Sexo</label>
+          <select id="gender" formControlName="gender" required>
+            <option value="">Seleccione</option>
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="nationality">Nacionalidad</label>
+          <input id="nationality" type="text" formControlName="nationality" required>
+        </div>
+        <div class="campo">
+            <label for="address">Domicilio</label>
+            <input id="address" type="text" formControlName="address">
+          </div>
+        <div class="campo">
+            <label for="locality">Localidad</label>
+            <input id="locality" type="text" formControlName="locality">
+        </div>
+        <div class="campo">
+            <label for="province">Provincia</label>
+            <input id="province" type="text" formControlName="province">
+        </div>
+        <div class="campo">
+          <label for="cellphone">Celular</label>
+          <input id="cellphone" type="tel" formControlName="cellphone">
+        </div>
+        <div class="campo">
+          <label for="homePhone">Teléfono fijo</label>
+          <input id="homePhone" type="tel" formControlName="homePhone">
+        </div>
+        <div class="campo">
+          <label for="email">E-Mail</label>
+          <input id="email" type="email" formControlName="email">
+        </div>
+        <div class="campo">
+            <label for="socialPlan">Obra social</label>
+            <input id="socialPlan" type="text" formControlName="socialPlan">
+          </div>
+        <div class="campo">
+            <label for="socialWorkName">Plan de obra social</label>
+            <input id="socialWorkName" type="text" formControlName="socialWorkName">
+          </div>
+        <div class="campo">
+          <label for="socialNumber">Número de afiliado</label>
+          <input id="socialNumber" type="text" formControlName="socialNumber">
+        </div>
+        <div class="campo">
+            <label for="isAvailable">Estado de habilitación (H/D)</label>
+            <input id="isAvailable" type="text" formControlName="isAvailable">
+          </div>
+        <div class="campo">
+            <label for="inscriptionDate">Fecha de inscripcion</label>
+            <input id="inscriptionDate" type="text" formControlName="inscriptionDate">
+        </div>
+        
+      </div>
+  
+      <div class="botones">
+        <button type="submit" class="aceptar" [disabled]="pacienteForm.invalid">Aceptar</button>
+        <button type="button" class="cancelar" (click)="onCancel()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+  

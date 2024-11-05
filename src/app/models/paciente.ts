@@ -3,15 +3,17 @@ export class Paciente {
     firstName: string;
     lastName: string;
     birthDay: string;
-    socialNumber: string;
     gender: string;
     nationality: string;
     cellphone: string;
     homePhone: string;
-    socialWorkName: string;
-    socialPlan: string;
+    socialNumber: string; //numero de afiliado
+    socialWorkName: string; //plan de obra social
+    socialPlan: string; // obra social
     address: string;
     email: string;
-    inscriptionDate: Date;
-    isAvailable: boolean;
+    inscriptionDate: Date; //fecha de inscripcion
+    isAvailable: boolean; //estado de habilitacion
+    province: string;
+    locality: string;
 }
