@@ -1,32 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { RxDigitalService } from '../../../services/rx-digital.service';
-import { CommonModule } from '@angular/common';
-import { Paciente } from '../../../models/paciente';
 import { MedicService } from '../../../services/medic.service';
+import { CommonModule } from '@angular/common';
 import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
+import { Paciente } from '../../../models/paciente';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ver-detalle-paciente',
   templateUrl: './ver-detalle-paciente.component.html',
   standalone: true,
-  imports: [CommonModule,EncabezadoComponent],
+  imports: [CommonModule, EncabezadoComponent],
   styleUrls: ['./ver-detalle-paciente.component.scss']
 })
 export class VerDetallePacienteComponent implements OnInit {
 
-  paciente: Paciente;  // Define un modelo para el paciente en un archivo separado si es necesario
-
-  constructor(
-    private medicData: MedicService
-  ) {}
+  paciente: Paciente | null = null;  // Asegúrate de que `Paciente` esté correctamente tipado
+  //paciente: Paciente;
+  constructor(private medicData: MedicService, private router: Router) {}
 
   ngOnInit(): void {
     this.paciente = this.medicData.getPatientData();
-    console.log(this.paciente)
+    console.log(this.paciente);
   }
 
   volver(): void {
-    window.history.back();  // Puedes cambiar esto a una navegación de Angular si prefieres
+    this.router.navigate(['/buscar-paciente']); // Cambia '/ruta-a-tu-pantalla-anterior' por la ruta específica
   }
 }
+
