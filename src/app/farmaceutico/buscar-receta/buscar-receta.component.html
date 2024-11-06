@@ -1,0 +1,9 @@
+<app-encabezado></app-encabezado>
+
+<div class="buscar-receta-container">
+  <h2 style="text-align: center; font-size: 35px; text-decoration: underline solid;">Búsqueda de Receta</h2>
+  <div class="buscador">
+    <input type="text" [(ngModel)]="codigoReceta" placeholder="Ingrese el código de receta" maxlength="10" />
+    <button (click)="buscarReceta()">Buscar</button>
+  </div>
+</div>
