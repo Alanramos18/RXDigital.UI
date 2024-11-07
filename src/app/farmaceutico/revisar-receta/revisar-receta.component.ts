@@ -13,8 +13,6 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './revisar-receta.component.scss'
 })
 export class RevisarRecetaComponent {
-  mostrarMotivoRechazo = false;
-  motivoRechazo = '';
 
   constructor(private router: Router) {}
 
@@ -25,19 +23,7 @@ export class RevisarRecetaComponent {
   }
 
   rechazarReceta() {
-    this.mostrarMotivoRechazo = true;
-  }
-
-  confirmarRechazo() {
-    if (this.motivoRechazo.trim() === '') {
-      alert('Por favor, ingrese el motivo del rechazo.');
-      return;
-    }
-    alert('La receta fue rechazada. Motivo: ' + this.motivoRechazo);
-    this.mostrarMotivoRechazo = false;
-    this.motivoRechazo = '';
-    
-    this.router.navigate(['/buscar-receta']);
+    this.router.navigate(['/motivo-rechazo']);
   }
 
   buscarOtraReceta() {

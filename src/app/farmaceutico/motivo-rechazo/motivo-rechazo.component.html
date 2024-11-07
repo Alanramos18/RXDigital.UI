@@ -1,0 +1,12 @@
+<div class="motivo-overlay">
+    <div class="motivo-contenido">
+        <h2>Motivo del Rechazo:</h2>
+        <textarea rows="5" maxlength="300" [(ngModel)]="motivoRechazo"
+            placeholder="Escriba el motivo del rechazo"></textarea>
+        <button (click)="confirmarRechazo()">Confirmar Rechazo</button>
+    </div>
+</div>
+
+<div class="revisar-receta-difuminada">
+    <app-revisar-receta></app-revisar-receta>
+</div>

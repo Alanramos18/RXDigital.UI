@@ -1,19 +1,15 @@
 <div class="modal-overlay" *ngIf="showConfirmation">
-    <div class="modal-content">
-      <h2>Mensaje</h2>
-      <p>¿Está seguro de que quiere cancelar esta receta?</p>
-      <div class="modal-actions">
-        <button (click)="confirmCancel()" class="btn-confirm">Sí, seguro</button>
-        <button (click)="closeModal()" class="btn-cancel">No, cancelar</button>
-      </div>
+  <div class="modal-content">
+    <h2>Mensaje</h2>
+    <p>¿Está seguro de que quiere cancelar esta receta?</p>
+    <div class="modal-actions">
+      <button (click)="confirmCancel()" class="btn-confirm">Sí, seguro</button>
+      <button (click)="closeModal()" class="btn-cancel">No, cancelar</button>
     </div>
   </div>
-  
-    <!-- Aquí usamos el selector del componente EmitirRecetaComponent -->
-    <div class="emitir-receta-difuminada">
-      <app-emitir-receta></app-emitir-receta> 
-    </div>
+</div>
 
-
-  
-  
+<!-- Aquí usamos el selector del componente EmitirRecetaComponent -->
+<div class="emitir-receta-difuminada">
+  <app-emitir-receta></app-emitir-receta>
+</div>
