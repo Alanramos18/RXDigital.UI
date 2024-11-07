@@ -14,7 +14,7 @@ import { RecetaNueva } from '../models/receta-nueva';
 })
 export class RxDigitalService {
 
-  private apiUrl = 'https://localhost:44375';
+  private apiUrl = 'https://localhost:7063';
 
   constructor(private http: HttpClient) { }
 
