@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { RevisarRecetaComponent } from '../revisar-receta/revisar-receta.component';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { MsjEmergenteComponent } from '../../msj-emergente/msj-emergente.component';
 
 @Component({
   selector: 'app-motivo-rechazo',
   standalone: true,
-  imports: [RevisarRecetaComponent, FormsModule],
+  imports: [RevisarRecetaComponent, MsjEmergenteComponent, FormsModule],
   templateUrl: './motivo-rechazo.component.html',
   styleUrl: './motivo-rechazo.component.scss'
 })
@@ -23,5 +24,8 @@ export class MotivoRechazoComponent {
     this.motivoRechazo = '';
     
     this.router.navigate(['/buscar-receta']);
+  }
+  cancelarRechazo() {
+    this.router.navigate(['/revisar-receta']);
   }
 }
