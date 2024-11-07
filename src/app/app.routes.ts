@@ -9,7 +9,7 @@ import { EmisionCorrectaComponent } from './Medico/Receta/emision-correcta/emisi
 import { VerDetallePacienteComponent } from './Medico/Paciente/ver-detalle-paciente/ver-detalle-paciente.component';
 import { EliminarRecetaComponent } from './Medico/Receta/eliminar-receta/eliminar-receta.component';
 import { VerDetalleRecetaComponent } from './Medico/Receta/ver-detalle-receta/ver-detalle-receta.component';
-import { ModificarPacienteComponent } from './modificar-paciente/modificar-paciente.component';
+import { ModificarPacienteComponent } from './Medico/Paciente/modificar-paciente/modificar-paciente.component';
 
 import { GestionarMedicamentosComponent } from './administrador/gestionar-medicamentos/gestionar-medicamentos.component';
 import { ModificarMedicamentoComponent } from './administrador/modificar-medicamento/modificar-medicamento.component';
