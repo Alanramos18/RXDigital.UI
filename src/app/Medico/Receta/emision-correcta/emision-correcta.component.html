@@ -1,8 +1,10 @@
-<div class="emision-mensaje">
-    <div class = "cuadro">
-        <h2>Receta emitida correctamente por</h2>
-        <p><strong>{{ doctorName }}</strong></p>
-        <button (click)="goHome()">Inicio</button>
+<app-msj-emergente>
+    <h2>Receta emitida correctamente por</h2>
+    <p><strong>{{ doctorName }}</strong></p>
+    <div class="botones">
+        <button style="background-color: gray;" (click)="goHome()">Inicio</button>
     </div>
-  </div>
-  
+    <div fondo-difuminado>
+        <app-emitir-receta></app-emitir-receta>
+    </div>
+</app-msj-emergente>

@@ -1,15 +1,13 @@
-<div class="modal-overlay" *ngIf="showConfirmation">
-  <div class="modal-content">
+<app-msj-emergente>
     <h2>Mensaje</h2>
     <p>¿Está seguro de que quiere cancelar esta receta?</p>
-    <div class="modal-actions">
-      <button (click)="confirmCancel()" class="btn-confirm">Sí, seguro</button>
-      <button (click)="closeModal()" class="btn-cancel">No, cancelar</button>
+    <div class="botones">
+      <button style="background-color: #4CAF50;" class="boton" (click)="confirmCancel()">Sí, seguro</button>
+      <button style="background-color: #f44336;" class="boton" (click)="closeModal()">No, cancelar</button>
     </div>
-  </div>
-</div>
+</app-msj-emergente>
 
 <!-- Aquí usamos el selector del componente EmitirRecetaComponent -->
-<div class="emitir-receta-difuminada">
+<div fondo-difuminado>
   <app-emitir-receta></app-emitir-receta>
 </div>

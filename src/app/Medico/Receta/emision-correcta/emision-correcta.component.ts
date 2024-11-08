@@ -1,11 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MedicService } from '../../../services/medic.service';
+import { MsjEmergenteComponent } from '../../../msj-emergente/msj-emergente.component';
+import { EmitirRecetaComponent } from '../emitir-receta/emitir-receta.component';
 
 @Component({
   selector: 'app-emision-correcta',
   standalone: true,
-  imports: [],
+  imports: [MsjEmergenteComponent, EmitirRecetaComponent],
   templateUrl: './emision-correcta.component.html',
   styleUrl: './emision-correcta.component.scss'
 })

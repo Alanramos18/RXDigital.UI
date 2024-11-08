@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EmitirRecetaComponent } from '../emitir-receta/emitir-receta.component';
 import { Router } from '@angular/router';
+import { MsjEmergenteComponent } from '../../../msj-emergente/msj-emergente.component';
 
 @Component({
   selector: 'app-cancelar-receta',
   standalone: true,
-  imports: [CommonModule, EmitirRecetaComponent],
+  imports: [CommonModule, EmitirRecetaComponent, MsjEmergenteComponent],
   templateUrl: './cancelar-receta.component.html',
   styleUrl: './cancelar-receta.component.scss'
 })
