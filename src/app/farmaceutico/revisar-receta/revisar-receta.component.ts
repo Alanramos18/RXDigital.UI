@@ -1,25 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EncabezadoComponent } from '../../encabezado/encabezado.component';
 import { DetalleRecetaComponent } from '../../DetalleReceta/detalle-receta.component';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MsjAceptarComponent } from '../../msj-aceptar/msj-aceptar.component';
 
 @Component({
   selector: 'app-revisar-receta',
   standalone: true,
-  imports: [EncabezadoComponent, DetalleRecetaComponent, CommonModule, FormsModule],
+  imports: [EncabezadoComponent, DetalleRecetaComponent, MsjAceptarComponent, CommonModule, FormsModule],
   templateUrl: './revisar-receta.component.html',
   styleUrl: './revisar-receta.component.scss'
 })
-export class RevisarRecetaComponent {
-
+export class RevisarRecetaComponent implements OnInit {
+  mostrarMsjAceptar: boolean = false;
   constructor(private router: Router) {}
 
+  ngOnInit(): void {
+    // Restablece la variable cuando se carga el componente
+    this.mostrarMsjAceptar = false;
+  }
+
   aceptarReceta() {
-    alert('La receta quedó aceptada correctamente.');
-    /// acepta la receta, muestra el mensaje y vuelve a la pantalla de búsqueda
-    this.router.navigate(['/buscar-receta']);
+    this.mostrarMsjAceptar = true;
+    //this.router.navigate(['/buscar-receta']);
   }
 
   rechazarReceta() {
