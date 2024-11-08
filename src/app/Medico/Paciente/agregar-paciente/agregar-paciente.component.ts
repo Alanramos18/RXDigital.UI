@@ -3,50 +3,81 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Paciente } from '../../../models/paciente';
 import { ReactiveFormsModule } from '@angular/forms'; // Importa ReactiveFormsModule aquí
 import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
+import { RxDigitalService } from '../../../services/rx-digital.service';
+import { ObraSocial } from '../../../models/obraSocial';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-agregar-paciente',
   templateUrl: './agregar-paciente.component.html',
   standalone: true,
-  imports: [ReactiveFormsModule, EncabezadoComponent],
+  imports: [ReactiveFormsModule, EncabezadoComponent, CommonModule],
   styleUrls: ['./agregar-paciente.component.scss']
 })
 export class AgregarPacienteComponent implements OnInit {
   pacienteForm: FormGroup;
-  paciente: Paciente = new Paciente();
-
-  constructor(private fb: FormBuilder) {}
+  paciente: Paciente;
+  obraSociales: ObraSocial[];
+  planes: string[];
+  
+  constructor(private fb: FormBuilder, private rxService: RxDigitalService) {}
 
   ngOnInit(): void {
+
+    this.rxService.getSocialWorks().subscribe({
+      next: (res) => {
+        this.obraSociales = res;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+
     this.pacienteForm = this.fb.group({
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
-        socialNumber: ['', Validators.required],
-        birthDay: ['', Validators.required],
-        gender: ['', Validators.required],
-        nationality: ['', Validators.required],
-        address: ['', Validators.required],
-        cellphone: ['', Validators.required],
-        homePhone: [''],
+      nombre: ['', Validators.required],
+      apellido: ['', Validators.required],
+      dni: ['', Validators.required],
+      numeroAfiliado: ['', Validators.required],
+      fechaNacimiento: ['', Validators.required],
+        genero: ['', Validators.required],
+        nacionalidad: ['', Validators.required],
+        direccion: ['', Validators.required],
+        celular: ['', Validators.required],
+        telefono: [''],
         email: ['', [Validators.required, Validators.email]],
-        socialWorkName: [''], 
-        socialPlan: [''], 
-        province: [''],
-        locality: [''],
-        inscriptionDate: ['', Validators.required],
-        isAvailable: [false]
+        obraSocialId: [''], 
+        planSocial: [''], 
+        provincia: [''],
+        localidad: ['']
     });
   }
 
   onSubmit(): void {
     if (this.pacienteForm.valid) {
       this.paciente = this.pacienteForm.value as Paciente;
-      console.log('Paciente guardado:', this.paciente);
+      this.rxService.createPatient(this.paciente).subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      })
     }
   }
 
   onCancel(): void {
     this.pacienteForm.reset();
+  }
+
+  onSelectionChange(e: Event) {
+    let index = Number((<HTMLTextAreaElement>e.target).value);
+
+    let name = this.obraSociales[index - 1].name;
+
+    this.planes = this.obraSociales
+        .filter(obraSocial => obraSocial.name === name)
+        .map(obraSocial => obraSocial.socialPlan);
   }
 }

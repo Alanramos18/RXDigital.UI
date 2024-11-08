@@ -1,89 +1,78 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Receta } from '../models/receta';
-import { Paciente } from '../models/paciente';
-import { Medico } from '../models/medico';
-import { Roles } from '../models/roles.enums';
+import { Injectable, OnDestroy } from '@angular/core';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+
+import { MainState } from '../models/mainstate';
 import { RxDigitalService } from './rx-digital.service';
+import { TokenService } from './token.service';
+import { Medico } from '../models/medico';
+import { Paciente } from '../models/paciente';
 
-
+const initialState: MainState = {
+  role: null,
+  userId: null,
+  medic: null,
+  patient: null
+}
 
 @Injectable({
   providedIn: 'root'
 })
-export class MedicService {
+export class RpStateService implements OnDestroy {
 
-  private role: Roles;
-  private userId: string;
-  private medic: Medico;
-  private patient: Paciente;
+  private subs = new Subscription();
+  private medic$ = new BehaviorSubject<Medico>(null);
+  private patient$ = new BehaviorSubject<Paciente>(null);
 
-  constructor(private rxService: RxDigitalService) {}
-
-  setRole(role: number) {
-    this.role = role;
+  constructor(private rxService: RxDigitalService, private tokenService: TokenService) {
   }
 
-  getRole() {
-    return this.role;
+  // resetState() {
+  //   this.setState(initialState);
+  // }
+
+  // getStateData = () => this.select(state => state);
+  // getMedicData = () => this.select(state => state.medic);
+  // getPatientData = () => this.select(state => state.patient);
+
+  initMedic() {
+    const userId: any = this.tokenService.retrieve('userId');
+    this.subs.add(this.rxService.getMedicInfo(userId).subscribe({
+      next: (res) => {
+        this.medic$.next(res);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    }));
   }
 
-  setUserId(userId: string) {
-    this.userId = userId;
+  initPatient(dni: number) {
+    this.subs.add(this.rxService.getPatientInfo(dni).subscribe({
+      next: (res) => {
+        this.patient$.next(res);
+      },
+      error: (err) => console.log('Hubo un error. Por favor intenta mas tarde')
+    }));
   }
 
-  getUserId() {
-    return this.userId;
-  }
-
-  setMedicData(medic: Medico) {
-    this.medic = medic;
-  }
-
-  getMedicData() {
-    if (this.medic == null) {
-      this.rxService.getMedicInfo(this.getUserId()).subscribe({
-        next: (res) => {
-          this.setMedicData(res);
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      });
+  getMedicInfo() {
+    if (this.medic$.getValue() === null) {
+      this.initMedic();
     }
 
-    return this.medic;
+    return this.medic$;
   }
 
-  getMedicFullName(): string {
-    if (this.medic == null) {
-      this.rxService.getMedicInfo(this.getUserId()).subscribe({
-        next: (res) => {
-          this.setMedicData(res);
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      });
+  getPatientInfo(dni: number) {
+    if (this.patient$.getValue() === null) {
+      this.initPatient(dni);
     }
-    
-    return `${this.medic.lastName}, ${this.medic.firstName}`;  
+
+    return this.patient$;
   }
 
-  clearMedicData() {
-    this.medic = null;
-  }
-
-  setPatientData(patient: Paciente) {
-    this.patient = patient;
-  }
-
-  getPatientData() {
-    return this.patient;
-  }
-
-  clearPatientData() {
-    this.patient = null;
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }

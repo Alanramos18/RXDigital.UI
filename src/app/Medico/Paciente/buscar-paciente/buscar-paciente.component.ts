@@ -1,10 +1,11 @@
-import { Component, Inject, OnInit, PLATFORM_ID, inject } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RxDigitalService } from '../../../services/rx-digital.service';
-import { MedicService } from '../../../services/medic.service';
-import { isPlatformBrowser } from '@angular/common';
+import { RpStateService } from '../../../services/medic.service';
 import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
+import { Subscription } from 'rxjs';
+import { Medico } from '../../../models/medico';
 
 @Component({
   selector: 'app-buscar-paciente',
@@ -13,30 +14,42 @@ import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
   templateUrl: './buscar-paciente.component.html',
   styleUrl: './buscar-paciente.component.scss'
 })
-export class BuscarPacienteComponent {
+export class BuscarPacienteComponent implements OnInit, OnDestroy {
   dniPaciente: number;
   nombreUsuario: string = 'Nombre del médico'; // Esto sería dinámico.
+  subs = new Subscription;
+  medic: Medico;
+  medicName: string;
 
-  constructor(private rxService: RxDigitalService, private medicService: MedicService, private router: Router) {}
+  constructor(private stateService: RpStateService, private router: Router) {}
 
+  ngOnInit(): void {
+    this.subs.add(this.stateService.getMedicInfo().subscribe({
+      next: (medic) => {
+        this.medic = medic;
+        this.medicName =`${medic.lastName}, ${medic.firstName}`;
+      }
+    }));
+  }
 
   buscarPaciente() {
-      this.rxService.getPatientInfo(this.dniPaciente).subscribe({
-        next: (res) => {
-          if(res.patientId > 0)
-          {
-            this.medicService.setPatientData(res);
-
-            this.router.navigate(['ver-recetas-paciente']);
-          }
-        },
-        error: (err) => console.log('Hubo un error. Por favor intenta mas tarde')
-      });
-
+    this.subs.add(this.stateService.getPatientInfo(this.dniPaciente).subscribe({
+      next: (res) => {
+        if(res.dni > 0)
+        {
+          this.router.navigate(['ver-recetas-paciente/' + res.dni]);
+        }
+      },
+      error: (err) => console.log('Hubo un error. Por favor intenta mas tarde')
+    }));
   }
 
   agregarPaciente() {
-    // Redirigir a la pantalla para agregar un nuevo paciente
+    this.router.navigate(['agregar-paciente']);
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }
 

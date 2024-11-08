@@ -22,11 +22,11 @@ import { ModificarRecetaComponent } from './Medico/Receta/modificar-receta/modif
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
-    { path:'ver-recetas-paciente', component: VerRecetasPacienteComponent}, //, canActivate: [authGuard] },
-    { path: 'ver-detalle-paciente', component: VerDetallePacienteComponent}, //, canActivate: [authGuard] },
+    { path:'ver-recetas-paciente/:id', component: VerRecetasPacienteComponent}, //, canActivate: [authGuard] },
+    { path: 'ver-detalle-paciente/:id', component: VerDetallePacienteComponent}, //, canActivate: [authGuard] },
     { path:'modificar-paciente', component:ModificarPacienteComponent},
     { path:'buscar-paciente', component:BuscarPacienteComponent}, //, canActivate: [authGuard] },
-    { path:'emitir-receta', component:EmitirRecetaComponent}, //canActivate: [authGuard] },
+    { path:'emitir-receta/:id', component:EmitirRecetaComponent}, //canActivate: [authGuard] },
     { path: 'cancelar-receta', component: CancelarRecetaComponent},// canActivate: [authGuard] },
     { path: 'emision-correcta', component: EmisionCorrectaComponent},// canActivate: [authGuard] },
     { path: 'eliminar-receta', component: EliminarRecetaComponent},// canActivate: [authGuard] },

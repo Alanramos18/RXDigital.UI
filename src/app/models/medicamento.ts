@@ -3,4 +3,5 @@ export class Medicamento {
     commercialName: string;
     presentation: string;
     concentration: number;
+    indications: string;
 }

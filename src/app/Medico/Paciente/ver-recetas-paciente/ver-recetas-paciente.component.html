@@ -7,11 +7,11 @@
         <h3>DATOS DEL PACIENTE</h3>
         <div class="campo">
           <label for="nombre">Apellido y Nombre:</label>
-          <span>{{ paciente.lastName }}, {{ paciente.firstName }} </span>
+          <span>{{ paciente.apellido }}, {{ paciente.nombre }} </span>
         </div>
         <div class="campo">
           <label for="dni">DNI:</label>
-          <span>{{ paciente.patientId }}</span>
+          <span>{{ paciente.dni }}</span>
         </div>
         <div class="patient-actions">
           <button class="btn-view-details" (click)="verDetallePaciente()">📄</button>
@@ -28,8 +28,7 @@
     <section class="prescription-history">
       <h2>Historial de recetas</h2>
       <div class="search-bar">
-        <input type="text" placeholder="Ingrese código de receta" ngModel>
-        <button (click)="searchRecipe()">🔍</button>
+        <input type="text" placeholder="Ingrese código de receta" [(ngModel)]="codeFilter" (input)="filterCodes()">
       </div>
 
       <table>
@@ -45,7 +44,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let receta of recetas">
+          <tr *ngFor="let receta of recetasFiltradas">
             <td>{{ receta.prescriptionId }}</td>
             <td>{{ fechaEmision | date }}</td>
             <td>{{ receta.expirationDate | date }}</td>
@@ -56,8 +55,8 @@
               <div class = 'receta-actions'>
                 <button class="btn-edit" (click)="modificarReceta()">✏️</button>
                 <button class="btn-delete" (click)="eliminarReceta()">🗑️</button>
-                <button class="btn-clone" (click)="clonarReceta()">📑</button> <!-- Botón para clonar -->
-                <button class="btn-view-details" (click)="verDetalleReceta()">📄</button> <!-- Botón para ver detalle -->
+                <button class="btn-clone" (click)="clonarReceta()">📑</button>
+                <button class="btn-view-details" (click)="verDetalleReceta()">📄</button> 
               </div>
             </td>
           </tr>

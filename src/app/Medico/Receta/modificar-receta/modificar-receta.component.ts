@@ -6,7 +6,7 @@ import { Paciente } from '../../../models/paciente';
 import { RxDigitalService } from '../../../services/rx-digital.service';
 import { Medicamento } from '../../../models/medicamento';
 import { RecetaNueva } from '../../../models/receta-nueva';
-import { MedicService } from '../../../services/medic.service';
+import { RpStateService } from '../../../services/medic.service';
 import { CommonModule } from '@angular/common';
 import { SearchModalComponent } from '../modal/search-modal.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -30,12 +30,12 @@ export class ModificarRecetaComponent implements OnInit {
   receta: Receta;
 
   constructor(private router: Router, private rxDigitalService: RxDigitalService,
-    private medicService: MedicService, public dialog: MatDialog) {
+    private medicService: RpStateService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
-    this.medico = this.medicService.getMedicData();
-    this.paciente = this.medicService.getPatientData();
+  //  this.medico = this.medicService.getMedicData();
+    //this.paciente = this.medicService.getPatientData();
   }
 
   formaEnvio: string = 'email'; // Valor por defecto

@@ -6,6 +6,7 @@ import { Paciente } from '../models/paciente';
 import { Medico } from '../models/medico';
 import { Medicamento } from '../models/medicamento';
 import { RecetaNueva } from '../models/receta-nueva';
+import { ObraSocial } from '../models/obraSocial';
 
 
 
@@ -14,7 +15,7 @@ import { RecetaNueva } from '../models/receta-nueva';
 })
 export class RxDigitalService {
 
-  private apiUrl = 'https://localhost:7063';
+  private apiUrl = 'https://localhost:44375';
 
   constructor(private http: HttpClient) { }
 
@@ -29,6 +30,12 @@ export class RxDigitalService {
     const url = `${this.apiUrl}/patient/basicInfo/${patientId}`;
 
     return this.http.get<Paciente>(url);
+  }
+
+  createPatient(patient: Paciente): Observable<any> {
+    const url = `${this.apiUrl}/patient`;
+
+    return this.http.post(url, patient);
   }
 
   getPrescriptions(patientId: number): Observable<Receta[]> {
@@ -47,6 +54,12 @@ export class RxDigitalService {
     const url = `${this.apiUrl}/doctor/searchMedicines?medicineName=${medicineName}`;
 
     return this.http.get<Medicamento[]>(url);
+  } 
+
+  getSocialWorks(): Observable<ObraSocial[]> {
+    const url = `${this.apiUrl}/patient/getSocialWorks`;
+
+    return this.http.get<ObraSocial[]>(url);
   } 
 
   emitPrescription(body: RecetaNueva): Observable<number> {

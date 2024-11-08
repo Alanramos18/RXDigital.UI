@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { MedicService } from '../../../services/medic.service';
-import { CommonModule } from '@angular/common';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { RpStateService } from '../../../services/medic.service';
+import { CommonModule, Location } from '@angular/common';
 import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
 import { Paciente } from '../../../models/paciente';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RxDigitalService } from '../../../services/rx-digital.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-ver-detalle-paciente',
@@ -12,19 +14,32 @@ import { Router } from '@angular/router';
   imports: [CommonModule, EncabezadoComponent],
   styleUrls: ['./ver-detalle-paciente.component.scss']
 })
-export class VerDetallePacienteComponent implements OnInit {
+export class VerDetallePacienteComponent implements OnInit, OnDestroy {
 
-  paciente: Paciente | null = null;  // Asegúrate de que `Paciente` esté correctamente tipado
-  //paciente: Paciente;
-  constructor(private medicData: MedicService, private router: Router) {}
+  paciente: Paciente;  // Asegúrate de que `Paciente` esté correctamente tipado
+  subs = new Subscription;
+  pacienteDni: number;
+  constructor(private stateService: RpStateService, private activatedRoute: ActivatedRoute, private location: Location) {}
 
   ngOnInit(): void {
-    this.paciente = this.medicData.getPatientData();
-    console.log(this.paciente);
+    this.subs.add(this.activatedRoute.params.subscribe({
+      next: (params) => {
+        this.pacienteDni = params["id"];
+      }
+    }));
+    this.subs.add(this.stateService.getPatientInfo(this.pacienteDni).subscribe({
+      next: (patient) => {
+        this.paciente = patient;
+      }
+    }));
   }
 
   volver(): void {
-    this.router.navigate(['/buscar-paciente']); // Cambia '/ruta-a-tu-pantalla-anterior' por la ruta específica
+    this.location.back();
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }
 

@@ -7,78 +7,77 @@
     <form [formGroup]="pacienteForm" (ngSubmit)="onSubmit()">
       <div class="formulario">
         <div class="campo">
-          <label for="firstName">Nombres</label>
-          <input id="firstName" type="text" formControlName="firstName" required>
+          <label for="nombre">Nombres *</label>
+          <input id="nombre" type="text" formControlName="nombre" required>
         </div>
         <div class="campo">
-            <label for="firstName">Apellidos</label>
-            <input id="lastName" type="text" formControlName="lastName" required>
+            <label for="nombre">Apellidos *</label>
+            <input id="apellido" type="text" formControlName="apellido" required>
           </div>
         <div class="campo">
-          <label for="patientId">DNI</label>
-          <input id="patientId" type="text" formControlName="patientId" required>
+          <label for="dni">DNI *</label>
+          <input id="dni" type="text" formControlName="dni" required>
         </div>
         <div class="campo">
-          <label for="birthDay">Fecha de nacimiento</label>
-          <input id="birthDay" type="date" formControlName="birthDay" required>
+          <label for="fechaNacimiento">Fecha de nacimiento *</label>
+          <input id="fechaNacimiento" type="date" formControlName="fechaNacimiento" required>
         </div>
         <div class="campo">
-          <label for="gender">Sexo</label>
-          <select id="gender" formControlName="gender" required>
+          <label for="genero">Sexo *</label>
+          <select id="genero" formControlName="genero" required>
             <option value="">Seleccione</option>
-            <option value="masculino">Masculino</option>
-            <option value="femenino">Femenino</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
           </select>
         </div>
         <div class="campo">
-          <label for="nationality">Nacionalidad</label>
-          <input id="nationality" type="text" formControlName="nationality" required>
+          <label for="nacionalidad">Nacionalidad *</label>
+          <input id="nacionalidad" type="text" formControlName="nacionalidad" required>
         </div>
         <div class="campo">
-            <label for="address">Domicilio</label>
-            <input id="address" type="text" formControlName="address">
+            <label for="direccion">Domicilio *</label>
+            <input id="direccion" type="text" formControlName="direccion">
           </div>
         <div class="campo">
-            <label for="locality">Localidad</label>
-            <input id="locality" type="text" formControlName="locality">
+            <label for="localidad">Localidad *</label>
+            <input id="localidad" type="text" formControlName="localidad">
         </div>
         <div class="campo">
-            <label for="province">Provincia</label>
-            <input id="province" type="text" formControlName="province">
+            <label for="provincia">Provincia *</label>
+            <input id="provincia" type="text" formControlName="provincia">
         </div>
         <div class="campo">
-          <label for="cellphone">Celular</label>
-          <input id="cellphone" type="tel" formControlName="cellphone">
+          <label for="celular">Celular *</label>
+          <input id="celular" type="tel" formControlName="celular">
         </div>
         <div class="campo">
-          <label for="homePhone">Teléfono fijo</label>
-          <input id="homePhone" type="tel" formControlName="homePhone">
+          <label for="telefono">Teléfono fijo</label>
+          <input id="telefono" type="tel" formControlName="telefono">
         </div>
         <div class="campo">
-          <label for="email">E-Mail</label>
+          <label for="email">E-Mail *</label>
           <input id="email" type="email" formControlName="email">
         </div>
         <div class="campo">
-            <label for="socialPlan">Obra social</label>
-            <input id="socialPlan" type="text" formControlName="socialPlan">
+            <label for="obraSocial">Obra social *</label>
+            <select id="obraSocial" formControlName="obraSocialId" (change)="onSelectionChange($event)" required>
+              <option *ngFor="let os of obraSociales" [value]="os.socialWorkId">
+                {{ os.name }}
+              </option>
+            </select>
           </div>
         <div class="campo">
-            <label for="socialWorkName">Plan de obra social</label>
-            <input id="socialWorkName" type="text" formControlName="socialWorkName">
+            <label for="planSocial">Plan de obra social *</label>
+            <select id="planSocial" formControlName="planSocial" required>
+              <option *ngFor="let plan of planes" [value]="2">
+                {{ plan }}
+              </option>
+            </select>
           </div>
         <div class="campo">
-          <label for="socialNumber">Número de afiliado</label>
-          <input id="socialNumber" type="text" formControlName="socialNumber">
-        </div>
-        <div class="campo">
-            <label for="isAvailable">Estado de habilitación (H/D)</label>
-            <input id="isAvailable" type="text" formControlName="isAvailable">
-          </div>
-        <div class="campo">
-            <label for="inscriptionDate">Fecha de inscripcion</label>
-            <input id="inscriptionDate" type="text" formControlName="inscriptionDate">
-        </div>
-        
+          <label for="numeroAfiliado">Número de afiliado *</label>
+          <input id="numeroAfiliado" type="text" formControlName="numeroAfiliado">
+        </div>       
       </div>
   
       <div class="botones">
