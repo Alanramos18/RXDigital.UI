@@ -5,4 +5,6 @@ export class Receta {
     diagnostic: string;
     medicineName: string;
     concentration: string;
+    comentario: string;
+    
 }
