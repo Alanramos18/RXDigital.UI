@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, model } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Receta } from '../../../models/receta';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,6 +8,8 @@ import { RpStateService } from '../../../services/medic.service';
 import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
 import { Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../../shared/confirm-dialog';
 
 @Component({
   selector: 'app-ver-recetas-paciente',
@@ -29,7 +31,8 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
   constructor(private rxService: RxDigitalService,
     private stateService: RpStateService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) {}
+    private activatedRoute: ActivatedRoute,
+    private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.subs.add(this.activatedRoute.params.subscribe({
@@ -39,8 +42,13 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
     }));
     this.subs.add(this.rxService.getPrescriptions(this.pacienteDni).subscribe({
       next: (res) => {
-        this.recetas = res;
-        this.recetasFiltradas = res;
+        const codigosUnicos = new Set<string>();
+        this.recetas = res.filter((item) => {
+          const isUnique = !codigosUnicos.has(item.prescriptionId);
+          codigosUnicos.add(item.prescriptionId);
+          return isUnique;
+        });
+        this.recetasFiltradas = this.recetas;
       },
       error: (err) => console.log(err)
     }));
@@ -85,15 +93,25 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
     this.router.navigate(['/eliminar-receta']);
   }
 
-  clonarReceta() {
-    // Implementar la lógica para generar una nueva receta
-    console.log('Clonar receta');
-    //this.router.navigate(['/clonar-receta']);
+  openConfirmDialog() {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+
+    dialogRef.afterClosed().subscribe({
+      next: (res) => {
+        if (res) {
+          this.subs.add(this.rxService.deletePatient(this.pacienteDni).subscribe({
+            next: x => {
+              this.router.navigate(['buscar-paciente']);
+            },
+            error: (err) => console.log(err)
+          }));
+        }
+      }
+    });
   }
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();
   }
 }
-
 

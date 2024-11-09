@@ -6,5 +6,4 @@ export class Receta {
     medicineName: string;
     concentration: string;
     comentario: string;
-    
 }

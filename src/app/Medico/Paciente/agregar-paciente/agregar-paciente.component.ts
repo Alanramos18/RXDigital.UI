@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms'; // Importa ReactiveFormsMo
 import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
 import { RxDigitalService } from '../../../services/rx-digital.service';
 import { ObraSocial } from '../../../models/obraSocial';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class AgregarPacienteComponent implements OnInit {
   obraSociales: ObraSocial[];
   planes: string[];
   
-  constructor(private fb: FormBuilder, private rxService: RxDigitalService) {}
+  constructor(private fb: FormBuilder, private rxService: RxDigitalService,  private location: Location) {}
 
   ngOnInit(): void {
 
@@ -69,6 +69,7 @@ export class AgregarPacienteComponent implements OnInit {
 
   onCancel(): void {
     this.pacienteForm.reset();
+    this.location.back();
   }
 
   onSelectionChange(e: Event) {
