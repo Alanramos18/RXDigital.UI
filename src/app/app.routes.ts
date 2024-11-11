@@ -19,6 +19,8 @@ import { BuscarRecetaComponent } from './farmaceutico/buscar-receta/buscar-recet
 import { RevisarRecetaComponent } from './farmaceutico/revisar-receta/revisar-receta.component';
 import { MotivoRechazoComponent } from './farmaceutico/motivo-rechazo/motivo-rechazo.component';
 import { ModificarRecetaComponent } from './Medico/Receta/modificar-receta/modificar-receta.component';
+import { InicioGestionarComponent } from './administrador/inicio-gestionar/inicio-gestionar.component';
+import { GestionarUsuariosComponent } from './administrador/gestionar-usuarios/gestionar-usuarios.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -38,8 +40,8 @@ export const routes: Routes = [
     { path: 'agregar-paciente', component: AgregarPacienteComponent /*, canActivate: [authGuard]*/ },
     { path: 'motivo-rechazo', component: MotivoRechazoComponent /*, canActivate: [authGuard]*/ },
     { path: 'modificar-receta', component: ModificarRecetaComponent/*, canActivate: [authGuard]*/ },
-    
-
+    { path: 'inicio-gestionar', component: InicioGestionarComponent/*, canActivate: [authGuard]*/ },
+    { path: 'gestionar-usuarios', component: GestionarUsuariosComponent/*, canActivate: [authGuard]*/ },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: '**', redirectTo: '/login' },
     //
