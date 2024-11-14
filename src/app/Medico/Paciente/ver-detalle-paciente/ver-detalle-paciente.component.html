@@ -4,68 +4,69 @@
 
   <h2>Detalles del paciente</h2>
   <form>
-    <div>
-      <label for="firstName">Nombres:</label>
-      <br>
-      <span><strong>{{ paciente.nombre }}</strong></span>
-    </div>
-    <div>
-      <label for="lastName">Apellidos:</label>
-      <span>{{ paciente.apellido }}</span>
-    </div>
-    <div>
-      <label for="patientId">DNI:</label>
-      <br>
-      <span>{{ paciente.dni }}</span>
-    </div>
-    <div>
-      <label for="birthDay">Fecha de Nacimiento:</label>
-      <br>
-      <span>{{ paciente.fechaNacimiento | date: 'mediumDate' }}</span>
-    </div>
-    <div>
-      <label for="gender">Sexo:</label>
-      <br>
-      <span>{{ paciente.genero}}</span>
-    </div>
-    <div>
-      <label for="nationality">Nacionalidad:</label>
-      <br>
-      <span>{{ paciente.nacionalidad}}</span>
-    </div>
-    <div>
-      <label for="address">Direccion:</label>
-      <br>
-      <span>{{ paciente.direccion}}</span>
-    </div>
+    <div class="formulario">
+      <div class="campo">
+        <label for="firstName">Nombres:</label>
+        <br>
+        <span><strong>{{ paciente.nombre }}</strong></span>
+      </div>
+      <div class="campo">
+        <label for="lastName">Apellidos:</label>
+        <span>{{ paciente.apellido }}</span>
+      </div>
+      <div class="campo">
+        <label for="patientId">DNI:</label>
+        <br>
+        <span>{{ paciente.dni }}</span>
+      </div>
+      <div class="campo">
+        <label for="birthDay">Fecha de Nacimiento:</label>
+        <br>
+        <span>{{ paciente.fechaNacimiento | date: 'mediumDate' }}</span>
+      </div>
+      <div class="campo">
+        <label for="gender">Sexo:</label>
+        <br>
+        <span>{{ paciente.genero}}</span>
+      </div>
+      <div class="campo">
+        <label for="nationality">Nacionalidad:</label>
+        <br>
+        <span>{{ paciente.nacionalidad}}</span>
+      </div>
+      <div class="campo">
+        <label for="address">Direccion:</label>
+        <br>
+        <span>{{ paciente.direccion}}</span>
+      </div>
 
-    <div>
-      <label for="locality">Localidad:</label>
-      <br>
-      <span>{{ paciente.localidad}}</span>
-    </div>
-    <div>
-      <label for="province">Provincia:</label>
-      <br>
-      <span>{{ paciente.provincia}}</span>
-    </div>
-    <div>
-      <label for="cellphone">Celular:</label>
-      <br>
-      <span>{{ paciente.celular}}</span>
-    </div>
+      <div class="campo">
+        <label for="locality">Localidad:</label>
+        <br>
+        <span>{{ paciente.localidad}}</span>
+      </div>
+      <div class="campo">
+        <label for="province">Provincia:</label>
+        <br>
+        <span>{{ paciente.provincia}}</span>
+      </div>
+      <div class="campo">
+        <label for="cellphone">Celular:</label>
+        <br>
+        <span>{{ paciente.celular}}</span>
+      </div>
 
-    <div>
-      <label for="homePhone">Telefono fijo:</label>
-      <br>
-      <span>{{ paciente.telefono}}</span>
-    </div>
-    <div>
-      <label for="email">E-Mail:</label>
-      <br>
-      <span>{{ paciente.email}}</span>
-    </div>
-    <!-- <div>
+      <div class="campo">
+        <label for="homePhone">Telefono fijo:</label>
+        <br>
+        <span>{{ paciente.telefono}}</span>
+      </div>
+      <div class="campo">
+        <label for="email">E-Mail:</label>
+        <br>
+        <span>{{ paciente.email}}</span>
+      </div>
+      <!-- <div>
       <label for="socialPlan">Obra Social:</label>
       <span>{{ paciente.obraSocial }}</span>
     </div>
@@ -73,25 +74,26 @@
       <label for="socialWorkName">Plan de obra social:</label>
       <span>{{ paciente.socialWorkName }}</span>
     </div> -->
-    <div>
-      <label for="socialNumber">Número de afiliado:</label>
-      <br>
-      <span>{{ paciente.numeroAfiliado }}</span>
+      <div class="campo">
+        <label for="socialNumber">Número de afiliado:</label>
+        <br>
+        <span>{{ paciente.numeroAfiliado }}</span>
+      </div>
+      <div class="campo">
+        <label for="isAvailable">Estado de habilitacion:</label>
+        <br>
+        <span>{{ paciente.estado ? 'Sí' : 'No' }}</span>
+      </div>
+      <div class="campo">
+        <label for="inscriptionDate">Fecha de Inscripción:</label>
+        <br>
+        <span>{{ paciente.fechaInscripcion | date: 'mediumDate' }}</span>
+      </div>
+
+
+      <div class="botones">
+        <button type="button" (click)="volver()">Volver</button>
+      </div>
     </div>
-    <div>
-      <label for="isAvailable">Estado de habilitacion:</label>
-      <br>
-      <span>{{ paciente.estado ? 'Sí' : 'No' }}</span>
-    </div>
-    <div>
-      <label for="inscriptionDate">Fecha de Inscripción:</label>
-      <br>
-      <span>{{ paciente.fechaInscripcion | date: 'mediumDate' }}</span>
-    </div>
-    
-  
-    
-    <button type="button" (click)="volver()">Volver</button>
   </form>
 </div>
-  

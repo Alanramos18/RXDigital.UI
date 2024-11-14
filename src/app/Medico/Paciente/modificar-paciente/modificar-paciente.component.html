@@ -2,70 +2,75 @@
 
 <div class="modificar-paciente">
 
-  <h2>Modificar paciente</h2>
+  <h2>Modificar datos del paciente</h2>
   <form>
-    <div>
-      <label for="firstName">Nombres:</label>
-      <br>
-      <span><strong>{{ paciente.nombre }}</strong></span>
-    </div>
-    <div>
-      <label for="lastName">Apellidos:</label>
-      <span>{{ paciente.apellido }}</span>
-    </div>
-    <div>
-      <label for="patientId">DNI:</label>
-      <br>
-      <span>{{ paciente.dni }}</span>
-    </div>
-    <div>
-      <label for="birthDay">Fecha de Nacimiento:</label>
-      <br>
-      <span>{{ paciente.fechaNacimiento | date: 'mediumDate' }}</span>
-    </div>
-    <div>
-      <label for="gender">Sexo:</label>
-      <br>
-      <input>{{ paciente.genero}} />
-    </div>
-    <div>
-      <label for="nationality">Nacionalidad:</label>
-      <br>
-      <span>{{ paciente.nacionalidad}}</span>
-    </div>
-    <div>
-      <label for="address">Direccion:</label>
-      <br>
-      <input>{{ paciente.direccion}}>
-    </div>
+    <div class="formulario">
+      <div class="campo">
+        <label for="nombre">Nombres:</label>
+        <br>
+        <span><strong>{{ paciente.nombre }}</strong></span>
+      </div>
+      <div class="campo">
+        <label for="apellido">Apellidos:</label>
+        <span>{{ paciente.apellido }}</span>
+      </div>
+      <div class="campo">
+        <label for="dni">DNI:</label>
+        <br>
+        <span>{{ paciente.dni }}</span>
+      </div>
+      <div class="campo">
+        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+        <br>
+        <span>{{ paciente.fechaNacimiento | date: 'mediumDate' }}</span>
+      </div>
+      <div class="campo">
+        <label for="genero">Sexo: *</label>
+        <br>
+        <!-- <input>{{ paciente.genero}} /> -->
+        <select id="genero" [(ngModel)]="paciente.genero" name="gender">
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label for="nacionalidad">Nacionalidad:</label>
+        <br>
+        <span>{{ paciente.nacionalidad}}</span>
+      </div>
+      <div class="campo">
+        <label for="direccion">Direccion: *</label>
+        <br>
+        <input>{{ paciente.direccion}}>
+      </div>
 
-    <div>
-      <label for="locality">Localidad:</label>
-      <br>
-      <span>{{ paciente.localidad}}</span>
-    </div>
-    <div>
-      <label for="province">Provincia:</label>
-      <br>
-      <span>{{ paciente.provincia}}</span>
-    </div>
-    <div>
-      <label for="cellphone">Celular:</label>
-      <br>
-      <input>{{ paciente.celular}}>
-    </div>
+      <div class="campo">
+        <label for="localidad">Localidad:</label>
+        <br>
+        <span>{{ paciente.localidad}}</span>
+      </div>
+      <div class="campo">
+        <label for="provincia">Provincia:</label>
+        <br>
+        <span>{{ paciente.provincia}}</span>
+      </div>
+      <div class="campo">
+        <label for="celular">Celular: *</label>
+        <br>
+        <input>{{ paciente.celular}}>
+      </div>
 
-    <div>
-      <label for="homePhone">Telefono fijo:</label>
-      <br>
-      <input>{{ paciente.telefono}}>
-    </div>
-    <div>
-      <label for="email">E-Mail:</label>
-      <br>
-      <input>{{ paciente.email}}>
-    </div>
-    <!-- <div>
+      <div class="campo">
+        <label for="telefono">Telefono fijo:</label>
+        <br>
+        <input>{{ paciente.telefono}}>
+      </div>
+      <div class="campo">
+        <label for="email">E-Mail: *</label>
+        <br>
+        <input>{{ paciente.email}}>
+      </div>
+      <!-- <div>
       <label for="socialPlan">Obra Social:</label>
       <span>{{ paciente.obraSocial }}</span>
     </div>
@@ -73,29 +78,28 @@
       <label for="socialWorkName">Plan de obra social:</label>
       <span>{{ paciente.socialWorkName }}</span>
     </div> -->
-    <div>
-      <label for="socialNumber">Número de afiliado:</label>
-      <br>
-      <span>{{ paciente.numeroAfiliado }}</span>
+      <div class="campo">
+        <label for="numeroAfiliado">Número de afiliado:</label>
+        <br>
+        <span>{{ paciente.numeroAfiliado }}</span>
+      </div>
+      <div class="campo">
+        <label for="isAvailable">Estado de habilitacion:</label>
+        <br>
+        <input>{{ paciente.estado ? 'Sí' : 'No' }}>
+      </div>
+      <div class="campo">
+        <label for="inscriptionDate">Fecha de Inscripción:</label>
+        <br>
+        <span>{{ paciente.fechaInscripcion | date: 'mediumDate' }}</span>
+      </div>
     </div>
-    <div>
-      <label for="isAvailable">Estado de habilitacion:</label>
-      <br>
-      <input>{{ paciente.estado ? 'Sí' : 'No' }}>
-    </div>
-    <div>
-      <label for="inscriptionDate">Fecha de Inscripción:</label>
-      <br>
-      <span>{{ paciente.fechaInscripcion | date: 'mediumDate' }}</span>
-    </div>
-    
-  
+
+
     <div class="botones">
-      
+
       <button type="submit" class="modificar" (click)="onModificar()">Aceptar</button>
       <button type="button" class="cancelar" (click)="onCancel()">Cancelar</button>
     </div>
-    
-  </form>
+ </form>
 </div>
-  
