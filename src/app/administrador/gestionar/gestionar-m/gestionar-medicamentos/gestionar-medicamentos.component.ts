@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { EncabezadoComponent } from "../../../../encabezado/encabezado.component";
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gestionar-medicamentos',
@@ -10,6 +10,8 @@ import { EncabezadoComponent } from "../../../../encabezado/encabezado.component
   styleUrls: ['./gestionar-medicamentos.component.scss'],
 })
 export class GestionarMedicamentosComponent {
+  constructor(private router: Router) {}
+
   agregarMedicamento() {
     console.log('Agregar medicamento');
   }
@@ -28,6 +30,7 @@ export class GestionarMedicamentosComponent {
 
   volver() {
     console.log('Volver');
+    this.router.navigate(['/inicio-gestionar']);
   }
 }
 

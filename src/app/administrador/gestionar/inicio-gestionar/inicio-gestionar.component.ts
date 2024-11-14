@@ -19,4 +19,8 @@ export class InicioGestionarComponent {
   gestionarMedicamentos() {
     this.router.navigate(['/gestionar-medicamentos']);
   }
+
+  volver(){
+    this.router.navigate(['/inicio-admin']);
+  }
 }
