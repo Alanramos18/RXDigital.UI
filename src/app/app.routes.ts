@@ -22,6 +22,7 @@ import { ModificarRecetaComponent } from './Medico/Receta/modificar-receta/modif
 import { InicioGestionarComponent } from './administrador/gestionar/inicio-gestionar/inicio-gestionar.component';
 import { GestionarUsuariosComponent } from './administrador/gestionar/gestionar-u/gestionar-usuarios/gestionar-usuarios.component';
 import { ExportarInformeComponent } from './administrador/consultar/exportar-informe/exportar-informe.component';
+import { InicioConsultarComponent } from './administrador/consultar/inicio-consultar/inicio-consultar.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -44,7 +45,10 @@ export const routes: Routes = [
     { path: 'inicio-gestionar', component: InicioGestionarComponent/*, canActivate: [authGuard]*/ },
     { path: 'gestionar-usuarios', component: GestionarUsuariosComponent/*, canActivate: [authGuard]*/ },
     { path: 'exportar-informe', component: ExportarInformeComponent/*, canActivate: [authGuard]*/ },
+    { path: 'inicio-consultar', component: InicioConsultarComponent/*, canActivate: [authGuard]*/ },
 
+
+    
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: '**', redirectTo: '/login' },
     //

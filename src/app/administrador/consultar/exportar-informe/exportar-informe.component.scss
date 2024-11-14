@@ -1,14 +1,14 @@
 .volver-container {
     text-align: left;
-    padding: 10px 510px;
-    margin-bottom: 20px; // Espacio adicional debajo del botón para separarlo
+    padding: 10px 220px;
+    margin-bottom: 10px; // Espacio adicional debajo del botón para separarlo
     display: flex;
     //justify-content: length;
-    gap: 20px;
+    gap: 10px;
   
     .volver-btn {
       padding: 12px 25px;
-      font-size: 18px;
+      font-size: 10px;
       background-color: #007bff;
       color: #fff;
       border: none;
@@ -21,12 +21,12 @@
 .exportar-container {
     background-color: #f0f0f0;
     padding: 20px;
-    max-width: 1500px; // Increase width
-    min-height: 350px; // Set a minimum height
+    max-width: 800px; // Increase width
+    min-height: 10px; // Set a minimum height
     margin: 0 auto;
     text-align: center;
     font-family: Arial, sans-serif;
-    font-size: 18px; // Increase font size for all text within the container
+    font-size: 15px; // Increase font size for all text within the container
 
     .header {
         display: flex;
@@ -36,29 +36,12 @@
         color: #fff;
         padding: 10px 20px;
 
-        .logo {
-            background: #ccc;
-            width: 100px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-        }
-
         h1 {
             margin: 0;
-            font-size: 24px;
+            font-size: 10px;
         }
     }
-/*
-    .volver-btn {
-        margin-top: 20px;
-        padding: 5px 10px;
-        font-size: 19px;
 
-    }*/
-    
 
     .export-box {
         background-color: #fff;
@@ -68,31 +51,31 @@
         margin-top: 20px;
 
         h2 {
-            font-size: 40px;
-            padding: 20px;
-            margin-bottom: 60px;
+            font-size: 35px;
+            padding: 1px;
+            margin-bottom: 10px;
         }
 
         .form-group {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 60px;
+            margin-bottom: 20px;
 
             label {
 
                 margin-right: 10px;
                 font-weight: bold;
                 margin-bottom: 4px;
-                font-size: 23px;
+                font-size: 16px;
                 color: #555;
             }
 
             select {
-                padding: 12px;
-                font-size: 16px;
+                padding: 5px;
+                font-size: 14px;
                 width: 200px; // Ancho del cuadro de selección
-                height: 45px; // Altura del cuadro de selección
+                height: 30px; // Altura del cuadro de selección
                 border: 1px solid #ccc;
                 border-radius: 4px;
                 background-color: #fff;
@@ -108,7 +91,7 @@
                 background-color: green;
                 color: #fff;
                 padding: 12px 25px;
-                font-size: 18px;
+                font-size: 10px;
                 border: none;
                 border-radius: 5px;
                 cursor: pointer;
@@ -117,7 +100,7 @@
             .cancel-btn {
                 background-color: #dc3545;
                 padding: 12px 25px;
-                font-size: 18px;
+                font-size: 10px;
                 border: 1px solid #888;
                 border-radius: 5px;
                 cursor: pointer;

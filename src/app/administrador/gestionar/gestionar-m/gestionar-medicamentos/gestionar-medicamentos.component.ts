@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
+import { EncabezadoComponent } from "../../../../encabezado/encabezado.component";
 
 
 @Component({
   selector: 'app-gestionar-medicamentos',
   templateUrl: './gestionar-medicamentos.component.html',
   standalone: true,
-  styleUrls: ['./gestionar-medicamentos.component.scss']
+  imports: [EncabezadoComponent],
+  styleUrls: ['./gestionar-medicamentos.component.scss'],
 })
 export class GestionarMedicamentosComponent {
   agregarMedicamento() {
