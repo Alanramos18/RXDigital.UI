@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-emitir-receta',
   standalone: true,
-  imports: [FormsModule, CommonModule, SearchModalComponent,EncabezadoComponent],
+  imports: [FormsModule, CommonModule,EncabezadoComponent],
   templateUrl: './emitir-receta.component.html',
   styleUrl: './emitir-receta.component.scss'
 })
