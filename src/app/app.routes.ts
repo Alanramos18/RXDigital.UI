@@ -11,16 +11,17 @@ import { EliminarRecetaComponent } from './Medico/Receta/eliminar-receta/elimina
 import { VerDetalleRecetaComponent } from './Medico/Receta/ver-detalle-receta/ver-detalle-receta.component';
 import { ModificarPacienteComponent } from './Medico/Paciente/modificar-paciente/modificar-paciente.component';
 
-import { GestionarMedicamentosComponent } from './administrador/gestionar-medicamentos/gestionar-medicamentos.component';
-import { ModificarMedicamentoComponent } from './administrador/modificar-medicamento/modificar-medicamento.component';
+import { GestionarMedicamentosComponent } from './administrador/gestionar/gestionar-m/gestionar-medicamentos/gestionar-medicamentos.component';
+import { ModificarMedicamentoComponent } from './administrador/gestionar/gestionar-m/modificar-medicamento/modificar-medicamento.component';
 import { AgregarPacienteComponent } from './Medico/Paciente/agregar-paciente/agregar-paciente.component';
 
 import { BuscarRecetaComponent } from './farmaceutico/buscar-receta/buscar-receta.component';
 import { RevisarRecetaComponent } from './farmaceutico/revisar-receta/revisar-receta.component';
 import { MotivoRechazoComponent } from './farmaceutico/motivo-rechazo/motivo-rechazo.component';
 import { ModificarRecetaComponent } from './Medico/Receta/modificar-receta/modificar-receta.component';
-import { InicioGestionarComponent } from './administrador/inicio-gestionar/inicio-gestionar.component';
-import { GestionarUsuariosComponent } from './administrador/gestionar-usuarios/gestionar-usuarios.component';
+import { InicioGestionarComponent } from './administrador/gestionar/inicio-gestionar/inicio-gestionar.component';
+import { GestionarUsuariosComponent } from './administrador/gestionar/gestionar-u/gestionar-usuarios/gestionar-usuarios.component';
+import { ExportarInformeComponent } from './administrador/consultar/exportar-informe/exportar-informe.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -42,6 +43,8 @@ export const routes: Routes = [
     { path: 'modificar-receta', component: ModificarRecetaComponent/*, canActivate: [authGuard]*/ },
     { path: 'inicio-gestionar', component: InicioGestionarComponent/*, canActivate: [authGuard]*/ },
     { path: 'gestionar-usuarios', component: GestionarUsuariosComponent/*, canActivate: [authGuard]*/ },
+    { path: 'exportar-informe', component: ExportarInformeComponent/*, canActivate: [authGuard]*/ },
+
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: '**', redirectTo: '/login' },
     //
