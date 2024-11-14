@@ -30,4 +30,17 @@ export class InicioConsultarComponent {
     // Navegar a la ruta anterior
     this.router.navigate(['/ruta-anterior']);
   }
+ 
+  // Métodos para los botones de consulta (si es necesario agregar lógica específica más adelante)
+  listarRecetasPorFecha(): void {
+    console.log('Listando recetas por fecha');
+  }
+
+  medicamentosMasRecetados(): void {
+    console.log('Mostrando medicamentos más recetados');
+  }
+
+  medicosConMasRecetas(): void {
+    console.log('Mostrando médicos con más recetas');
+  }
 }
