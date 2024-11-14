@@ -4,7 +4,6 @@ import { CommonModule, Location } from '@angular/common';
 import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
 import { Paciente } from '../../../models/paciente';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RxDigitalService } from '../../../services/rx-digital.service';
 import { Subscription } from 'rxjs';
 
 @Component({

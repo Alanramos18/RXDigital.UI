@@ -16,7 +16,7 @@
         <div class="patient-actions">
           <button class="btn-view-details" (click)="verDetallePaciente()">📄</button>
           <button class="btn-edit">✏️</button>
-          <button class="btn-delete">🗑️</button>
+          <button class="btn-delete" (click)="openConfirmDialog()">🗑️</button>
         </div>
 
         
@@ -38,24 +38,21 @@
             <th>Fecha emisión</th>
             <th>Fecha de vencimiento</th>
             <th>Diagnóstico</th>
-            <th>Medicamento</th>
-            <th>Concentración</th>
+            <th>Comentario</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let receta of recetasFiltradas">
             <td>{{ receta.prescriptionId }}</td>
-            <td>{{ fechaEmision | date }}</td>
+            <td>{{ receta.fechaEmision | date }}</td>
             <td>{{ receta.expirationDate | date }}</td>
             <td>{{ receta.diagnostic }}</td>
-            <td>{{ receta.medicineName }}</td>
-            <td>{{ receta.concentration }}</td>
+            <td>{{ receta.comentario }}</td>
             <td>
               <div class = 'receta-actions'>
                 <button class="btn-edit" (click)="modificarReceta()">✏️</button>
                 <button class="btn-delete" (click)="eliminarReceta()">🗑️</button>
-                <button class="btn-clone" (click)="clonarReceta()">📑</button>
                 <button class="btn-view-details" (click)="verDetalleReceta()">📄</button> 
               </div>
             </td>

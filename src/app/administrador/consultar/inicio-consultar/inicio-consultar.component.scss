@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* Cambiado de space-between a flex-end */
+    background-color: white;
+    height: 100vh;
+    padding: 30px;
+    color: black;
+
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 900px;
+        padding-bottom: 10px;
+        flex-direction: column; /* Alinea el título y el subtítulo en columna */
+        text-align: center;
+
+
+        h1 {
+            font-size: 40px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 0px;
+            /* Ajusta este valor para bajar el subtítulo */
+            margin-bottom: 20px;
+            /* Espacio entre el subtítulo y los botones */
+        }
+
+        h2 {
+            font-size: 25px;
+            font-weight: bold;
+            margin-top: 0;
+            align-self: flex-start; /* Alinea el subtítulo a la izquierda */
+            /* Elimina espacio superior para acercarlo al título */
+            margin-left: 50px;
+            margin-bottom: -30px;
+            /* Espacio entre el subtítulo y los botones */
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        max-width: 800px;
+        align-items: center;
+        margin-top: 50px;
+        /* Espacio encima de los botones */
+        margin-bottom: 80px;
+        /* Espacio debajo de los botones */
+
+        .consult-button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            border: 1px solid gray;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: #ececec;
+            }
+        }
+    }
+
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 900px;
+
+        .logout-button {
+            background-color: #ff5252;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 25px;
+            font-size: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+
+            &:hover {
+                background-color: #e53935;
+                box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        .back-button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 15px 25px;
+            font-size: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+
+            &:hover {
+                background-color: #45a049;
+                box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+            }
+        }
+    }
+}

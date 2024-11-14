@@ -1,122 +1,118 @@
 .modificar-paciente {
-  background-color: #f5f5f5;
-  border-radius: 8px;
-  padding: 20px;
-  width: 80%;
+  max-width: 1000px;
   margin: 0 auto;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 
-  .header {
+  header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
+    margin-bottom: 25px;
 
-    .logo {
+    .nombre-sistema {
       font-size: 20px;
       font-weight: bold;
-      color: #333;
     }
 
-    .user-info {
+    .usuario {
       display: flex;
       align-items: center;
 
-      .user-photo {
+      img {
         width: 40px;
         height: 40px;
         border-radius: 50%;
         margin-right: 10px;
       }
 
-      .user-name {
+      span {
         font-size: 16px;
-        color: #555;
       }
     }
   }
 
   h2 {
     text-align: center;
-    margin: 20px 0;
+    margin-bottom: 50px;
     color: #333;
   }
 
-  .patient-details {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
 
-    .column {
-      width: 48%;
+    .formulario {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
 
-      .detail-row {
+      .campo {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 10px;
+        flex-direction: column;
+        padding-bottom: 10px; // Adds vertical spacing between rows
 
         label {
-          font-weight: bold;
-          color: #666;
-          width: 40%;
+          font-weight: bold ;
+          margin-bottom: 4px;
+          font-size: 14px;
+          color: #555;
         }
 
-        span {
-          width: 60%;
-          color: #333;
-          padding: 5px;
-          background-color: #f0f0f0;
+        input,
+        select {
+          padding: 8px ; 
+          font-size: 14px;
+          border: 1px solid #ccc;
           border-radius: 4px;
+          background-color: #fff;
         }
 
-        input {
-          width: 60%;
-          padding: 5px;
-          border: 1px solid #ddd;
-          border-radius: 4px;
+        input[type="date"] {
+          padding-right: 30px;
+        }
+      }
+    }
 
-          &:focus {
-            border-color: #007bff;
-            outline: none;
+    .botones {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+
+      button {
+        width: 120px;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &.modificar {
+          background-color: #28a745;
+          color: #fff;
+          margin-right: 10px;
+
+          &:hover {
+            background-color: #218838;
+          }
+        }
+
+        &.cancelar {
+          background-color: #dc3545;
+          color: #fff;
+
+          &:hover {
+            background-color: #c82333;
           }
         }
       }
     }
   }
-
-  .buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    gap: 10px;
-
-    .btn-modificar {
-      background-color: #4CAF50;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-
-      &:hover {
-        background-color: #45a049;
-      }
-    }
-
-    .btn-cancelar {
-      background-color: #f44336;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-
-      &:hover {
-        background-color: #e53935;
-      }
-    }
-  }
 }
-

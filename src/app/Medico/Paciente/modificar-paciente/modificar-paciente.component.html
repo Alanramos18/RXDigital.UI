@@ -1,44 +1,105 @@
-<!-- <div class="modificar-paciente">
-  <div class="header">
-    <div class="logo">RX Digital</div>
-    <div class="user-info">
-      <img src="ruta/foto-usuario.jpg" alt="Foto de usuario" class="user-photo" />
-      <span class="user-name">Nombre usuario</span>
-    </div>
-  </div>
+<app-encabezado></app-encabezado>
 
-  <h2>Modificar paciente</h2>
+<div class="modificar-paciente">
 
-  <div class="patient-details">
-    <div class="column">
-      <div class="detail-row"><label>Nombre completo:</label><span>{{ paciente.lastName }}, {{ paciente.firstName }}</span></div>
-      <div class="detail-row"><label>DNI:</label><span>{{ paciente.patientId }}</span></div>
-      <div class="detail-row"><label>Fecha de nacimiento:</label><span>{{ paciente.birthDay | date }}</span></div>
-      <div class="detail-row">
-        <label>Sexo:</label>
-        <input type="text" name="sexo" [(ngModel)]="paciente.gender" />
+  <h2>Modificar datos del paciente</h2>
+  <form>
+    <div class="formulario">
+      <div class="campo">
+        <label for="nombre">Nombres:</label>
+        <br>
+        <span><strong>{{ paciente.nombre }}</strong></span>
       </div>
-      <div class="detail-row"><label>Nacionalidad:</label><span>{{ paciente.nationality }}</span></div>
-      <div class="detail-row"><label>Domicilio:</label><input type="text" [(ngModel)]="paciente.address" /></div>
+      <div class="campo">
+        <label for="apellido">Apellidos:</label>
+        <span>{{ paciente.apellido }}</span>
+      </div>
+      <div class="campo">
+        <label for="dni">DNI:</label>
+        <br>
+        <span>{{ paciente.dni }}</span>
+      </div>
+      <div class="campo">
+        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+        <br>
+        <span>{{ paciente.fechaNacimiento | date: 'mediumDate' }}</span>
+      </div>
+      <div class="campo">
+        <label for="genero">Sexo: *</label>
+        <br>
+        <!-- <input>{{ paciente.genero}} /> -->
+        <select id="genero" [(ngModel)]="paciente.genero" name="gender">
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label for="nacionalidad">Nacionalidad:</label>
+        <br>
+        <span>{{ paciente.nacionalidad}}</span>
+      </div>
+      <div class="campo">
+        <label for="direccion">Direccion: *</label>
+        <br>
+        <input>{{ paciente.direccion}}>
+      </div>
 
-      <div class="detail-row"><label>Fecha de inscripción:</label><span>Hoy..</span></div>
+      <div class="campo">
+        <label for="localidad">Localidad:</label>
+        <br>
+        <span>{{ paciente.localidad}}</span>
+      </div>
+      <div class="campo">
+        <label for="provincia">Provincia:</label>
+        <br>
+        <span>{{ paciente.provincia}}</span>
+      </div>
+      <div class="campo">
+        <label for="celular">Celular: *</label>
+        <br>
+        <input>{{ paciente.celular}}>
+      </div>
+
+      <div class="campo">
+        <label for="telefono">Telefono fijo:</label>
+        <br>
+        <input>{{ paciente.telefono}}>
+      </div>
+      <div class="campo">
+        <label for="email">E-Mail: *</label>
+        <br>
+        <input>{{ paciente.email}}>
+      </div>
+      <!-- <div>
+      <label for="socialPlan">Obra Social:</label>
+      <span>{{ paciente.obraSocial }}</span>
     </div>
-
-    <div class="column">
-      <div class="detail-row"><label>Celular:</label><input type="text" [(ngModel)]="paciente.cellphone" /></div>
-      <div class="detail-row"><label>Teléfono fijo:</label><input type="text" [(ngModel)]="paciente.homePhone" /></div>
-      <div class="detail-row"><label>E-Mail:</label><input type="email" ngModel /></div>
-      <div class="detail-row"><label>Obra social:</label><input type="text" [(ngModel)]="paciente.socialPlan" /></div>
-      <div class="detail-row"><label>Estado de habilitación (H/D):</label><input type="text" ngModel /></div>
-      <div class="detail-row">
-        <label>Número de afiliado:</label>
-        <span>{{ paciente.socialNumber }}</span>
+    <div>
+      <label for="socialWorkName">Plan de obra social:</label>
+      <span>{{ paciente.socialWorkName }}</span>
+    </div> -->
+      <div class="campo">
+        <label for="numeroAfiliado">Número de afiliado:</label>
+        <br>
+        <span>{{ paciente.numeroAfiliado }}</span>
+      </div>
+      <div class="campo">
+        <label for="isAvailable">Estado de habilitacion:</label>
+        <br>
+        <input>{{ paciente.estado ? 'Sí' : 'No' }}>
+      </div>
+      <div class="campo">
+        <label for="inscriptionDate">Fecha de Inscripción:</label>
+        <br>
+        <span>{{ paciente.fechaInscripcion | date: 'mediumDate' }}</span>
       </div>
     </div>
-  </div>
 
-  <div class="buttons">
-    <button type="button" class="btn-modificar" (click)="onModificar()">Modificar</button>
-    <button type="button" class="btn-cancelar" (click)="onCancel()">Cancelar</button>
-  </div>
-</div> -->
+
+    <div class="botones">
+
+      <button type="submit" class="modificar" (click)="onModificar()">Aceptar</button>
+      <button type="button" class="cancelar" (click)="onCancel()">Cancelar</button>
+    </div>
+ </form>
+</div>

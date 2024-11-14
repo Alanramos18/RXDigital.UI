@@ -24,6 +24,8 @@ export class BuscarPacienteComponent implements OnInit, OnDestroy {
   constructor(private stateService: RpStateService, private router: Router) {}
 
   ngOnInit(): void {
+    this.stateService.clearPatient();
+    
     this.subs.add(this.stateService.getMedicInfo().subscribe({
       next: (medic) => {
         this.medic = medic;

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Paciente } from '../../../models/paciente';
 import { CommonModule } from '@angular/common';
+import { EncabezadoComponent } from "../../../encabezado/encabezado.component";
 
 @Component({
   selector: 'app-modificar-paciente',
@@ -9,8 +10,9 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [
     FormsModule,
-    CommonModule
-  ],
+    CommonModule,
+    EncabezadoComponent
+],
   styleUrls: ['./modificar-paciente.component.scss']
 })
 export class ModificarPacienteComponent {
