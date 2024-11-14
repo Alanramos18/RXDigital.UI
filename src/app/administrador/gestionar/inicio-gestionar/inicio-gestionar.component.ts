@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
 
 @Component({
   selector: 'app-inicio-gestionar',
   standalone: true,
-  imports: [],
+  imports: [EncabezadoComponent],
   templateUrl: './inicio-gestionar.component.html',
   styleUrl: './inicio-gestionar.component.scss'
 })
