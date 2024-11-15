@@ -33,14 +33,17 @@ export class InicioConsultarComponent {
  
   // Métodos para los botones de consulta (si es necesario agregar lógica específica más adelante)
   listarRecetasPorFecha(): void {
+    this.router.navigate(['/recetas-fecha']);
     console.log('Listando recetas por fecha');
   }
 
   medicamentosMasRecetados(): void {
+    this.router.navigate(['/top-medicamentos']);
     console.log('Mostrando medicamentos más recetados');
   }
 
   medicosConMasRecetas(): void {
+    this.router.navigate(['/top-medicos']);
     console.log('Mostrando médicos con más recetas');
   }
 }
