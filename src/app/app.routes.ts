@@ -19,7 +19,7 @@ import { BuscarRecetaComponent } from './farmaceutico/buscar-receta/buscar-recet
 import { RevisarRecetaComponent } from './farmaceutico/revisar-receta/revisar-receta.component';
 import { MotivoRechazoComponent } from './farmaceutico/motivo-rechazo/motivo-rechazo.component';
 import { ModificarRecetaComponent } from './Medico/Receta/modificar-receta/modificar-receta.component';
-import { RegistrateComponent } from './registrate/registrate.component';
+import { RegistrateComponent } from './login/registrate/registrate.component';
 import { InicioGestionarComponent } from './administrador/gestionar/inicio-gestionar/inicio-gestionar.component';
 import { GestionarUsuariosComponent } from './administrador/gestionar/gestionar-u/gestionar-usuarios/gestionar-usuarios.component';
 import { ExportarInformeComponent } from './administrador/consultar/exportar-informe/exportar-informe.component';
@@ -28,11 +28,11 @@ import { InicioAdminComponent } from './administrador/inicio-admin/inicio-admin.
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
-    { path:'ver-recetas-paciente/:id', component: VerRecetasPacienteComponent}, //, canActivate: [authGuard] },
+    { path: 'ver-recetas-paciente/:id', component: VerRecetasPacienteComponent}, //, canActivate: [authGuard] },
     { path: 'ver-detalle-paciente/:id', component: VerDetallePacienteComponent}, //, canActivate: [authGuard] },
-    { path:'modificar-paciente/:id', component: ModificarPacienteComponent},
-    { path:'buscar-paciente', component:BuscarPacienteComponent}, //, canActivate: [authGuard] },
-    { path:'emitir-receta/:id', component:EmitirRecetaComponent}, //canActivate: [authGuard] },
+    { path: 'modificar-paciente/:id', component: ModificarPacienteComponent},
+    { path: 'buscar-paciente', component:BuscarPacienteComponent}, //, canActivate: [authGuard] },
+    { path: 'emitir-receta/:id', component:EmitirRecetaComponent}, //canActivate: [authGuard] },
     { path: 'cancelar-receta', component: CancelarRecetaComponent},// canActivate: [authGuard] },
     { path: 'emision-correcta', component: EmisionCorrectaComponent},// canActivate: [authGuard] },
     { path: 'eliminar-receta', component: EliminarRecetaComponent},// canActivate: [authGuard] },
@@ -42,17 +42,13 @@ export const routes: Routes = [
     { path: 'buscar-receta', component: BuscarRecetaComponent}, /*, canActivate: [authGuard]*/
     { path: 'revisar-receta/:id', component: RevisarRecetaComponent}, /*, canActivate: [authGuard]*/
     { path: 'agregar-paciente', component: AgregarPacienteComponent /*, canActivate: [authGuard]*/ },
-    { path: 'motivo-rechazo', component: MotivoRechazoComponent /*, canActivate: [authGuard]*/ },
     { path: 'modificar-receta', component: ModificarRecetaComponent/*, canActivate: [authGuard]*/ },
-    
-    {path:'registrate', component: RegistrateComponent },
+    { path: 'registrate', component: RegistrateComponent },
     { path: 'inicio-gestionar', component: InicioGestionarComponent/*, canActivate: [authGuard]*/ },
     { path: 'gestionar-usuarios', component: GestionarUsuariosComponent/*, canActivate: [authGuard]*/ },
     { path: 'exportar-informe', component: ExportarInformeComponent/*, canActivate: [authGuard]*/ },
     { path: 'inicio-consultar', component: InicioConsultarComponent/*, canActivate: [authGuard]*/ },
     { path: 'inicio-admin', component: InicioAdminComponent/*, canActivate: [authGuard]*/ },
-
-    
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: '**', redirectTo: '/login' },
     //

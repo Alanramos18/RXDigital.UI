@@ -1,44 +1,24 @@
 .exportar-container {
     background-color: white;
-    padding: 20px;
+    padding: 0px;
     max-width: 800px; // Increase width
     min-height: 10px; // Set a minimum height
-    margin: 0 auto;
+    margin: auto;
     text-align: center;
     font-family: Arial, sans-serif;
-    font-size: 15px; // Increase font size for all text within the container
-
-    .header {
-        display: flex;
-        /*
-        align-items: center;
-        justify-content: space-between;
-        background-color: #333;
-        color: #fff;
-        padding: 10px 20px;*/
-
-
-        h1 {
-            //margin: 0;
-            font-size: 40px;
-            font-weight: bold;
-            text-align: center;
-            margin-top: 0px;
-            margin-bottom: 20px;
-        }
-    }
+    font-size: 10px; // Increase font size for all text within the container
 
 
     .export-box {
         background-color: #fff;
         border: 1px solid #ccc;
         border-radius: 5px;
-        padding: 50px 50px;
+        padding: 20px 20px;
         margin-top: 20px;
 
         h2 {
-            font-size: 35px;
-            padding: 1px;
+            font-size: 60px;
+            padding: 10px;
             margin-bottom: 10px;
         }
 
@@ -53,7 +33,7 @@
                 margin-right: 10px;
                 font-weight: bold;
                 margin-bottom: 4px;
-                font-size: 16px;
+                font-size: 30px;
                 color: #555;
             }
 

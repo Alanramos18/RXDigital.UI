@@ -28,7 +28,7 @@
 
 
         h1 {
-            font-size: 40px;
+            font-size: 60px;
             font-weight: bold;
             text-align: center;
             margin-top: 0px;
@@ -36,17 +36,16 @@
             margin-bottom: 20px;
             /* Espacio entre el subtítulo y los botones */
         }
-
+/*
         h2 {
             font-size: 25px;
             font-weight: bold;
             margin-top: 0;
-            align-self: flex-start; /* Alinea el subtítulo a la izquierda */
-            /* Elimina espacio superior para acercarlo al título */
+            align-self: flex-start; 
             margin-left: 50px;
             margin-bottom: -30px;
-            /* Espacio entre el subtítulo y los botones */
         }
+    */
     }
 
     .content {
@@ -54,7 +53,7 @@
         flex-direction: column;
         gap: 10px;
         width: 100%;
-        max-width: 800px;
+        max-width: 500px;
         align-items: center;
         margin-top: 50px;
         /* Espacio encima de los botones */
@@ -64,12 +63,14 @@
         .consult-button {
             width: 100%;
             padding: 15px;
-            font-size: 18px;
+            font-size: 30px;
             border: 1px solid gray;
             border-radius: 8px;
             cursor: pointer;
             background-color: #f9f9f9;
             transition: background-color 0.3s;
+            color: #555;
+            font-weight: bold;
 
             &:hover {
                 background-color: #ececec;
