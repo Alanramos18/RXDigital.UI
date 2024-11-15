@@ -1,0 +1,85 @@
+/////////////////////////////////ESTILO DE LOS BOTONES/////////////////////////////////
+//Recortar que al usarlo deben cambiar el nombre .nombre(nombre de su clase boton)
+.footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  //max-width: 900px; //depende de la pantalla va o no
+  //margin-top: 100px; //depende de la pantalla va o no
+
+  .logout-button {
+    background-color: #FF5252;
+    color: white;
+    border: 2px solid #f41a1a;
+    border-radius: 8px;
+    padding: 12px 25px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+
+    &:hover {
+      background-color: #E53935;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .back-button {
+    background-color: #4CAF50;
+    color: white;
+    border: 2px solid #388E3C;
+    border-radius: 8px;
+    padding: 12px 25px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+
+    &:hover {
+      background-color: #45A049;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+//////////////////////NO ES DEL TODO LO MISMO LOS MAGIN 
+h1 {//TITULO
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0px;
+  /* Ajusta este valor para bajar el subtítulo */
+  margin-bottom: 20px;
+  /* Espacio entre el subtítulo y los botones */
+}
+
+h2 {//SUBTITULO
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 0;
+  align-self: flex-start; /* Alinea el subtítulo a la izquierda */
+  /* Elimina espacio superior para acercarlo al título */
+  margin-left: 50px;
+  margin-bottom: -30px;
+  /* Espacio entre el subtítulo y los botones */
+}
+
+
+///boton azull
+.back-button {
+  background-color: #1171d7;
+  color: white;
+  border: 2px solid #0e15cd;
+  border-radius: 8px;
+  padding: 12px 25px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  margin-left: auto;
+
+  &:hover {
+    background-color: #1171d7;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+  }
+}

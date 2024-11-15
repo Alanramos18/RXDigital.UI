@@ -1,20 +1,19 @@
 <app-encabezado></app-encabezado>
 
-<div class="volver-container">
-    <button class="volver-btn" (click)="volver()">Volver</button>
-</div>
+
 <div class="exportar-container">
     <div class="export-box">
         <h2>Exportar informe</h2>
         <div class="form-group">
-            <label for="export-format">Formato de exportación</label>
-            <select id="export-format" [(ngModel)]="selectedFormat">
-                <option *ngFor="let format of formats" [value]="format">{{ format }}</option>
-            </select>
+            <label for="export-format">Formato de exportación: PDF</label>
         </div>
         <div class="buttons">
             <button class="accept-btn" (click)="exportar()">Aceptar</button>
             <button class="cancel-btn" (click)="cancelar()">Cancelar</button>
         </div>
     </div>
+</div>
+
+<div class="volver-container">
+    <button class="volver-btn" (click)="volver()">Volver al panel de consulta</button>
 </div>
