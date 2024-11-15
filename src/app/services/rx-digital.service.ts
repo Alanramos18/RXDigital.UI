@@ -8,6 +8,7 @@ import { Medicamento } from '../models/medicamento';
 import { RecetaNueva } from '../models/receta-nueva';
 import { ObraSocial } from '../models/obraSocial';
 import { GetPrescriptionsPharmaceuticalProc } from '../models/getPrescriptionsPharmaceuticalProc';
+import { Register } from '../models/register';
 
 
 
@@ -25,6 +26,12 @@ export class RxDigitalService {
     const body = { email, password };
 
     return this.http.post(url, body);
+  }
+
+  register(user: Register): Observable<any> {
+    const url = `${ this.apiUrl }/login/register`;
+
+    return this.http.post(url, user);
   }
 
   //////////////////////// PACIENTES ////////////////////////
@@ -96,5 +103,11 @@ export class RxDigitalService {
     const url = `${this.apiUrl}/Pharmaceutical/get-presciption-info/${rxCode}`;
 
     return this.http.get<GetPrescriptionsPharmaceuticalProc>(url);
-  } 
+  }
+  
+  processRx(rxCode: string, isAccepted: boolean): Observable<any> {
+    const url = `${this.apiUrl}/Pharmaceutical/rx/${rxCode}&isAccepted${isAccepted}`;
+
+    return this.http.post(url, null);
+  }
 }

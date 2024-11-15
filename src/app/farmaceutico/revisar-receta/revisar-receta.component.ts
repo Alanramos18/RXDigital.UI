@@ -9,6 +9,8 @@ import { Subscription } from 'rxjs';
 import { RxDigitalService } from '../../services/rx-digital.service';
 import { RxInfo } from '../../models/RxInfo';
 import { MedicineInfo } from '../../models/medicineInfo';
+import { BlobOptions } from 'buffer';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-revisar-receta',
@@ -24,7 +26,7 @@ export class RevisarRecetaComponent implements OnInit, OnDestroy {
   rxInfo: RxInfo;
   medicines: MedicineInfo[];
 
-  constructor(private rxService: RxDigitalService, private activatedRoute: ActivatedRoute, private location: Location) {}
+  constructor(private rxService: RxDigitalService, public dialog: MatDialog, private activatedRoute: ActivatedRoute, private location: Location) {}
 
   ngOnInit(): void {
     this.subs.add(this.activatedRoute.params.subscribe({
@@ -40,13 +42,42 @@ export class RevisarRecetaComponent implements OnInit, OnDestroy {
     }));
   }
 
-  aceptarReceta() {
-    this.mostrarMsjAceptar = true;
+  async aceptarReceta() {
+    var res = await this.processRx(true);
     //this.router.navigate(['/buscar-receta']);
   }
 
   rechazarReceta() {
+    this.processRx(false);
     // this.router.navigate(['/motivo-rechazo']);
+  }
+
+  openAceptarDialog() {
+    const dialogRef = this.dialog.open(MsjAceptarComponent, {
+      width: '400px'
+    });
+
+    setTimeout(() => {
+      dialogRef.close();
+      this.buscarOtraReceta();  // Navega a la ruta especificada
+    }, 3000);  // Espera el tiempo especificado antes de redirigir
+  }
+
+  // openRechazarDialog() {
+
+  // }
+
+  processRx(isAccepted: boolean): Promise<boolean> {
+    return new Promise((resolve) => {
+      this.subs.add(this.rxService.processRx(this.rxCode, isAccepted).subscribe({
+        next: (info) => { 
+          resolve(true);
+        },
+        error: (err) => {
+          resolve(false);
+        }
+      }))
+    });
   }
 
   buscarOtraReceta() {

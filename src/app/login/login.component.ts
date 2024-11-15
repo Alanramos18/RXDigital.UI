@@ -37,7 +37,7 @@ export class LoginComponent {
 
       switch(Number(decodedToken['RoleId'])) {
         case Roles.Admin:
-          this.router.navigate(['/asdasdasdas']);
+          this.router.navigate(['/inicio-admin']);
           break;
 
         case Roles.Medico:
@@ -89,11 +89,12 @@ export class LoginComponent {
     //   }
     // });
   }
+
   register(){
-    this.router.navigate(['/buscar-paciente']);
+    this.router.navigate(['/registrate']);
   }
+
   recuperarCuenta(){
     this.router.navigate(['/buscar-paciente']);
-  }
-  
+  } 
 }

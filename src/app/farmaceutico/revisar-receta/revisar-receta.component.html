@@ -74,11 +74,3 @@
     <button style="background-color: #f44336;" (click)="rechazarReceta()">Rechazar receta</button>
     <button style="background-color: #008cba;" (click)="buscarOtraReceta()">Buscar otra receta</button>
 </div>
-
-<!-- Mostrar mensaje de aceptación solo cuando sea necesario -->
-<app-msj-aceptar 
-  *ngIf="mostrarMsjAceptar"
-  mensaje="¡Receta aceptada correctamente!"
-  redireccion="/buscar-receta"
-  [delay]="3000">
-</app-msj-aceptar>
