@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { EncabezadoComponent } from '../../../../encabezado/encabezado.component';
+import { EncabezadoComponent } from '../../../../shared/encabezado/encabezado.component';
 import { Router } from '@angular/router';
 
 interface Usuario {

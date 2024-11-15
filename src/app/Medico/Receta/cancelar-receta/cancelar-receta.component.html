@@ -2,12 +2,7 @@
     <h2>Mensaje</h2>
     <p>¿Está seguro de que quiere cancelar esta receta?</p>
     <div class="botones">
-      <button style="background-color: #4CAF50;" class="boton" (click)="confirmCancel()">Sí, seguro</button>
-      <button style="background-color: #f44336;" class="boton" (click)="closeModal()">No, cancelar</button>
+      <button style="background-color: #4CAF50;" class="boton" (click)="close(true)">Sí</button>
+      <button style="background-color: #f44336;" class="boton" (click)="close(false)">No</button>
     </div>
 </app-msj-emergente>
-
-<!-- Aquí usamos el selector del componente EmitirRecetaComponent -->
-<div fondo-difuminado>
-  <app-emitir-receta></app-emitir-receta>
-</div>

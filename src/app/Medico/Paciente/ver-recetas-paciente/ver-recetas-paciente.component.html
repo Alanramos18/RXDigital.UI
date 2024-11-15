@@ -15,7 +15,7 @@
         </div>
         <div class="patient-actions">
           <button class="btn-view-details" (click)="verDetallePaciente()">📄</button>
-          <button class="btn-edit">✏️</button>
+          <button class="btn-edit" (click)="modificarPaciente()">✏️</button>
           <button class="btn-delete" (click)="openConfirmDialog()">🗑️</button>
         </div>
 
@@ -52,7 +52,7 @@
             <td>
               <div class = 'receta-actions'>
                 <button class="btn-edit" (click)="modificarReceta()">✏️</button>
-                <button class="btn-delete" (click)="eliminarReceta()">🗑️</button>
+                <button class="btn-delete" (click)="eliminarReceta(receta.prescriptionId)">🗑️</button>
                 <button class="btn-view-details" (click)="verDetalleReceta()">📄</button> 
               </div>
             </td>

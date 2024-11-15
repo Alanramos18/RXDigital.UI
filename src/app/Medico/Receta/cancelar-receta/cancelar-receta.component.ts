@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { EmitirRecetaComponent } from '../emitir-receta/emitir-receta.component';
 import { Router } from '@angular/router';
 import { MsjEmergenteComponent } from '../../../msj-emergente/msj-emergente.component';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-cancelar-receta',
@@ -13,19 +14,9 @@ import { MsjEmergenteComponent } from '../../../msj-emergente/msj-emergente.comp
 })
 export class CancelarRecetaComponent {
 
-  constructor(private router: Router) {}
+  constructor(public dialogRef: MatDialogRef<CancelarRecetaComponent>){}
 
-  showConfirmation = true; // para mostrar el modal
-
-  confirmCancel() {
-    // Lógica para confirmar la cancelación de la receta
-    console.log('Receta cancelada');
-    this.closeModal();
-    this.router.navigate(['/ver-recetas-paciente']);
-  }
-
-  closeModal() {
-    this.showConfirmation = false;
-    this.router.navigate(['/emitir-receta']);
+  close(flag: boolean) {
+    this.dialogRef.close(flag);
   }
 }
