@@ -11,15 +11,12 @@
     justify-content: flex-start;
     /* Cambiado de space-between a flex-end */
     background-color: white;
-    height: 10vh; //
+    height: 100vh;
     padding: 30px;
     color: black;
 
-    //height: auto;
-
 
     .header {
-       // font-family: Arial, sans-serif; 
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -80,30 +77,5 @@
         }
     }
 
-    .footer {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        //max-width: 100px;
-        margin-top: 0px;
-        
 
-        .back-button {
-            background-color: #1171d7;
-            color: white;
-            border: 2px solid #0e15cd;
-            border-radius: 8px;
-            padding: 12px 25px;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background-color 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-            margin-left: auto;
-
-            &:hover {
-                background-color: #1171d7;
-                box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
-            }
-        }
-    }
 }
