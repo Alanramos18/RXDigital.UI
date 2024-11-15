@@ -15,7 +15,7 @@ import { Receta } from '../../../models/receta';
 @Component({
   selector: 'app-modificar-receta',
   standalone: true,
-  imports: [EncabezadoComponent,CommonModule,FormsModule,SearchModalComponent],
+  imports: [EncabezadoComponent,CommonModule,FormsModule, SearchModalComponent],
   templateUrl: './modificar-receta.component.html',
   styleUrl: './modificar-receta.component.scss'
 })
