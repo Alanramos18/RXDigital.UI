@@ -7,29 +7,24 @@
     <div class="formulario">
       <div class="campo">
         <label for="firstName">Nombres: *</label>
-        <br>
         <input type="text" id="patientId" [(ngModel)]="paciente.nombre" name="nombre" />
       </div>
       <div class="campo">
         <label for="lastName">Apellidos: *</label>
-        <br>
         <input type="text" id="patientId" [(ngModel)]="paciente.apellido" name="apellido" />
       </div>
       <div class="campo">
         <label for="patientId">DNI: *</label>
-        <br>
         <input type="text" id="patientId" [(ngModel)]="paciente.dni" name="dni" />
       </div>
       <div class="campo">
-        <label for="birthDay">Fecha de Nacimiento: *</label>
-        <br>
+        <label for="birthDay">Fecha de nacimiento: *</label>
         <input type="text" id="patientId" [(ngModel)]="paciente.fechaNacimiento" name="fechaNacimiento" />
-        <!-- <label for="fechaNacimiento">Fecha de nacimiento *</label> -->
-        <!-- <input id="fechaNacimiento" type="date" formControlName="fechaNacimiento" required> -->
+        <!-- <label for="fechaNacimiento">Fecha de nacimiento *</label> 
+        <input id="fechaNacimiento" type="date" formControlName="fechaNacimiento" required>  -->
       </div>
       <div class="campo">
         <label for="gender">Sexo: *</label>
-        <br>
         <input type="text" id="patientId" [(ngModel)]="paciente.genero" name="genero" />
       </div>
       <!-- <div>
@@ -41,39 +36,32 @@
       </div>-->
       <div class="campo">
         <label for="nationality">Nacionalidad: *</label>
-        <br>
         <input type="text" id="patientId" [(ngModel)]="paciente.nacionalidad" name="nacionalidad" />
       </div>
       <div class="campo">
         <label for="address">Dirección: *</label>
-        <br>
         <input type="text" id="patientId" [(ngModel)]="paciente.domicilio" name="domicilio" />
       </div>
 
       <div class="campo">
         <label for="locality">Localidad: *</label>
-        <br>
         <input type="text" id="patientId" [(ngModel)]="paciente.localidad" name="localidad" />
       </div>
       <div class="campo">
         <label for="province">Provincia: *</label>
-        <br>
         <input type="text" id="patientId" [(ngModel)]="paciente.provincia" name="provincia" />
       </div>
       <div class="campo">
         <label for="cellphone">Celular: *</label>
-        <br>
         <input type="text" id="patientId" [(ngModel)]="paciente.celular" name="celular" />
       </div>
 
       <div class="campo">
         <label for="homePhone">Teléfono fijo: </label>
-        <br>
         <input type="text" id="patientId" [(ngModel)]="paciente.telefono" name="telefono" />
       </div>
       <div class="campo">
         <label for="email">E-Mail: *</label>
-        <br>
         <input type="text" id="patientId" [(ngModel)]="paciente.email" name="email" />
       </div>
       <!-- <div class="campo">
@@ -86,18 +74,15 @@
     </div> -->
       <div class="campo">
         <label for="socialNumber">Número de afiliado: *</label>
-        <br>
         <input type="text" id="patientId" [(ngModel)]="paciente.numeroAfiliado" name="numeroAfiliado" />
       </div>
       <div class="campo">
         <label for="isAvailable">Estado de habilitación: *</label>
-        <br>
         <!-- <input>{{ paciente.estado ? 'Sí' : 'No' }}>
       <input type="text" id="patientId" [(ngModel)]="paciente.apellido" /> -->
       </div>
       <div class="campo">
-        <label for="inscriptionDate">Fecha de Inscripción: *</label>
-        <br>
+        <label for="inscriptionDate">Fecha de inscripción: *</label>
         <span>{{ paciente.fechaInscripcion | date: 'mediumDate' }}</span>
       </div>
 
