@@ -1,1 +1,42 @@
 <app-encabezado></app-encabezado>
+
+    <div class="prescription-history">
+        <h1>FILTRAR RECETAS POR FECHA</h1>
+        <div class="fechas">
+            <div class="search-bar">
+                <label>Fecha desde</label>
+                <input type="date" placeholder="Ingrese código de receta" [(ngModel)]="codeFilter"
+                    (input)="filterCodes()">
+            </div>
+            <div class="search-bar">
+                <label>Fecha hasta</label>
+                <input type="date" placeholder="Ingrese código de receta" [(ngModel)]="codeFilter"
+                    (input)="filterCodes()">
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Código receta</th>
+                    <th>Fecha emisión</th>
+                    <th>Nombre del paciente</th>
+                    <th>Recetado por</th>
+                    <th>Estado de receta</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let receta of recetasFiltradas">
+                    <td>{{ receta.prescriptionId }}</td>
+                    <td>{{ receta.fechaEmision | date }}</td>
+                    <td>{{ receta.expirationDate | date }}</td>
+                    <td>{{ receta.diagnostic }}</td>
+                    <td>{{ receta.comentario }}</td>
+
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
