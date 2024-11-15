@@ -45,7 +45,7 @@ export class LoginComponent {
           break;
 
         case Roles.Farmaceutico:
-          this.router.navigate(['/asdadasd']);
+          this.router.navigate(['/buscar-receta']);
           break;
       }
     } catch (error) {

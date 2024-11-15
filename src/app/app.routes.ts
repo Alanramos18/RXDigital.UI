@@ -30,7 +30,7 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path:'ver-recetas-paciente/:id', component: VerRecetasPacienteComponent}, //, canActivate: [authGuard] },
     { path: 'ver-detalle-paciente/:id', component: VerDetallePacienteComponent}, //, canActivate: [authGuard] },
-    { path:'modificar-paciente', component:ModificarPacienteComponent},
+    { path:'modificar-paciente/:id', component: ModificarPacienteComponent},
     { path:'buscar-paciente', component:BuscarPacienteComponent}, //, canActivate: [authGuard] },
     { path:'emitir-receta/:id', component:EmitirRecetaComponent}, //canActivate: [authGuard] },
     { path: 'cancelar-receta', component: CancelarRecetaComponent},// canActivate: [authGuard] },
@@ -40,7 +40,7 @@ export const routes: Routes = [
     { path: 'gestionar-medicamentos', component: GestionarMedicamentosComponent /*, canActivate: [authGuard]*/ },
     { path: 'modifcar-medicamento', component: ModificarMedicamentoComponent /*, canActivate: [authGuard]*/ },
     { path: 'buscar-receta', component: BuscarRecetaComponent}, /*, canActivate: [authGuard]*/
-    { path: 'revisar-receta', component: RevisarRecetaComponent}, /*, canActivate: [authGuard]*/
+    { path: 'revisar-receta/:id', component: RevisarRecetaComponent}, /*, canActivate: [authGuard]*/
     { path: 'agregar-paciente', component: AgregarPacienteComponent /*, canActivate: [authGuard]*/ },
     { path: 'motivo-rechazo', component: MotivoRechazoComponent /*, canActivate: [authGuard]*/ },
     { path: 'modificar-receta', component: ModificarRecetaComponent/*, canActivate: [authGuard]*/ },

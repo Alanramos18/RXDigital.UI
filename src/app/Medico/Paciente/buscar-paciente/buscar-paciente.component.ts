@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RxDigitalService } from '../../../services/rx-digital.service';
 import { RpStateService } from '../../../services/medic.service';
-import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
+import { EncabezadoComponent } from '../../../shared/encabezado/encabezado.component';
 import { Subscription } from 'rxjs';
 import { Medico } from '../../../models/medico';
 

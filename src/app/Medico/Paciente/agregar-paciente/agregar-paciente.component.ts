@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Paciente } from '../../../models/paciente';
 import { ReactiveFormsModule } from '@angular/forms'; // Importa ReactiveFormsModule aquí
-import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
+import { EncabezadoComponent } from '../../../shared/encabezado/encabezado.component';
 import { RxDigitalService } from '../../../services/rx-digital.service';
 import { ObraSocial } from '../../../models/obraSocial';
 import { CommonModule, Location } from '@angular/common';
