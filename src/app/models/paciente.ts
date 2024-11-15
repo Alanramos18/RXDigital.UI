@@ -11,7 +11,7 @@ export class Paciente {
     obraSocialId: number; //id de obra social
     obraSocial: number; //obra social
     planSocial: number; //plan de obra social
-    direccion: string;
+    domicilio: string;
     email: string;
     fechaInscripcion: Date; //fecha de inscripcion
     estado: boolean; //estado de habilitacion

@@ -1,15 +1,16 @@
-import { Component, OnDestroy, OnInit, inject, model } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Receta } from '../../../models/receta';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RxDigitalService } from '../../../services/rx-digital.service';
 import { Paciente } from '../../../models/paciente';
 import { RpStateService } from '../../../services/medic.service';
-import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
+import { EncabezadoComponent } from '../../../shared/encabezado/encabezado.component';
 import { Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../shared/confirm-dialog';
+import { EliminarRecetaComponent } from '../../Receta/eliminar-receta/eliminar-receta.component';
 
 @Component({
   selector: 'app-ver-recetas-paciente',
@@ -70,6 +71,10 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
     this.router.navigate(['/ver-detalle-paciente/' + this.pacienteDni]);
   }
 
+  modificarPaciente(){
+    this.router.navigate(['/modificar-paciente/' + this.pacienteDni]);
+  }
+
   generarReceta() {
     // Implementar la lógica para generar una nueva receta
     this.router.navigate(['/emitir-receta/' + this.pacienteDni]);
@@ -87,10 +92,21 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
     //this.router.navigate(['/modificar-receta']);
   }
 
-  eliminarReceta() {
-    // Implementar la lógica para generar una nueva receta
-    console.log('Eliminar receta');
-    this.router.navigate(['/eliminar-receta']);
+  eliminarReceta(prescriptionCode: string) {
+    const dialogRef = this.dialog.open(EliminarRecetaComponent);
+
+    dialogRef.afterClosed().subscribe({
+      next: (res) => {
+        if (res) {
+          this.subs.add(this.rxService.deletePrescription(prescriptionCode).subscribe({
+            next: x => {
+              window.location.reload();
+            },
+            error: (err) => console.log(err)
+          }));
+        }
+      }
+    });
   }
 
   openConfirmDialog() {

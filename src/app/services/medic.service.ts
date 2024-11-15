@@ -64,6 +64,10 @@ export class RpStateService implements OnDestroy {
     return this.medic$;
   }
 
+  clearMedic() {
+    this.medic$.next(null);
+  }
+
   getPatientInfo(dni: number) {
     if (this.patient$.getValue() === null || this.patient$.getValue().dni !== dni) {
       this.initPatient(dni);

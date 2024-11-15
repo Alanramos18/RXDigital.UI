@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { VerRecetasPacienteComponent } from '../../Paciente/ver-recetas-paciente/ver-recetas-paciente.component';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-eliminar-receta',
@@ -11,21 +12,10 @@ import { VerRecetasPacienteComponent } from '../../Paciente/ver-recetas-paciente
   styleUrl: './eliminar-receta.component.scss'
 })
 export class EliminarRecetaComponent {
-  constructor(private router: Router) {}
+  
+  constructor(public dialogRef: MatDialogRef<EliminarRecetaComponent>){}
 
-  showConfirmation = true; // para mostrar el modal
-
-  confirmCancel() {
-    // Lógica para confirmar la eliminacion de la receta
-    console.log('Receta eliminada');
-    this.closeModal();
-    /// Acá cuando sale del mensaje ya no le tiene que aparecer en
-    /// la lista de recetas la receta eliminada
-    this.router.navigate(['/ver-recetas-paciente']);
-  }
-
-  closeModal() {
-    this.showConfirmation = false;
-    this.router.navigate(['/ver-recetas-paciente']);
+  close(flag: boolean) {
+    this.dialogRef.close(flag);
   }
 }

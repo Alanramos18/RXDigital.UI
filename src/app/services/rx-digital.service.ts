@@ -7,6 +7,7 @@ import { Medico } from '../models/medico';
 import { Medicamento } from '../models/medicamento';
 import { RecetaNueva } from '../models/receta-nueva';
 import { ObraSocial } from '../models/obraSocial';
+import { GetPrescriptionsPharmaceuticalProc } from '../models/getPrescriptionsPharmaceuticalProc';
 
 
 
@@ -26,6 +27,8 @@ export class RxDigitalService {
     return this.http.post(url, body);
   }
 
+  //////////////////////// PACIENTES ////////////////////////
+
   getPatientInfo(patientId: number): Observable<Paciente> {
     const url = `${this.apiUrl}/patient/basicInfo/${patientId}`;
 
@@ -38,29 +41,19 @@ export class RxDigitalService {
     return this.http.post(url, patient);
   }
 
+  deletePatient(dni: number): Observable<any> {
+    const url = `${this.apiUrl}/patient/${dni}`;
+
+    return this.http.delete(url);
+  }
+
+  //////////////////////// RECETAS ////////////////////////
+
   getPrescriptions(patientId: number): Observable<Receta[]> {
     const url = `${this.apiUrl}/patient/prescriptions/${patientId}`;
 
     return this.http.get<Receta[]>(url);
   }
-
-  getMedicInfo(userId: string): Observable<Medico> {
-    const url = `${this.apiUrl}/doctor/getByUserId/${userId}`;
-
-    return this.http.get<Medico>(url);
-  }
-
-  getMedicine(medicineName: string): Observable<Medicamento[]> {
-    const url = `${this.apiUrl}/doctor/searchMedicines?medicineName=${medicineName}`;
-
-    return this.http.get<Medicamento[]>(url);
-  } 
-
-  getSocialWorks(): Observable<ObraSocial[]> {
-    const url = `${this.apiUrl}/patient/getSocialWorks`;
-
-    return this.http.get<ObraSocial[]>(url);
-  } 
 
   emitPrescription(body: RecetaNueva): Observable<number> {
     const url = `${this.apiUrl}/doctor/create-prescription`;
@@ -68,9 +61,40 @@ export class RxDigitalService {
     return this.http.post<number>(url, body);
   } 
 
-  deletePatient(dni: number): Observable<any> {
-    const url = `${this.apiUrl}/patient/${dni}`;
+  deletePrescription(code: string): Observable<any> {
+    const url = `${this.apiUrl}/doctor/delete-prescription/${code}`;
 
     return this.http.delete(url);
   }
+  //////////////////////// MEDICO ////////////////////////
+
+  getMedicInfo(userId: string): Observable<Medico> {
+    const url = `${this.apiUrl}/doctor/getByUserId/${userId}`;
+
+    return this.http.get<Medico>(url);
+  }
+
+  //////////////////////// MEDICAMENTOS ////////////////////////
+
+  getMedicine(medicineName: string): Observable<Medicamento[]> {
+    const url = `${this.apiUrl}/doctor/searchMedicines?medicineName=${medicineName}`;
+
+    return this.http.get<Medicamento[]>(url);
+  } 
+
+  //////////////////////// OBRA SOCIAL ////////////////////////
+
+  getSocialWorks(): Observable<ObraSocial[]> {
+    const url = `${this.apiUrl}/patient/getSocialWorks`;
+
+    return this.http.get<ObraSocial[]>(url);
+  } 
+
+  //////////////////////// FARMACEUTICO ////////////////////////
+
+  getRx(rxCode: string): Observable<GetPrescriptionsPharmaceuticalProc> {
+    const url = `${this.apiUrl}/Pharmaceutical/get-presciption-info/${rxCode}`;
+
+    return this.http.get<GetPrescriptionsPharmaceuticalProc>(url);
+  } 
 }

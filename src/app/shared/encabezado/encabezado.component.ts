@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { RpStateService } from '../services/medic.service';
+import { RpStateService } from '../../services/medic.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -31,6 +31,7 @@ export class EncabezadoComponent implements OnInit, OnDestroy {
 
   cerrarSesion(){
     this.router.navigate(['/login']);
+    sessionStorage.clear();
   }
 
 }

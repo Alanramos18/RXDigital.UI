@@ -6,4 +6,7 @@
     <input type="text" [(ngModel)]="codigoReceta" placeholder="Ingrese el código de receta" maxlength="10" />
     <button (click)="buscarReceta()">Buscar</button>
   </div>
+  <div>
+    <p *ngIf="searchError" style="color: red;">{{ searchError }}</p>
+  </div>
 </div>
