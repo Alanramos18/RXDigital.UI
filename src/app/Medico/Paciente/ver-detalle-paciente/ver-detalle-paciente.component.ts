@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RpStateService } from '../../../services/medic.service';
 import { CommonModule, Location } from '@angular/common';
-import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
+import { EncabezadoComponent } from '../../../shared/encabezado/encabezado.component';
 import { Paciente } from '../../../models/paciente';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';

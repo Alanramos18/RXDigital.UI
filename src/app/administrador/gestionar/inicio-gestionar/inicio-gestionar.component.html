@@ -1,11 +1,16 @@
 <app-encabezado></app-encabezado>
 
 <div class="dashboard">
-    <h1 class="titulo">Panel de Administración</h1>
+    <h1 class="titulo">PANEL DE GESTIÓN</h1>
     
-    <div class="opciones">
-      <button (click)="gestionarUsuarios()">Gestionar Usuarios</button>
-      <button (click)="gestionarMedicamentos()">Gestionar Medicamentos</button>
+    <div class="content">
+      <button class="consult-button" (click)="gestionarUsuarios()">Gestionar Usuarios</button>
+      <button class="consult-button" (click)="gestionarMedicamentos()">Gestionar Medicamentos</button>
     </div>
-  </div>
+
+    <div class="footer">
+      <button class="back-button" (click)="volver()">Volver a inicio</button>
+    </div>
+
+</div>
   

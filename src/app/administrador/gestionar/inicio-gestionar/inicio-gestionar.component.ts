@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
+import { EncabezadoComponent } from '../../../shared/encabezado/encabezado.component';
 
 @Component({
   selector: 'app-inicio-gestionar',
@@ -18,5 +18,9 @@ export class InicioGestionarComponent {
 
   gestionarMedicamentos() {
     this.router.navigate(['/gestionar-medicamentos']);
+  }
+
+  volver(){
+    this.router.navigate(['/inicio-admin']);
   }
 }

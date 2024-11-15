@@ -10,12 +10,12 @@ import { RpStateService } from '../../../services/medic.service';
 import { CommonModule } from '@angular/common';
 import { SearchModalComponent } from '../modal/search-modal.component';
 import { MatDialog } from '@angular/material/dialog';
-import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
+import { EncabezadoComponent } from '../../../shared/encabezado/encabezado.component';
 import { Receta } from '../../../models/receta';
 @Component({
   selector: 'app-modificar-receta',
   standalone: true,
-  imports: [EncabezadoComponent,CommonModule,FormsModule,SearchModalComponent],
+  imports: [EncabezadoComponent,CommonModule,FormsModule, SearchModalComponent],
   templateUrl: './modificar-receta.component.html',
   styleUrl: './modificar-receta.component.scss'
 })

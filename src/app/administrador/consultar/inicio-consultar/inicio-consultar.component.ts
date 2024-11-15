@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
+import { EncabezadoComponent } from '../../../shared/encabezado/encabezado.component';
 
 
 @Component({
@@ -28,7 +28,7 @@ export class InicioConsultarComponent {
 
   volver(): void {
     // Navegar a la ruta anterior
-    this.router.navigate(['/ruta-anterior']);
+    this.router.navigate(['/inicio-admin']);
   }
  
   // Métodos para los botones de consulta (si es necesario agregar lógica específica más adelante)

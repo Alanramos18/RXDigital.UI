@@ -7,11 +7,12 @@ import { RxDigitalService } from '../../../services/rx-digital.service';
 import { Medicamento } from '../../../models/medicamento';
 import { MedicamentoReceta, RecetaNueva } from '../../../models/receta-nueva';
 import { RpStateService } from '../../../services/medic.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { SearchModalComponent } from '../modal/search-modal.component';
 import { MatDialog } from '@angular/material/dialog';
-import { EncabezadoComponent } from '../../../encabezado/encabezado.component';
+import { EncabezadoComponent } from '../../../shared/encabezado/encabezado.component';
 import { Subscription } from 'rxjs';
+import { CancelarRecetaComponent } from '../cancelar-receta/cancelar-receta.component';
 
 @Component({
   selector: 'app-emitir-receta',
@@ -37,7 +38,8 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
     private rxDigitalService: RxDigitalService,
     private stateService: RpStateService,
     public dialog: MatDialog,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private location: Location) {
   }
 
   ngOnInit(): void {
@@ -89,9 +91,17 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
   }
 
   cancelar() {
-    // Lógica para cancelar la operación
-    console.log('Operación cancelada');
-    this.router.navigate(['/cancelar-receta']);
+    const dialogRef = this.dialog.open(CancelarRecetaComponent, {
+      width: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe({
+      next: (flag) => {
+        if (flag) {
+          this.location.back();
+        }
+      }
+    });
   }
 
   onItemSelected(med: Medicamento) {
@@ -104,7 +114,7 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
     this.medicamentos = [];
   }
 
-  openModal() {
+  anadirMedicamento() {
     const dialogRef = this.dialog.open(SearchModalComponent, {
       width: '400px'
     });
