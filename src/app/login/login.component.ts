@@ -37,7 +37,7 @@ export class LoginComponent {
 
       switch(Number(decodedToken['RoleId'])) {
         case Roles.Admin:
-          this.router.navigate(['/asdasdasdas']);
+          this.router.navigate(['/inicio-admin']);
           break;
 
         case Roles.Medico:
