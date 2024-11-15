@@ -25,6 +25,7 @@ import { GestionarUsuariosComponent } from './administrador/gestionar/gestionar-
 import { ExportarInformeComponent } from './administrador/consultar/exportar-informe/exportar-informe.component';
 import { InicioConsultarComponent } from './administrador/consultar/inicio-consultar/inicio-consultar.component';
 import { InicioAdminComponent } from './administrador/inicio-admin/inicio-admin.component';
+import { RecetasFechaComponent } from './administrador/consultar/recetas-fecha/recetas-fecha.component';
 import { TopMedicamentosComponent } from './administrador/consultar/top-medicamentos/top-medicamentos.component';
 import { TopMedicosComponent } from './administrador/consultar/top-medicos/top-medicos.component';
 
@@ -51,6 +52,7 @@ export const routes: Routes = [
     { path: 'exportar-informe', component: ExportarInformeComponent/*, canActivate: [authGuard]*/ },
     { path: 'inicio-consultar', component: InicioConsultarComponent/*, canActivate: [authGuard]*/ },
     { path: 'inicio-admin', component: InicioAdminComponent/*, canActivate: [authGuard]*/ },
+    { path: 'recetas-fecha',component: RecetasFechaComponent},
     { path: 'top-medicamentos', component: TopMedicamentosComponent/*, canActivate: [authGuard]*/ },
     { path: 'top-medicos', component: TopMedicosComponent/*, canActivate: [authGuard]*/ },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
