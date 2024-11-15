@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { RpStateService } from '../services/medic.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-encabezado',
@@ -14,7 +15,7 @@ export class EncabezadoComponent implements OnInit, OnDestroy {
   medicName: string;
   subs = new Subscription;
 
-  constructor(private stateService: RpStateService) {}
+  constructor(private stateService: RpStateService, private router: Router) {}
 
   ngOnInit(): void {
     this.subs.add(this.stateService.getMedicInfo().subscribe({
@@ -27,4 +28,9 @@ export class EncabezadoComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subs.unsubscribe();
   }
+
+  cerrarSesion(){
+    this.router.navigate(['/login']);
+  }
+
 }

@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { EncabezadoComponent } from '../../../../encabezado/encabezado.component';
+import { Router } from '@angular/router';
 
 interface Usuario {
   nombre: string;
@@ -14,11 +16,14 @@ interface Usuario {
 @Component({
   selector: 'app-gestionar-usuarios',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, EncabezadoComponent],
   templateUrl: './gestionar-usuarios.component.html',
   styleUrl: './gestionar-usuarios.component.scss'
 })
 export class GestionarUsuariosComponent {
+
+  constructor(private router: Router) {}
+
   usuariosPendientes: Usuario[] = [
     { nombre: 'Juan', apellido: 'Perez', dni: '23456788', rol: '2', email: 'cuenta1@gmail.com', contrasena: 'hola123', matricula: 'MN1234' },
     { nombre: 'Maria', apellido: 'Lopez', dni: '42567832', rol: '3', email: 'cuenta2@gmail.com', contrasena: 'hola456', matricula: 'MN3455' },
@@ -38,5 +43,9 @@ export class GestionarUsuariosComponent {
     alert(`Usuario ${usuario.nombre} rechazado.`);
     // Luego eliminar el usuario de la lista o actualizar el estado
     this.usuariosPendientes = this.usuariosPendientes.filter(u => u !== usuario);
+  }
+
+  volver(){
+    this.router.navigate(['/inicio-gestionar']);
   }
 }
