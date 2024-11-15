@@ -29,7 +29,8 @@
 
 
     .title {
-      font-size: 40px;
+      font-size: 60px;
+      
       font-weight: bold;
       text-align: center;
       margin-top: 0px;
@@ -39,11 +40,12 @@
 
   .actions {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     gap: 30px;
-    margin-top: 100px;
+    margin-top: 50px;
     /* Aumenta el margen superior para bajar los botones */
-    margin-bottom: 20px;
+    margin-bottom: 10px;
    
 
     .action-button {
@@ -52,7 +54,7 @@
       border: 2px solid #1b967b;
       border-radius: 8px;
       padding: 15px 40px;
-      font-size: 20px;
+      font-size: 30px;
       cursor: pointer;
       transition: background-color 0.3s, box-shadow 0.3s;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
