@@ -89,11 +89,12 @@ export class LoginComponent {
     //   }
     // });
   }
+
   register(){
-    this.router.navigate(['/buscar-paciente']);
+    this.router.navigate(['/registrate']);
   }
+
   recuperarCuenta(){
     this.router.navigate(['/buscar-paciente']);
-  }
-  
+  } 
 }
