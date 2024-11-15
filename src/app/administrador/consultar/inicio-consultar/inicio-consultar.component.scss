@@ -39,17 +39,16 @@
             margin-bottom: 20px;
             /* Espacio entre el subtítulo y los botones */
         }
-
+/*
         h2 {
             font-size: 25px;
             font-weight: bold;
             margin-top: 0;
-            align-self: flex-start; /* Alinea el subtítulo a la izquierda */
-            /* Elimina espacio superior para acercarlo al título */
+            align-self: flex-start; 
             margin-left: 50px;
             margin-bottom: -30px;
-            /* Espacio entre el subtítulo y los botones */
         }
+    */
     }
 
     .content {
@@ -57,7 +56,7 @@
         flex-direction: column;
         gap: 10px;
         width: 100%;
-        max-width: 800px;
+        max-width: 500px;
         align-items: center;
         margin-top: 50px;
         /* Espacio encima de los botones */
@@ -73,6 +72,8 @@
             cursor: pointer;
             background-color: #f9f9f9;
             transition: background-color 0.3s;
+            color: #555;
+            font-weight: bold;
 
             &:hover {
                 background-color: #ececec;
