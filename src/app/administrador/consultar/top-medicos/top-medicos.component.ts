@@ -15,12 +15,18 @@ export class TopMedicosComponent {
 
   constructor(private router: Router) {}
 
-  numResultados: number = 0;
+  numResultados: number = 0; // Número de resultados ingresado por el usuario
   medicos = [
-    { matricula: '12345', nombre: 'Dr. Juan Pérez', cantidadRecetas: 50 },
-    { matricula: '67890', nombre: 'Dr. Ana Gómez', cantidadRecetas: 40 },
+    { matricula: '12345', nombre: 'Dr. García', cantidadRecetas: 120 },
+    { matricula: '23456', nombre: 'Dra. López', cantidadRecetas: 110 },
+    { matricula: '34567', nombre: 'Dr. Martínez', cantidadRecetas: 95 },
+    { matricula: '45678', nombre: 'Dra. Fernández', cantidadRecetas: 85 },
     // Agrega más médicos según sea necesario
   ];
+
+  get medicosFiltrados() {
+    return this.medicos.slice(0, this.numResultados); // Mostrar solo los primeros 'numResultados' médicos
+  }
 
   exportar() {
     // Lógica para exportar la lista de médicos con más recetas
