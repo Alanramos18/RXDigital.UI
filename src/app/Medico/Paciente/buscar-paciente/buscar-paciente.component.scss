@@ -2,11 +2,10 @@
   
   text-align: center;   
   align-items: center;
+  display: flex;
+  flex-direction: column;
 
 }
-
-
-
 
 .search-container {
   
@@ -36,21 +35,42 @@ button {
   margin-bottom: 70px;
   
 }
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 500px;
+  align-items: center;
+  margin-top: 50px;
+  /* Espacio encima de los botones */
+  margin-bottom: 80px;
+  /* Espacio debajo de los botones */
 
-.agregar-btn {
-  background-color: #21BD43;
-  color: rgb(238, 238, 238);
-  padding: 20px;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 40px;
-  
+  .agregar-btn{
+      width: 100%;
+      padding: 15px;
+      font-size: 30px;
+      border: 1px solid #115713;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #42CE47;
+      transition: background-color 0.3s;
+      color: white;
+      //font-weight: bold;
+
+      &:hover {
+          background-color: #ececec;
+          color: #555;
+      }
+  }
 }
+
+
 
 .Bienvenida {
   
-    font-size: 40px;
+    font-size: 60px;
     font-weight: 400;
     line-height: 118.7px;
     text-align: center;
@@ -58,4 +78,5 @@ button {
     margin-top: 100px;
    
 }
+
 
