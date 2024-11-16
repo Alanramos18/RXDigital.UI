@@ -12,8 +12,12 @@ import { Router } from '@angular/router';
 export class GestionarMedicamentosComponent {
   constructor(private router: Router) {}
 
+  buscarMedicamento() {
+    this.router.navigate(['/buscar-medicamento']);
+  }
   agregarMedicamento() {
     console.log('Agregar medicamento');
+    this.router.navigate(['/agregar-medicamento']);
   }
 
   modificarMedicamento() {
@@ -24,9 +28,7 @@ export class GestionarMedicamentosComponent {
     console.log('Eliminar medicamento');
   }
 
-  cerrarSesion() {
-    console.log('Cerrar sesión');
-  }
+  
 
   volver() {
     console.log('Volver');

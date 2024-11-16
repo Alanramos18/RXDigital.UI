@@ -43,13 +43,6 @@ describe('GestionarMedicamentosComponent', () => {
     expect(component.eliminarMedicamento).toHaveBeenCalled();
   });
 
-  it('should call cerrarSesion when "Cerrar sesión" button is clicked', () => {
-    spyOn(component, 'cerrarSesion');
-    const button = fixture.nativeElement.querySelector('.logout-button');
-    button.click();
-    expect(component.cerrarSesion).toHaveBeenCalled();
-  });
-
   it('should call volver when "Volver" button is clicked', () => {
     spyOn(component, 'volver');
     const button = fixture.nativeElement.querySelector('.back-button');

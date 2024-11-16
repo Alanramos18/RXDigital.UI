@@ -12,6 +12,7 @@ import { VerDetalleRecetaComponent } from './Medico/Receta/ver-detalle-receta/ve
 import { ModificarPacienteComponent } from './Medico/Paciente/modificar-paciente/modificar-paciente.component';
 
 import { GestionarMedicamentosComponent } from './administrador/gestionar/gestionar-m/gestionar-medicamentos/gestionar-medicamentos.component';
+import { BuscarMedicamentoComponent } from './administrador/gestionar/gestionar-m/buscar-medicamento/buscar-medicamento.component';
 import { ModificarMedicamentoComponent } from './administrador/gestionar/gestionar-m/modificar-medicamento/modificar-medicamento.component';
 import { AgregarPacienteComponent } from './Medico/Paciente/agregar-paciente/agregar-paciente.component';
 
@@ -41,6 +42,7 @@ export const routes: Routes = [
     { path: 'eliminar-receta', component: EliminarRecetaComponent},// canActivate: [authGuard] },
     { path: 'ver-detalle-receta', component: VerDetalleRecetaComponent},// canActivate: [authGuard] },
     { path: 'gestionar-medicamentos', component: GestionarMedicamentosComponent /*, canActivate: [authGuard]*/ },
+    { path: 'buscar-medicamento', component: BuscarMedicamentoComponent/*, canActivate: [authGuard]*/ },
     { path: 'modifcar-medicamento', component: ModificarMedicamentoComponent /*, canActivate: [authGuard]*/ },
     { path: 'buscar-receta', component: BuscarRecetaComponent}, /*, canActivate: [authGuard]*/
     { path: 'revisar-receta/:id', component: RevisarRecetaComponent}, /*, canActivate: [authGuard]*/

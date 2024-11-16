@@ -1,0 +1,38 @@
+<app-encabezado></app-encabezado>
+
+<div class="container">
+    <div class="header">
+        <h2 class="title">BÚSQUEDA DE MEDICAMENTO</h2>
+    </div>
+
+    <div class="search-container">
+        <input style="font-size: 25px; width: 500px;" type="text" placeholder="Ingrese nombre del medicamento"
+            [(ngModel)]="searchQuery">
+        <button (click)="buscar()">🔍</button>
+    </div>
+
+    <table>
+        <tr>
+            <th>Nombre Comercial</th>
+            <th>Presentación</th>
+            <th>Concentración</th>
+            <th>Acciones</th>
+        </tr>
+        <tr *ngFor="let med of listaMedicamentos">
+            <td>{{ med.commercialName }}</td>
+            <td>{{ med.presentation }}</td>
+            <td>{{ med.concentration }}</td>
+            <td>
+                <div class='actions'>
+                    <button class="btn-edit" (click)="modificarMedicamento()">✏️</button>
+                    <button class="btn-delete" (click)="eliminarMedicamento()">🗑️</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <div class="footer">
+        <button class="back-button" (click)="volver()">Volver al panel de gestión de medicamentos</button>
+    </div>
+
+</div>

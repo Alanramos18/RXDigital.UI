@@ -1,19 +1,18 @@
 <app-encabezado></app-encabezado>
 
-
 <div class="container">
   <div class="header">
-    <h1 class="title">GESTIONAR MEDICAMENTOS</h1>
+    <h1 class="title">GESTIÓN DE MEDICAMENTOS</h1>
   </div>
 
-  <div class="actions">
-    <button class="action-button" (click)="agregarMedicamento()">Agregar</button>
-    <button class="action-button" (click)="modificarMedicamento()">Modificar</button>
-    <button class="action-button" (click)="eliminarMedicamento()">Eliminar</button>
+  <div class="content">
+    <button class="consult-button" (click)="agregarMedicamento()">Agregar nuevo medicamento</button>
+    <button class="consult-button" (click)="buscarMedicamento()">Buscar medicamento</button>
   </div>
 
   <div class="footer">
     <button class="back-button" (click)="volver()">Volver al panel de gestión</button>
   </div>
+
 </div>
 
