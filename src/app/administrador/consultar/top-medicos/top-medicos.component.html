@@ -5,28 +5,28 @@
     <h2>MÉDICOS CON MÁS RECETAS</h2>
 
     <div class="subtitulo-tabla">
-    <div class="formulario">
-        <label for="numResultados">Ingrese número de resultados:</label>
-        <input id="numResultados" type="number" [(ngModel)]="numResultados" placeholder="n°" />
-    </div>
+        <div class="formulario">
+            <label for="numResultados">Ingrese número de resultados:</label>
+            <input id="numResultados" type="number" [(ngModel)]="numResultados" placeholder="n°" />
+        </div>
 
-    <table class="tabla-medicos">
-        <thead>
-            <tr>
-                <th>Número de matrícula</th>
-                <th>Nombre médico</th>
-                <th>Cantidad de recetas</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let medico of medicosFiltrados">
-                <td>{{ medico.matricula }}</td>
-                <td>{{ medico.nombre }}</td>
-                <td>{{ medico.cantidadRecetas }}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+        <table class="tabla-medicos">
+            <thead>
+                <tr>
+                    <th>Número de matrícula</th>
+                    <th>Nombre médico</th>
+                    <th>Cantidad de recetas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let medico of medicosFiltrados">
+                    <td>{{ medico.matricula }}</td>
+                    <td>{{ medico.nombre }}</td>
+                    <td>{{ medico.cantidadRecetas }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <footer class="footer">
         <button class="boton-exportar" (click)="exportar()">Exportar</button>
