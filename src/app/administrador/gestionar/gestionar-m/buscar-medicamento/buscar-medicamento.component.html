@@ -11,24 +11,28 @@
         <button (click)="buscar()">🔍</button>
     </div>
 
-    <table>
-        <tr>
-            <th>Nombre Comercial</th>
-            <th>Presentación</th>
-            <th>Concentración</th>
-            <th>Acciones</th>
-        </tr>
-        <tr *ngFor="let med of listaMedicamentos">
-            <td>{{ med.commercialName }}</td>
-            <td>{{ med.presentation }}</td>
-            <td>{{ med.concentration }}</td>
-            <td>
-                <div class='actions'>
-                    <button class="btn-edit" (click)="modificarMedicamento()">✏️</button>
-                    <button class="btn-delete" (click)="eliminarMedicamento()">🗑️</button>
-                </div>
-            </td>
-        </tr>
+    <table class="tabla-medicamentos">
+        <thead>
+            <tr>
+                <th>Nombre Comercial</th>
+                <th>Presentación</th>
+                <th>Concentración</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let med of listaMedicamentos">
+                <td>{{ med.commercialName }}</td>
+                <td>{{ med.presentation }}</td>
+                <td>{{ med.concentration }}</td>
+                <td>
+                    <div class='actions'>
+                        <button class="btn-edit" (click)="modificarMedicamento()">✏️</button>
+                        <button class="btn-delete" (click)="eliminarMedicamento()">🗑️</button> 
+                    </div>
+                </td>
+            </tr>
+        </tbody>
     </table>
 
     <div class="footer">

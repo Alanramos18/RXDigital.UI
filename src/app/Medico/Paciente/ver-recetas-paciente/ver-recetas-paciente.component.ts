@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../shared/confirm-dialog';
 import { EliminarRecetaComponent } from '../../Receta/eliminar-receta/eliminar-receta.component';
-
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-ver-recetas-paciente',
   standalone: true,
@@ -110,7 +110,12 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
   }
 
   openConfirmDialog() {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+    const data = {
+    title:'ELIMINAR PACIENTE', 
+    message:'¿Quieres eliminar al paciente? ¡Se eliminarán todas sus recetas!' };
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {data});
+
 
     dialogRef.afterClosed().subscribe({
       next: (res) => {

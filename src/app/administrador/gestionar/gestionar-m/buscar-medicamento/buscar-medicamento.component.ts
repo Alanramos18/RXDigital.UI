@@ -1,27 +1,34 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { EncabezadoComponent } from '../../../../shared/encabezado/encabezado.component';
-import { CommonModule } from '@angular/common';
-import { Medicamento } from '../../../../models/medicamento';
 import { Router } from '@angular/router';
+import { Medicamento } from '../../../../models/medicamento';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog';
 
 @Component({
   selector: 'app-buscar-medicamento',
   standalone: true,
-  imports: [FormsModule, EncabezadoComponent, CommonModule],
+  imports: [EncabezadoComponent,FormsModule, CommonModule],
   templateUrl: './buscar-medicamento.component.html',
   styleUrl: './buscar-medicamento.component.scss'
 })
 export class BuscarMedicamentoComponent {
-  constructor(private router: Router) {}
+
+  constructor(private router: Router, private dialog:MatDialog) {}
+
   searchQuery: string = '';
-  listaMedicamentos: Medicamento[] = [];
-  // listaMedicamentos = [
-  //   { commercialName: 'Paracetamol', presentation: 'Tabletas', concentration: 500 },
-  //   { commercialName: 'Tafirol', presentation: 'Comprimidos', concentration: 200 },
-  //   { commercialName: 'Bentiolitos', presentation: 'Tabletas', concentration: 300 },
-  //   { commercialName: 'aaaaaa', presentation: 'Comprimidos', concentration: 85 },
-  // ];
+  
+
+  
+  listaMedicamentos = [
+    { commercialName: 'Paracetamol', presentation: 'Tabletas', concentration: 500 },
+    { commercialName: 'Tafirol', presentation: 'Comprimidos', concentration: 200 },
+    { commercialName: 'Bentiolitos', presentation: 'Tabletas', concentration: 300 },
+    { commercialName: 'aaaaaa', presentation: 'Comprimidos', concentration: 85 },
+  ];
+  
   buscar(){
     /// realizar busqueda de medicamento
   }
@@ -31,6 +38,8 @@ export class BuscarMedicamentoComponent {
   }
 
   eliminarMedicamento(){
+    const dialoRef = this.dialog.open(ConfirmDialogComponent);
+
 
   }
 
@@ -38,4 +47,5 @@ export class BuscarMedicamentoComponent {
     console.log('Volver');
     this.router.navigate(['/gestionar-medicamentos']);
   }
+
 }
