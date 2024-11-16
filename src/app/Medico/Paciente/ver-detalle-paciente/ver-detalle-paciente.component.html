@@ -20,7 +20,7 @@
         <span>{{ paciente.dni }}</span>
       </div>
       <div class="campo">
-        <label for="birthDay">Fecha de Nacimiento:</label>
+        <label for="birthDay">Fecha de nacimiento:</label>
         <br>
         <span>{{ paciente.fechaNacimiento | date: 'mediumDate' }}</span>
       </div>
@@ -35,7 +35,7 @@
         <span>{{ paciente.nacionalidad}}</span>
       </div>
       <div class="campo">
-        <label for="address">Direccion:</label>
+        <label for="address">Dirección:</label>
         <br>
         <span>{{ paciente.domicilio}}</span>
       </div>
@@ -57,7 +57,7 @@
       </div>
 
       <div class="campo">
-        <label for="homePhone">Telefono fijo:</label>
+        <label for="homePhone">Teléfono fijo:</label>
         <br>
         <span>{{ paciente.telefono}}</span>
       </div>
@@ -80,12 +80,12 @@
         <span>{{ paciente.numeroAfiliado }}</span>
       </div>
       <div class="campo">
-        <label for="isAvailable">Estado de habilitacion:</label>
+        <label for="isAvailable">Estado de habilitación:</label>
         <br>
         <span>{{ paciente.estado ? 'Sí' : 'No' }}</span>
       </div>
       <div class="campo">
-        <label for="inscriptionDate">Fecha de Inscripción:</label>
+        <label for="inscriptionDate">Fecha de inscripción:</label>
         <br>
         <span>{{ paciente.fechaInscripcion | date: 'mediumDate' }}</span>
       </div>
