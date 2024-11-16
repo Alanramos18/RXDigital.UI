@@ -1,1 +1,40 @@
 <app-encabezado></app-encabezado>
+
+
+<div class="medicamentos-container">
+    <h2>MEDICAMENTOS MÁS RECETADOS</h2>
+
+    <div class="subtitulo-tabla">
+        <div class="formulario">
+            <label for="numResultados">Ingrese número de resultados:</label>
+            <input id="numResultados" type="number" [(ngModel)]="numResultados" placeholder="n°" />
+        </div>
+
+        <table class="tabla-medicos">
+            <thead>
+                <tr>
+                    <th>Id medicamento</th>
+                    <th>Nombre comercial</th>
+                    <th>Presentación</th>
+                    <th>Concentración</th>
+                    <th>Indicaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let medicamento of medicamentosFiltrados">
+                    <td>{{ medicamento.medicineId }}</td>
+                    <td>{{ medicamento.commercialName }}</td>
+                    <td>{{ medicamento.presentation }}</td>
+                    <td>{{ medicamento.concentration }}</td>
+                    <td>{{ medicamento.indications | date }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer class="footer">
+        <button class="boton-exportar" (click)="exportar()">Exportar</button>
+        <button class="back-button" (click)="volver()">Volver al panel de consulta</button>
+    </footer>
+
+</div>
