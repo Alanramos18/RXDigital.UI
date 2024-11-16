@@ -15,7 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-revisar-receta',
   standalone: true,
-  imports: [EncabezadoComponent, DetalleRecetaComponent, MsjAceptarComponent, CommonModule, FormsModule],
+  imports: [EncabezadoComponent, CommonModule, FormsModule],
   templateUrl: './revisar-receta.component.html',
   styleUrl: './revisar-receta.component.scss'
 })

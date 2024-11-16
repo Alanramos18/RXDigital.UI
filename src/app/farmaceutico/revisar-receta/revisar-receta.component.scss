@@ -1,18 +1,47 @@
   .botones {
     display: flex;
     gap: 10px;
-    margin-top: 20px;
-    margin-bottom: 50px;
+    margin-top: 15px;
+    margin-bottom: 10px;
     justify-content: center;
+    padding-bottom: 10px;
 
     button {
         padding: 10px 20px;
-        margin-top: 50px;
+        
         font-size: 25px;
         color: #fff;
         cursor: pointer;
         border-radius: 4px;
+
+        
     }
+    .aceptar{
+      background-color: #4CAF50;
+      border: 2px solid #388E3C;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+
+
+    }
+    .rechazar{
+      background-color: #FF5252;
+      border: 2px solid #f41a1a;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+
+      
+    }
+    .buscar{
+
+      background-color: #1171d7;
+      border: 2px solid #0e15cd;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+
+
+    }
+    
   }
 
   .detalle-receta {
