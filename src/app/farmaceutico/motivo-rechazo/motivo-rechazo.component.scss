@@ -18,7 +18,7 @@ textarea {
 
 .botones {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     width: 400px;
 
     button {
@@ -30,4 +30,23 @@ textarea {
         font-size: 25px;
         cursor: pointer;
     }
+
+    .conRechazo {
+        background-color: #4CAF50;
+        border: 2px solid #388E3C;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+
+
+    }
+
+    .cancelar {
+        background-color: #FF5252;
+        border: 2px solid #f41a1a;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+
+
+    }
+
 }

@@ -10,6 +10,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './search-modal.component.html',
   standalone: true,
   imports: [FormsModule, CommonModule],
+  styleUrl:'./search-modal.component.scss'
+
 })
 export class SearchModalComponent {
   searchQuery: string = '';

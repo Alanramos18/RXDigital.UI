@@ -116,7 +116,8 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
 
   anadirMedicamento() {
     const dialogRef = this.dialog.open(SearchModalComponent, {
-      width: '400px'
+      width: '600px',
+      height:'400px'
     });
 
     dialogRef.afterClosed().subscribe({
