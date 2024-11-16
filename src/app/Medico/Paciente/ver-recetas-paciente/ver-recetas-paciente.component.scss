@@ -69,6 +69,7 @@
       td {
         padding: 10px;
         border: 1px solid #ccc;
+        font-size: 20px;
       }
 
       th {
@@ -87,6 +88,8 @@
         button {
           margin-left: 10px;
           cursor: pointer;
+
+          
         }
       }
     }
@@ -94,15 +97,25 @@
     .generate-recipe {
       display: block;
       margin: 20px auto;
-      padding: 10px 20px;
-      background-color: #28a745;
+      padding: 12px 25px;
+      background-color: #4CAF50;
+      border: 2px solid #388E3C;
       color: #fff;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
-      font-size: 22px;
+      font-size: 20px;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+      &:hover {
+        background-color: #4CAF50;
+      }
+
     }
+    
+    
   }
+  
 }
 
 .datos-paciente {
