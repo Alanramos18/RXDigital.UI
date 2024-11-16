@@ -3,6 +3,7 @@ import { EncabezadoComponent } from '../../../shared/encabezado/encabezado.compo
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Receta } from '../../../models/receta';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-recetas-fecha',
@@ -12,11 +13,23 @@ import { Receta } from '../../../models/receta';
   styleUrl: './recetas-fecha.component.scss'
 })
 export class RecetasFechaComponent {
+  constructor(private router: Router) {}
 
   recetas: Receta[];
   recetasFiltradas: Receta[];
   codeFilter = "";
 
   filterCodes(){}
+
+  exportar() {
+    // Lógica para exportar la lista de médicos con más recetas
+    this.router.navigate(['/exportar-informe']);
+  }
+
+  volver() {
+    // Lógica para volver al panel de consulta
+    // Por ejemplo, usando el router para navegar a otra ruta
+    this.router.navigate(['/inicio-consultar']);
+  }
 
 }
