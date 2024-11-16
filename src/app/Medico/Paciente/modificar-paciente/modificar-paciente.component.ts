@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Paciente } from '../../../models/paciente';
 import { CommonModule, Location } from '@angular/common';
 import { EncabezadoComponent } from "../../../shared/encabezado/encabezado.component";
@@ -14,7 +14,8 @@ import { ActivatedRoute } from '@angular/router';
   imports: [
     FormsModule,
     CommonModule,
-    EncabezadoComponent
+    EncabezadoComponent,
+    ReactiveFormsModule,
 ],
   styleUrls: ['./modificar-paciente.component.scss']
 })
