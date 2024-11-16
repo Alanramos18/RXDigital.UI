@@ -39,6 +39,7 @@
             <th>Fecha de vencimiento</th>
             <th>Diagnóstico</th>
             <th>Comentario</th>
+            <!-- <th>Estado</th> -->
             <th>Acciones</th>
           </tr>
         </thead>
@@ -49,12 +50,35 @@
             <td>{{ receta.expirationDate | date }}</td>
             <td>{{ receta.diagnostic }}</td>
             <td>{{ receta.comentario }}</td>
+            <!-- <td>{{ receta.estado }}</td> -->
             <td>
               <div class = 'receta-actions'>
                 <button class="btn-edit" (click)="modificarReceta()">✏️</button>
                 <button class="btn-delete" (click)="eliminarReceta(receta.prescriptionId)">🗑️</button>
                 <button class="btn-view-details" (click)="verDetalleReceta()">📄</button> 
               </div>
+
+              <!-- <div class='receta-actions'>
+                <button 
+                  *ngIf="receta.estado === 'emitida'" 
+                  class="btn-edit" 
+                  (click)="modificarReceta()">
+                  ✏️
+                </button>
+                <button 
+                  *ngIf="receta.estado === 'emitida' || receta.estado === 'aceptada' || receta.estado === 'rechazada'" 
+                  class="btn-delete" 
+                  (click)="eliminarReceta(receta.prescriptionId)">
+                  🗑️
+                </button>
+                <button 
+                  *ngIf="true" 
+                  class="btn-view-details" 
+                  (click)="verDetalleReceta(receta.prescriptionId)">
+                  📄
+                </button>
+              </div> -->
+
             </td>
           </tr>
         </tbody>
