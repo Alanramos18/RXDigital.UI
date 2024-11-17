@@ -18,6 +18,7 @@ export class RecetasFechaComponent {
   recetas: Receta[];
   recetasFiltradas: Receta[];
   codeFilter = "";
+  cantRecetas: number;
 
   filterCodes(){}
 

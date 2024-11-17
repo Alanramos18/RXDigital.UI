@@ -5,12 +5,12 @@
         <div class="fechas">
             <div class="search-bar">
                 <label>Fecha desde</label>
-                <input type="date" placeholder="Ingrese código de receta" [(ngModel)]="codeFilter"
+                <input type="date"  [(ngModel)]="codeFilter"
                     (input)="filterCodes()">
             </div>
             <div class="search-bar">
                 <label>Fecha hasta</label>
-                <input type="date" placeholder="Ingrese código de receta" [(ngModel)]="codeFilter"
+                <input type="date" [(ngModel)]="codeFilter"
                     (input)="filterCodes()">
             </div>
         </div>
@@ -37,6 +37,11 @@
                 </tr>
             </tbody>
         </table>
+        <div>
+            <label>Cantidad de recetas filtradas:</label>
+            <span>{{ cantRecetas }}</span>
+        </div>
+        
         <footer class="footer">
             <button class="boton-exportar" (click)="exportar()">Exportar</button>
             <button class="back-button" (click)="volver()">Volver al panel de consulta</button>
