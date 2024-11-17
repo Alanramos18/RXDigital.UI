@@ -1,0 +1,27 @@
+<app-encabezado></app-encabezado>
+
+<div class="modificar-medicamento">
+    <h2>MODIFICAR DATOS DEL MEDICAMENTO</h2>
+   
+     <form [formGroup]="medicamentoForm" (ngSubmit)="onSubmit()">
+      <div class="formulario">
+        <div class="campo">
+          <label for="nombre">Nombre comercial: *</label>
+          <input id="nombre" type="text" formControlName="nombreComercial" required>
+        </div>
+        <div class="campo">
+          <label for="presentacion">Presentación: *</label>
+          <input id="presentacion" type="text" formControlName="presentacion" required>
+        </div>
+        <div class="campo">
+          <label for="concentracion">Concentración: *</label>
+          <input id="concentracion" type="text" formControlName="concentracion" required>
+        </div>
+      </div>
+  
+      <div class="botones">
+        <button type="submit" class="modificar" [disabled]="medicamentoForm.invalid">Aceptar</button>
+        <button type="button" class="cancelar" (click)="onCancel()">Cancelar</button>
+      </div>
+    </form> 
+  </div> 

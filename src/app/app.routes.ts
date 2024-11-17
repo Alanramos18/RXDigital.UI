@@ -30,6 +30,7 @@ import { RecetasFechaComponent } from './administrador/consultar/recetas-fecha/r
 import { TopMedicamentosComponent } from './administrador/consultar/top-medicamentos/top-medicamentos.component';
 import { TopMedicosComponent } from './administrador/consultar/top-medicos/top-medicos.component';
 import { BuscarMedicamentoComponent } from './administrador/gestionar/gestionar-m/buscar-medicamento/buscar-medicamento.component';
+import { AgregarMedicamentoComponent } from './administrador/gestionar/gestionar-m/agregar-medicamento/agregar-medicamento.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -44,6 +45,7 @@ export const routes: Routes = [
     { path: 'ver-detalle-receta', component: VerDetalleRecetaComponent},// canActivate: [authGuard] },
     { path: 'gestionar-medicamentos', component: GestionarMedicamentosComponent /*, canActivate: [authGuard]*/ },
     { path: 'buscar-medicamento',component:BuscarMedicamentoComponent},
+    { path: 'agregar-medicamento',component:AgregarMedicamentoComponent},
     
     { path: 'modificar-medicamento', component: ModificarMedicamentoComponent /*, canActivate: [authGuard]*/ },
     { path: 'buscar-receta', component: BuscarRecetaComponent}, /*, canActivate: [authGuard]*/

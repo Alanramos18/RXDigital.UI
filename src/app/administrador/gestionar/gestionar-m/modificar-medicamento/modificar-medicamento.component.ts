@@ -1,54 +1,47 @@
 import { Component } from '@angular/core';
-
-interface Medicamento {
-  nombre: string;
-  marca: string;
-  formaFarmaceutica: string;
-  dosis: string;
-  loteFabricacion: string;
-  fechaCaducidad: string;
-}
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { EncabezadoComponent } from '../../../../shared/encabezado/encabezado.component';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modificar-medicamento',
   templateUrl: './modificar-medicamento.component.html',
+  standalone: true,
+  imports: [EncabezadoComponent, CommonModule, ReactiveFormsModule],
   styleUrls: ['./modificar-medicamento.component.scss']
 })
 export class ModificarMedicamentoComponent {
-  medicamento: Medicamento = {
-    nombre: '',
-    marca: '',
-    formaFarmaceutica: '',
-    dosis: '',
-    loteFabricacion: '',
-    fechaCaducidad: ''
-  };
+  medicamentoForm: FormGroup;
+  // ///medicamento: Medicamento;
+  
+   constructor(private router: Router, private fb: FormBuilder) {}
 
-  agregarMedicamento() {
-    console.log('Agregar medicamento');
+  ngOnInit(): void {
+    this.medicamentoForm = this.fb.group({
+      nombreComercial: ['Paracetamol', Validators.required], // Valor inicial
+      presentacion: ['Tabletas', Validators.required],       // Valor inicial
+      concentracion: ['500 mg', Validators.required]          // Valor inicial
+    });
   }
 
-  modificarMedicamento() {
-    console.log('Modificar medicamento');
-  }
+   onSubmit(): void {
 
-  eliminarMedicamento() {
-    console.log('Eliminar medicamento');
-  }
+    if (this.medicamentoForm.valid) {
+      const updatedMedicamento = this.medicamentoForm.value;
+      console.log('Medicamento actualizado:', updatedMedicamento);
+      alert('Medicamento actualizado correctamente');
+    }
 
-  guardarCambios() {
-    console.log('Cambios guardados:', this.medicamento);
-  }
+    this.router.navigate(['/buscar-medicamento']);
+    }
+  
 
-  cancelarCambios() {
-    console.log('Cambios cancelados');
-    this.medicamento = {
-      nombre: '',
-      marca: '',
-      formaFarmaceutica: '',
-      dosis: '',
-      loteFabricacion: '',
-      fechaCaducidad: ''
-    };
-  }
+   onCancel(): void {
+  //   // this.medicamentoForm.reset();
+  //   // console.log('Cancelando formulario...');
+  //   ///this.location.back(); ///sale error
+    alert('Modificación cancelada');
+    this.router.navigate(['/buscar-medicamento']);
+   }
 }
