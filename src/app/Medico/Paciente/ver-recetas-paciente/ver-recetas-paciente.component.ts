@@ -112,7 +112,7 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
   openConfirmDialog() {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '600px',
-      height:'200px'
+      height:'300px'
     });
 
     dialogRef.afterClosed().subscribe({

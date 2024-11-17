@@ -15,13 +15,15 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 
   template: `
-    <h2 mat-dialog-title> ELIMINAR MEDICAMENTO</h2>
-    <mat-dialog-content>¿Quiere eliminar el medicamento?</mat-dialog-content>
+  
+    <h2 mat-dialog-title style="text-align: center; font-size: 35px;"> ELIMINAR MEDICAMENTO</h2><br>
+    <mat-dialog-content style="color:black; font-size: 30px; text-align: center;" >¿Quiere eliminar el medicamento?</mat-dialog-content>
     
-    <mat-dialog-actions>
-      <button  style="background-color: green; color:white;" mat-button [mat-dialog-close]="false">Sí</button>
-      <button style="background-color: red;color: white;" mat-button color="warn" [mat-dialog-close]="true">No</button>
+    <mat-dialog-actions style="width: 80% display: flex; justify-content: space-evenly; ">
+      <button  style="background-color: green; color:white; font-size: 25px" mat-button [mat-dialog-close]="false">Sí</button>
+      <button style="background-color: red;color: white; font-size: 25px" mat-button color="warn" [mat-dialog-close]="true">No</button>
     </mat-dialog-actions>
+    
   `,
 
 })
