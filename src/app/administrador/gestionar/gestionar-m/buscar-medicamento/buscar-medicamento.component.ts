@@ -5,7 +5,7 @@ import { Medicamento } from '../../../../models/medicamento';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog';
+import { ElimMedDialogComponent } from '../../../../shared/elimMed-dialog';
 
 @Component({
   selector: 'app-buscar-medicamento',
@@ -34,11 +34,12 @@ export class BuscarMedicamentoComponent {
   }
 
   modificarMedicamento(){
+    this.router.navigate(['/modificar-medicamento']);
 
   }
 
   eliminarMedicamento(){
-    const dialoRef = this.dialog.open(ConfirmDialogComponent);
+    const dialoRef = this.dialog.open(ElimMedDialogComponent);
 
 
   }
