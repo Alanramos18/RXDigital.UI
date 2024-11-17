@@ -39,7 +39,10 @@ export class BuscarMedicamentoComponent {
   }
 
   eliminarMedicamento(){
-    const dialoRef = this.dialog.open(ElimMedDialogComponent);
+    const dialoRef = this.dialog.open(ElimMedDialogComponent, {
+      width: '600px',
+      height:'200px'
+    });
 
 
   }
