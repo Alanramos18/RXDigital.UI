@@ -25,6 +25,7 @@ export class RegistrateComponent implements OnInit, OnDestroy {
  
   ngOnInit(): void {
     this.registrarseForm = this.fb.group({
+      dni: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -66,6 +67,10 @@ export class RegistrateComponent implements OnInit, OnDestroy {
 
    ngOnDestroy(): void {
      this.subs.unsubscribe();
+   }
+
+   volver(){
+    this.router.navigate(['/login']);
    }
 }
 

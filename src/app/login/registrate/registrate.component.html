@@ -1,41 +1,46 @@
 <div class="contenedor">
   <div class="registrate">
-    
+
     <h1>CREAR UNA CUENTA</h1>
-  
+
     <form [formGroup]="registrarseForm" (ngSubmit)="onSubmit()">
-     <div class="formulario">
+      <div class="formulario">
+        <div class="campo">
+          <label for="dni">DNI *</label>
+          <input id="dni" type="text" formControlName="dni" required>
+        </div>
         <div class="campo">
           <label for="nombre">Nombres *</label>
           <input id="nombre" type="text" formControlName="firstName" required>
         </div>
         <div class="campo">
-            <label for="nombre">Apellidos *</label>
-            <input id="apellido" type="text" formControlName="lastName" required>
+          <label for="nombre">Apellidos *</label>
+          <input id="apellido" type="text" formControlName="lastName" required>
         </div>
-        
+
         <div class="campo">
           <label for="email">E-Mail *</label>
           <input id="email" type="email" formControlName="email">
         </div>
         <div class="campo">
-            <label for="password">Contraseña *</label>
-            <input id="password" type="password" formControlName="password">
+          <label for="password">Contraseña *</label>
+          <input id="password" type="password" formControlName="password">
         </div>
 
 
         <div class="campo">
-            <label for="rol">Rol *</label>
-            <select id="rol" formControlName = "roleId"  required>
-              <option value ="">Seleccione un rol</option>
-              <option value ="2">Médico</option>
-              <option value ="3">Farmacéutico</option>
-              <option value ="1">Administrador</option>
-            </select>
+          <label for="rol">Rol *</label>
+          <select id="rol" formControlName="roleId" required>
+            <option value="">Seleccione un rol</option>
+            <option value="2">Médico</option>
+            <option value="3">Farmacéutico</option>
+            <option value="1">Administrador</option>
+          </select>
         </div>
-        <div *ngIf="registrarseForm.get('roleId')?.value === '2' || registrarseForm.get('roleId')?.value === '3'" class="campo">
-            <label for="numMatricula">N° de matricula *</label>
-            <input id="numMatricula" type="number" formControlName="registration">
+        <div *ngIf="registrarseForm.get('roleId')?.value === '2' || registrarseForm.get('roleId')?.value === '3'"
+          class="campo">
+          <label for="numMatricula">N° de matricula *</label>
+          <input id="numMatricula" type="number" formControlName="registration">
         </div>
         <div *ngIf="registrarseForm.get('roleId')?.value === '2'" class="campo">
           <label>Especialidad: *</label>
@@ -45,14 +50,18 @@
             </option>
           </select>
         </div>
+      </div>
 
-     </div>
-        <div class="boton"> 
-            <button type="submit" class="registrate">Registrarse</button>
-        </div>
-       
+      <div class="boton">
+        <button type="submit" class="registrate">Registrarse</button>
+      </div>
+
+      <div class="footer">
+        <button class="back-button" (click)="volver()">Volver</button>
+      </div>
+
     </form>
-    
+
   </div>
-  
-</div> 
+
+</div>
