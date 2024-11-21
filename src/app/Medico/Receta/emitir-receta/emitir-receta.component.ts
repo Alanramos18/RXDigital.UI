@@ -33,6 +33,7 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
   indications: string;
   subs = new Subscription;
   pacienteDni: number;
+  submitted: boolean;
   
   constructor(private router: Router,
     private rxDigitalService: RxDigitalService,
@@ -63,6 +64,12 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
   formaEnvio: string = 'email'; // Valor por defecto
 
   emitirReceta() {
+    // Validar si el diagnóstico está vacío antes de proceder
+    if (!this.diagnostic) {
+      console.log('El diagnóstico es obligatorio');
+      return; 
+    }
+    
     let receta: RecetaNueva = new RecetaNueva();
 
     if (this.formaEnvio === 'whatsapp') {
