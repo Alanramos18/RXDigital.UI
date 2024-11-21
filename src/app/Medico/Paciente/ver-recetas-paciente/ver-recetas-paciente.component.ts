@@ -81,6 +81,10 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
     this.router.navigate(['/emitir-receta/' + this.pacienteDni]);
   }
 
+  mostrarMensajeInhabilitado() {
+    alert('No se puede generar receta porque el paciente está deshabilitado para recibir recetas.');
+  }
+
   verDetalleReceta(codigoReceta: string) {
     this.router.navigate(['/ver-detalle-receta/' + codigoReceta]);
   }

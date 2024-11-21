@@ -13,6 +13,10 @@
           <label for="dni">DNI:</label>
           <span>{{ paciente?.dni }}</span>
         </div>
+        <div class="campo">
+          <label for="estado">Estado de habilitación:</label>
+          <span>{{ paciente?.habilitacion ? 'Habilitado' : 'Deshabilitado' }}</span>
+        </div>
         <div class="patient-actions">
           <button class="btn-view-details" (click)="verDetallePaciente()" title="Ver detalle del paciente">📄</button>
           <button class="btn-edit" (click)="modificarPaciente()" title="Modificar paciente">✏️</button>
@@ -48,17 +52,24 @@
             <td>{{ receta.comentario }}</td>
             <td>{{ receta.estado }}</td>
             <td>
-              <div class = 'receta-actions'>
-                <button *ngIf="receta.estado === 'Emitida'" class="btn-edit" (click)="modificarReceta(receta.codigoReceta)">✏️</button>
-                <button *ngIf="receta.estado === 'Emitida'" class="btn-delete" (click)="eliminarReceta(receta.codigoReceta)">🗑️</button>
-                <button class="btn-view-details" (click)="verDetalleReceta(receta.codigoReceta)">📄</button> 
+              <div class='receta-actions'>
+                <button *ngIf="receta.estado === 'Emitida'" class="btn-edit"
+                  (click)="modificarReceta(receta.codigoReceta)">✏️</button>
+                <button *ngIf="receta.estado === 'Emitida'" class="btn-delete"
+                  (click)="eliminarReceta(receta.codigoReceta)">🗑️</button>
+                <button class="btn-view-details" (click)="verDetalleReceta(receta.codigoReceta)">📄</button>
               </div>
             </td>
           </tr>
         </tbody>
       </table>
 
-      <button class="generate-recipe" (click)="generarReceta()">Generar receta</button>
+      <button class="generate-recipe"
+      [ngClass]="{'inhabilitado': !paciente?.habilitacion}"
+      (click)="paciente?.habilitacion ? generarReceta() : mostrarMensajeInhabilitado()">
+      Generar receta
+      </button>
+      
     </section>
   </main>
 </div>

@@ -109,10 +109,17 @@
       font-size: 20px;
       transition: background-color 0.3s, box-shadow 0.3s;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-      &:hover {
-        background-color: #4CAF50;
-      }
 
+      &.inhabilitado { // Clase aplicada dinámicamente
+        background-color: gray;
+        color: black;
+        cursor: not-allowed; // Cambia el cursor para indicar que no es clickeable
+        opacity: 0.7;
+      }
+    
+      &:hover:not(.inhabilitado) { // Solo permite el hover si no está inhabilitado
+        background-color: #45a049;
+      }
     }
     
     
@@ -143,10 +150,11 @@
     label {
       font-weight: bold;
       margin-right: 10px;
+      font-size: 22px;
     }
 
     span {
-      font-size: 18px;
+      font-size: 22px;
     }
   }
 }
