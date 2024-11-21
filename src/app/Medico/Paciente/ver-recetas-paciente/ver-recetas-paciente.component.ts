@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../shared/confirm-dialog';
 import { EliminarRecetaComponent } from '../../Receta/eliminar-receta/eliminar-receta.component';
+import { debug } from 'console';
 
 @Component({
   selector: 'app-ver-recetas-paciente',
@@ -45,8 +46,8 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
       next: (res) => {
         const codigosUnicos = new Set<string>();
         this.recetas = res.filter((item) => {
-          const isUnique = !codigosUnicos.has(item.prescriptionId);
-          codigosUnicos.add(item.prescriptionId);
+          const isUnique = !codigosUnicos.has(item.codigoReceta);
+          codigosUnicos.add(item.codigoReceta);
           return isUnique;
         });
         this.recetasFiltradas = this.recetas;
@@ -63,7 +64,7 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
 
   filterCodes(): void {
     this.recetasFiltradas = this.recetas.filter(receta =>
-      receta.prescriptionId.toLowerCase().includes(this.codeFilter.toLowerCase())
+      receta.codigoReceta.toLowerCase().includes(this.codeFilter.toLowerCase())
     );
   }
 
@@ -80,16 +81,12 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
     this.router.navigate(['/emitir-receta/' + this.pacienteDni]);
   }
 
-  verDetalleReceta() {
-    // Implementar la lógica para generar una nueva receta
-    console.log('Ver detalle receta');
-    //this.router.navigate(['/ver-detalle-receta']);
+  verDetalleReceta(codigoReceta: string) {
+    this.router.navigate(['/ver-detalle-receta/' + codigoReceta]);
   }
 
-  modificarReceta() {
-    // Implementar la lógica para generar una nueva receta
-    console.log('Modificar receta');
-    //this.router.navigate(['/modificar-receta']);
+  modificarReceta(codigoReceta: string) {
+    this.router.navigate(['/modificar-receta/' + codigoReceta]);
   }
 
   eliminarReceta(prescriptionCode: string) {
@@ -109,7 +106,7 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
     });
   }
 
-  openConfirmDialog() {
+  eliminarPaciente() {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '600px',
       height:'300px'
@@ -118,6 +115,7 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe({
       next: (res) => {
         if (res) {
+          console.log(res);
           this.subs.add(this.rxService.deletePatient(this.pacienteDni).subscribe({
             next: x => {
               this.router.navigate(['buscar-paciente']);

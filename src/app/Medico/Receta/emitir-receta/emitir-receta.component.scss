@@ -128,3 +128,27 @@
   }
   
 }
+
+table {
+  width: 70%;
+  margin-top: 10px;
+  border-collapse: collapse;
+
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid  black;
+    font-size: 25px;
+  }
+
+  th {
+    background-color:  lightgray;
+    text-align: center;
+  }
+  td{
+    max-width: 200px;       // Define el ancho máximo de la celda (ajústalo según tus necesidades)
+    word-wrap: break-word;  // Permite que las palabras largas se ajusten en múltiples líneas
+    white-space: normal;
+    background-color: white;    // Permite que el texto se divida en varias líneas
+  }
+}

@@ -4,11 +4,13 @@ import { Observable } from 'rxjs';
 import { Receta } from '../models/receta';
 import { Paciente } from '../models/paciente';
 import { Medico } from '../models/medico';
-import { Medicamento } from '../models/medicamento';
+import { Medicamento, NuevoMedicamento } from '../models/medicamento';
 import { RecetaNueva } from '../models/receta-nueva';
 import { ObraSocial } from '../models/obraSocial';
 import { GetPrescriptionsPharmaceuticalProc } from '../models/getPrescriptionsPharmaceuticalProc';
 import { Register } from '../models/register';
+import { Especialidad } from '../models/especialidad';
+import { RecetaFiltrada } from '../models/recetaFiltrada';
 
 
 
@@ -32,6 +34,12 @@ export class RxDigitalService {
     const url = `${ this.apiUrl }/login/register`;
 
     return this.http.post(url, user);
+  }
+
+  getSpecialities(): Observable<Especialidad[]> {
+    const url = `${ this.apiUrl }/admin/get-specialities`;
+
+    return this.http.get<Especialidad[]>(url);
   }
 
   //////////////////////// PACIENTES ////////////////////////
@@ -73,6 +81,13 @@ export class RxDigitalService {
 
     return this.http.delete(url);
   }
+
+  filterRxByDate(from: string, to: string): Observable<RecetaFiltrada[]> {
+    const url = `${this.apiUrl}/admin/get-filter-rx?from=${from}&to=${to}`;
+
+    return this.http.get<RecetaFiltrada[]>(url);
+  } 
+
   //////////////////////// MEDICO ////////////////////////
 
   getMedicInfo(userId: string): Observable<Medico> {
@@ -87,6 +102,18 @@ export class RxDigitalService {
     const url = `${this.apiUrl}/doctor/searchMedicines?medicineName=${medicineName}`;
 
     return this.http.get<Medicamento[]>(url);
+  } 
+
+  createMedicine(med: NuevoMedicamento): Observable<any> {
+    const url = `${this.apiUrl}/admin/create-med`;
+
+    return this.http.post(url, med);
+  } 
+
+  updateMedicine(med: NuevoMedicamento): Observable<any> {
+    const url = `${this.apiUrl}/admin/modify-med`;
+
+    return this.http.put(url, med);
   } 
 
   //////////////////////// OBRA SOCIAL ////////////////////////

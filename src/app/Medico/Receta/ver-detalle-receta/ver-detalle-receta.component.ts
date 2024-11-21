@@ -1,8 +1,12 @@
-import { Component} from '@angular/core';
-import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { Component, OnDestroy, OnInit} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommonModule, Location } from '@angular/common';
 import { EncabezadoComponent } from '../../../shared/encabezado/encabezado.component';
 import { DetalleRecetaComponent } from '../../../DetalleReceta/detalle-receta.component';
+import { Subscription } from 'rxjs';
+import { RxInfo } from '../../../models/RxInfo';
+import { MedicineInfo } from '../../../models/medicineInfo';
+import { RxDigitalService } from '../../../services/rx-digital.service';
 
 
 
@@ -14,37 +18,33 @@ import { DetalleRecetaComponent } from '../../../DetalleReceta/detalle-receta.co
   styleUrl: './ver-detalle-receta.component.scss'
 })
 
-export class VerDetalleRecetaComponent {
+export class VerDetalleRecetaComponent implements OnInit, OnDestroy {
+  subs = new Subscription;
+  rxCode: string;
+  rxInfo: RxInfo;
+  medicines: MedicineInfo[];
+  
+  constructor(private router: Router, private rxService: RxDigitalService, private activatedRoute: ActivatedRoute, private location: Location) { }
 
-  constructor(private router: Router) { }
-  paciente = {
-    nombre: 'Juan Pérez',
-    dni: '12345678',
-    obraSocial: 'OSDE'
-  };
-
-  medico = {
-    nombre: 'Dra. María López',
-    especialidad: 'Cardiología',
-    matricula: '4567'
-  };
-
-  receta = {
-    diagnostico: 'Hipertensión arterial',
-    comentarios: 'Tomar el medicamento después de las comidas',
-    formaEnvio: 'Email y WhatsApp',
-    medicamentos: [
-      { nombre: 'Medicamento A', presentacion: 'Tableta', concentracion: '500mg', cantidad: 30, indicaciones: 'Tomar 1 tableta cada 8' },
-      { nombre: 'Medicamento B', presentacion: 'Jarabe', concentracion: '100ml', cantidad: 2, indicaciones: 'Tomar 5ml cada 6 horas' }
-    ],
-    codigo: 'AB125',
-     fechaEmision: '14/09/2024',
-     fechaVencimiento: '14/12/2024'
-  };
-
+  ngOnInit(): void {
+    this.subs.add(this.activatedRoute.params.subscribe({
+      next: (params) => {
+        this.rxCode = params["id"];
+      }
+    }));
+    this.subs.add(this.rxService.getRx(this.rxCode).subscribe({
+      next: (info) => {
+        this.rxInfo = info.rxInfo;
+        this.medicines = info.medicineList;
+      }
+    }));
+  }
 
   volver() {
-    console.log("Volver a la pantalla anterior");
-    this.router.navigate(['/ver-recetas-paciente']);
+    this.location.back();
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }

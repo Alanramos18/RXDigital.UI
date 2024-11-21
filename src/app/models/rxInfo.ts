@@ -10,5 +10,5 @@ export class RxInfo {
     indicaciones: string;
     fechaEmision: Date;
     expiracion: Date; 
-    idEstado: number; 
+    estado: string; 
 }

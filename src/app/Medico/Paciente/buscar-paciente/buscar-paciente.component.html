@@ -9,6 +9,9 @@
       [(ngModel)]="dniPaciente">
     <button (click)="buscarPaciente()">🔍</button>
   </div>
+  <div>
+    <p *ngIf="searchError" style="color: red;">{{ searchError }}</p>
+  </div>
   <div class="content">
     <button class="agregar-btn" (click)="agregarPaciente()">Agregar paciente nuevo</button>
   </div>

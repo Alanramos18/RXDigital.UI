@@ -25,6 +25,7 @@ export class BuscarRecetaComponent implements OnDestroy {
       console.log('Buscando receta con código:', this.codigoReceta);
       this.subs.add(this.rxService.getRx(this.codigoReceta).subscribe({
         next: (info) => {
+          console.log(info);
           this.router.navigate(['revisar-receta/' + this.codigoReceta.toLocaleUpperCase()]);
         },
         error: (err) => {

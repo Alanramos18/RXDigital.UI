@@ -20,8 +20,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     <mat-dialog-content style="color:black; font-size: 20px;text-align: center;">¡Se eliminarán todas sus recetas!</mat-dialog-content>
 
     <mat-dialog-actions style="width: 80% display: flex; justify-content: space-evenly; ">
-      <button  style="background-color: green; color:white; font-size: 25px" mat-button [mat-dialog-close]="false">Sí</button>
-      <button style="background-color: red;color: white; font-size: 25px" mat-button color="warn" [mat-dialog-close]="true">No</button>
+      <button  style="background-color: green; color:white; font-size: 25px" mat-button [mat-dialog-close]="true">Sí</button>
+      <button style="background-color: red;color: white; font-size: 25px" mat-button color="warn" [mat-dialog-close]="false">No</button>
     </mat-dialog-actions>
   `,
 

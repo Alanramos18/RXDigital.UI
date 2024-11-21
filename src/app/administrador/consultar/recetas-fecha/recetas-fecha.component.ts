@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EncabezadoComponent } from '../../../shared/encabezado/encabezado.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Receta } from '../../../models/receta';
 import { Route, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { RxDigitalService } from '../../../services/rx-digital.service';
+import { RecetaFiltrada } from '../../../models/recetaFiltrada';
 
 @Component({
   selector: 'app-recetas-fecha',
@@ -12,15 +15,26 @@ import { Route, Router } from '@angular/router';
   templateUrl: './recetas-fecha.component.html',
   styleUrl: './recetas-fecha.component.scss'
 })
-export class RecetasFechaComponent {
-  constructor(private router: Router) {}
+export class RecetasFechaComponent implements OnDestroy {
+  constructor(private router: Router, private rxDigitalService: RxDigitalService) {}
 
+  subs = new Subscription;
   recetas: Receta[];
-  recetasFiltradas: Receta[];
-  codeFilter = "";
-  cantRecetas: number;
+  recetasFiltradas: RecetaFiltrada[];
+  from = "";
+  to = "";
 
-  filterCodes(){}
+  filterCodes() {
+    if (this.from === '' || this.to === '') {
+      return;
+    }
+
+    this.subs.add(this.rxDigitalService.filterRxByDate(this.from, this.to).subscribe({
+      next: (res) => {
+        this.recetasFiltradas = res;
+      }
+    }));
+  }
 
   exportar() {
     // Lógica para exportar la lista de médicos con más recetas
@@ -33,4 +47,7 @@ export class RecetasFechaComponent {
     this.router.navigate(['/inicio-consultar']);
   }
 
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
 }

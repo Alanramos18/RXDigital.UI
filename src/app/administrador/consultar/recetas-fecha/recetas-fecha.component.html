@@ -5,17 +5,17 @@
         <div class="fechas">
             <div class="search-bar">
                 <label>Fecha desde</label>
-                <input type="date"  [(ngModel)]="codeFilter"
+                <input type="date"  [(ngModel)]="from"
                     (input)="filterCodes()">
             </div>
             <div class="search-bar">
                 <label>Fecha hasta</label>
-                <input type="date" [(ngModel)]="codeFilter"
+                <input type="date" [(ngModel)]="to"
                     (input)="filterCodes()">
             </div>
         </div>
 
-        <table>
+        <table *ngIf="recetasFiltradas?.length > 0">
             <thead>
                 <tr>
                     <th>Código receta</th>
@@ -28,22 +28,22 @@
             </thead>
             <tbody>
                 <tr *ngFor="let receta of recetasFiltradas">
-                    <td>{{ receta.prescriptionId }}</td>
+                    <td>{{ receta.codigoReceta }}</td>
                     <td>{{ receta.fechaEmision | date }}</td>
-                    <td>{{ receta.expirationDate | date }}</td>
-                    <td>{{ receta.diagnostic }}</td>
-                    <td>{{ receta.comentario }}</td>
+                    <td>{{ receta.patientName }}</td>
+                    <td>{{ receta.medicineName }}</td>
+                    <td>{{ receta.estado }}</td>
 
                 </tr>
             </tbody>
         </table>
-        <div>
+        <div *ngIf="recetasFiltradas?.length > 0">
             <label>Cantidad de recetas filtradas:</label>
-            <span>{{ cantRecetas }}</span>
+            <span>{{ recetasFiltradas?.length }}</span>
         </div>
         
         <footer class="footer">
-            <button class="boton-exportar" (click)="exportar()">Exportar</button>
+            <button *ngIf="recetasFiltradas?.length > 0" class="boton-exportar" (click)="exportar()">Exportar</button>
             <button class="back-button" (click)="volver()">Volver al panel de consulta</button>
         </footer>
    

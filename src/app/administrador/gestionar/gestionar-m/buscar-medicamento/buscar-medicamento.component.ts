@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { EncabezadoComponent } from '../../../../shared/encabezado/encabezado.component';
 import { Router } from '@angular/router';
 import { Medicamento } from '../../../../models/medicamento';
@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { ElimMedDialogComponent } from '../../../../shared/elimMed-dialog';
+import { Subscription } from 'rxjs';
+import { RxDigitalService } from '../../../../services/rx-digital.service';
 
 @Component({
   selector: 'app-buscar-medicamento',
@@ -14,28 +16,27 @@ import { ElimMedDialogComponent } from '../../../../shared/elimMed-dialog';
   templateUrl: './buscar-medicamento.component.html',
   styleUrl: './buscar-medicamento.component.scss'
 })
-export class BuscarMedicamentoComponent {
-
-  constructor(private router: Router, private dialog:MatDialog) {}
-
+export class BuscarMedicamentoComponent implements OnDestroy{
+  subs = new Subscription;
   searchQuery: string = '';
-  
+  listaMedicamentos:Medicamento[] = [];
 
+  constructor(private router: Router, private dialog:MatDialog, private rxDigitalService: RxDigitalService) {}
   
-  listaMedicamentos = [
-    { commercialName: 'Paracetamol', presentation: 'Tabletas', concentration: 500 },
-    { commercialName: 'Tafirol', presentation: 'Comprimidos', concentration: 200 },
-    { commercialName: 'Bentiolitos', presentation: 'Tabletas', concentration: 300 },
-    { commercialName: 'aaaaaa', presentation: 'Comprimidos', concentration: 85 },
-  ];
   
   buscar(){
-    /// realizar busqueda de medicamento
+    this.subs.add(this.rxDigitalService.getMedicine(this.searchQuery).subscribe({
+      next: (res) => {
+        this.listaMedicamentos = res;
+      },
+      error: (err) => console.log(err)
+    })
+  )
   }
 
-  modificarMedicamento(){
-    this.router.navigate(['/modificar-medicamento']);
-
+  modificarMedicamento(med: Medicamento){
+    debugger;
+    this.router.navigate(['/modificar-medicamento'], { state: { medicamento: med } });
   }
 
   eliminarMedicamento(){
@@ -43,13 +44,13 @@ export class BuscarMedicamentoComponent {
       width: '600px',
       height:'200px'
     });
-
-
   }
 
   volver() {
-    console.log('Volver');
     this.router.navigate(['/gestionar-medicamentos']);
   }
 
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
 }

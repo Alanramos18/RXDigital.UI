@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EncabezadoComponent } from '../../../../shared/encabezado/encabezado.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Medicamento } from '../../../../models/medicamento';
+import { Medicamento, NuevoMedicamento } from '../../../../models/medicamento';
 import { RxDigitalService } from '../../../../services/rx-digital.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-agregar-medicamento',
@@ -13,42 +14,43 @@ import { Router } from '@angular/router';
   templateUrl: './agregar-medicamento.component.html',
   styleUrl: './agregar-medicamento.component.scss'
 })
-export class AgregarMedicamentoComponent {
+export class AgregarMedicamentoComponent implements OnDestroy {
   medicamentoForm: FormGroup;
-  // ///medicamento: Medicamento;
-  constructor(private router: Router, private fb: FormBuilder) { }
+  subs = new Subscription;
+  nuevoMed: NuevoMedicamento;
+  constructor(private router: Router, private fb: FormBuilder, private rxService: RxDigitalService, private location: Location) { }
 
   ngOnInit(): void {
     this.medicamentoForm = this.fb.group({
-      commercialName: ['', Validators.required],
-      presentation: ['', Validators.required],
-      concentration: ['', Validators.required]
+      nombreComercial: ['', Validators.required],
+      presentacion: ['', Validators.required],
+      concentracion: ['', Validators.required],
+      descripcion: ['', Validators.required]
     });
   }
 
   onSubmit(): void {
-    //   // if (this.medicamentoForm.valid) {
-    //   //   this.medicamento = this.medicamentoForm.value as Medicamento;
+    if (this.medicamentoForm.valid) {
+      this.nuevoMed = this.medicamentoForm.value as NuevoMedicamento;
 
-    //     // this.rxService.createMedicine(this.medicamento).subscribe({
-    //     //   next: (res) => {
-    //     //     console.log(res);
-    //     //   },
-    //     //   error: (err) => {
-    //     //     console.log(err);
-    //     //   }
-    //     // })
-    alert('Medicamento agregado correctamente');
-    this.router.navigate(['/gestionar-medicamentos']);
-
+      this.rxService.createMedicine(this.nuevoMed).subscribe({
+        next: (res) => {
+          alert('Medicamento agregado correctamente');
+          this.router.navigate(['/gestionar-medicamentos']);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      })
+    }
   }
 
-
   onCancel(): void {
-    //   // this.medicamentoForm.reset();
-    //   // console.log('Cancelando formulario...');
-    //   ///this.location.back(); ///sale error
     alert('Agregación cancelada');
-    this.router.navigate(['/gestionar-medicamentos']);
+    this.location.back();
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }

@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // Import necesario
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Medico } from '../../../models/medico';
 import { Paciente } from '../../../models/paciente';
 import { RxDigitalService } from '../../../services/rx-digital.service';
 import { Medicamento } from '../../../models/medicamento';
 import { RecetaNueva } from '../../../models/receta-nueva';
 import { RpStateService } from '../../../services/medic.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { SearchModalComponent } from '../modal/search-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { EncabezadoComponent } from '../../../shared/encabezado/encabezado.component';
 import { Receta } from '../../../models/receta';
+import { Subscription } from 'rxjs';
+import { MedicineInfo } from '../../../models/medicineInfo';
+import { RxInfo } from '../../../models/RxInfo';
 @Component({
   selector: 'app-modificar-receta',
   standalone: true,
@@ -19,23 +22,27 @@ import { Receta } from '../../../models/receta';
   templateUrl: './modificar-receta.component.html',
   styleUrl: './modificar-receta.component.scss'
 })
-export class ModificarRecetaComponent implements OnInit {
-  medico: Medico;
-  paciente: Paciente;
-  medicamento: Medicamento;
+export class ModificarRecetaComponent implements OnInit, OnDestroy {
+  subs = new Subscription;
+  rxCode: string;
+  rxInfo: RxInfo;
+  medicines: MedicineInfo[];
 
-  showModal: boolean = false;
-  diagnostic: string;
-  indications: string;
-  receta: Receta;
-
-  constructor(private router: Router, private rxDigitalService: RxDigitalService,
-    private medicService: RpStateService, public dialog: MatDialog) {
+  constructor(private rxService: RxDigitalService, public dialog: MatDialog, private activatedRoute: ActivatedRoute, private location: Location) {
   }
 
   ngOnInit(): void {
-  //  this.medico = this.medicService.getMedicData();
-    //this.paciente = this.medicService.getPatientData();
+    this.subs.add(this.activatedRoute.params.subscribe({
+      next: (params) => {
+        this.rxCode = params["id"];
+      }
+    }));
+    this.subs.add(this.rxService.getRx(this.rxCode).subscribe({
+      next: (info) => {
+        this.rxInfo = info.rxInfo;
+        this.medicines = info.medicineList;
+      }
+    }));
   }
 
   formaEnvio: string = 'email'; // Valor por defecto
@@ -45,4 +52,7 @@ export class ModificarRecetaComponent implements OnInit {
 
   }
 
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
 }

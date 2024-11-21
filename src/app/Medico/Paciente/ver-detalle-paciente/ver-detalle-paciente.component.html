@@ -27,7 +27,7 @@
       <div class="campo">
         <label for="gender">Sexo:</label>
         <br>
-        <span>{{ paciente.genero}}</span>
+        <span>{{ paciente.genero == 'M' ? 'Masculino' : 'Femenino' }}</span>
       </div>
       <div class="campo">
         <label for="nationality">Nacionalidad:</label>
@@ -66,14 +66,14 @@
         <br>
         <span>{{ paciente.email}}</span>
       </div>
-      <!-- <div class="campo">
-      <label for="socialPlan">Obra Social:</label>
-      <span>{{ paciente.obraSocial }}</span>
-    </div>
-    <div class="campo">
-      <label for="socialWorkName">Plan de obra social:</label>
-      <span>{{ paciente.socialWorkName }}</span>
-    </div> -->
+      <div class="campo">
+        <label for="socialPlan">Obra Social:</label>
+        <span>{{ paciente.obraSocial }}</span>
+      </div>
+      <div class="campo">
+        <label for="socialWorkName">Plan de obra social:</label>
+        <span>{{ paciente.planSocial }}</span>
+      </div>
       <div class="campo">
         <label for="socialNumber">Número de afiliado:</label>
         <br>
@@ -82,7 +82,7 @@
       <div class="campo">
         <label for="isAvailable">Estado de habilitación:</label>
         <br>
-        <span>{{ paciente.estado ? 'Sí' : 'No' }}</span>
+        <span>{{ paciente.habilitacion ? 'Sí' : 'No' }}</span>
       </div>
       <div class="campo">
         <label for="inscriptionDate">Fecha de inscripción:</label>

@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class EncabezadoComponent implements OnInit, OnDestroy {
 
-  medicName: string;
+  userName: string;
   subs = new Subscription;
 
   constructor(private stateService: RpStateService, private router: Router) {}
@@ -20,7 +20,7 @@ export class EncabezadoComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subs.add(this.stateService.getMedicInfo().subscribe({
       next: (medic) => {
-        this.medicName =`${medic.lastName}, ${medic.firstName}`;
+        this.userName =`${medic?.lastName}, ${medic?.firstName}`;
       }
     }));
   }

@@ -5,3 +5,10 @@ export class Medicamento {
     concentration: number;
     indications: string;
 }
+
+export class NuevoMedicamento {
+    nombreComercial: string;
+    presentacion: string;
+    concentracion: string;
+    descripcion: string;
+}

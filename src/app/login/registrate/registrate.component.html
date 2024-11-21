@@ -34,11 +34,16 @@
             </select>
         </div>
         <div *ngIf="registrarseForm.get('roleId')?.value === '2' || registrarseForm.get('roleId')?.value === '3'" class="campo">
-            
             <label for="numMatricula">N° de matricula *</label>
             <input id="numMatricula" type="number" formControlName="registration">
-              
-
+        </div>
+        <div *ngIf="registrarseForm.get('roleId')?.value === '2'" class="campo">
+          <label>Especialidad: *</label>
+          <select formControlName="especialidad" required>
+            <option *ngFor="let especialidad of especialidades" [value]="especialidad.especialidadId">
+              {{ especialidad.descripcion }}
+            </option>
+          </select>
         </div>
 
      </div>

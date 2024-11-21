@@ -5,4 +5,5 @@ export class Register {
     lastName: string;
     roleId: number;
     registration: number | null;
+    especialidadId: number | null;
 }

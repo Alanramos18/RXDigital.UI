@@ -11,7 +11,7 @@
         <button (click)="buscar()">🔍</button>
     </div>
 
-    <table class="tabla-medicamentos">
+    <table *ngIf="listaMedicamentos.length !== 0" class="tabla-medicamentos">
         <thead>
             <tr>
                 <th>Nombre comercial</th>
@@ -27,7 +27,7 @@
                 <td>{{ med.concentration }}</td>
                 <td>
                     <div class='actions'>
-                        <button class="btn-edit" (click)="modificarMedicamento()">✏️</button>
+                        <button class="btn-edit" (click)="modificarMedicamento(med)">✏️</button>
                         <button class="btn-delete" (click)="eliminarMedicamento()">🗑️</button> 
                     </div>
                 </td>

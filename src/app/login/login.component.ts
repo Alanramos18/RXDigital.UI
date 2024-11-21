@@ -34,6 +34,7 @@ export class LoginComponent {
       this.tokenService.store('token', accessToken);
       this.tokenService.setExpiration(accessToken);
       this.tokenService.store('userId', decodedToken['UserId']);
+      this.tokenService.store('roleId', decodedToken['RoleId']);
 
       switch(Number(decodedToken['RoleId'])) {
         case Roles.Admin:
@@ -51,43 +52,6 @@ export class LoginComponent {
     } catch (error) {
       this.errorMessage = 'Email o Contraseña incorrecta. Pruebe de nuevo.';
     }
-
-    // this.rxService.login(this.email, this.password).subscribe({
-    //   next: (res) => {
-    //     localStorage.setItem('token', res);
-
-    //     const decodedToken: any = jwtDecode(res);
-
-    //     this.medicService.setRole(decodedToken['RoleId']);
-    //     this.medicService.setUserId(decodedToken['UserId']);
-
-    //     this.rxService.getMedicInfo(decodedToken['UserId']).subscribe({
-    //       next: (res) => {
-    //         this.medicService.setMedicData(res);
-    //       },
-    //       error: (err) => {
-    //         console.log(err);
-    //       }
-    //     });
-
-    //     switch(Number(this.medicService.getRole())) {
-    //       case Roles.Admin:
-    //         this.router.navigate(['/asdasdasdas']);
-    //         break;
-
-    //       case Roles.Medico:
-    //         this.router.navigate(['/buscar-paciente']);
-    //         break;
-
-    //       case Roles.Farmaceutico:
-    //         this.router.navigate(['/asdadasd']);
-    //         break;
-    //     }
-    //   },
-    //   error: (err) => {
-    //     console.log('Hubo un error. Por favor intenta mas tarde')
-    //   }
-    // });
   }
 
   register(){
