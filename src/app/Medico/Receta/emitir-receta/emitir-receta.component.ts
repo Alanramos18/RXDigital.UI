@@ -33,7 +33,6 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
   indications: string;
   subs = new Subscription;
   pacienteDni: number;
-  submitted: boolean;
   
   constructor(private router: Router,
     private rxDigitalService: RxDigitalService,
