@@ -3,7 +3,7 @@
   <input type="text" [(ngModel)]="searchQuery" placeholder="Buscar..." />
   <button class="buscar" (click)="searchMedicines()">Buscar</button>
 
-  <table>
+  <table *ngIf="searchQuery">
     <tr>
       <th>Nombre comercial</th>
       <th>Presentación</th>
@@ -16,5 +16,7 @@
     </tr>
   </table>
 
-  <button class="cerrar" (click)="close()">Cerrar</button>
+  <div class="cerrar">
+  <button (click)="close()">Cerrar</button>
+</div>
 </div>

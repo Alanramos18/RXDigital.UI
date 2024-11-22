@@ -1,6 +1,6 @@
 .modal{
-  
   text-align: center;
+  
   h2{
     font-size: 35px;
   }
@@ -8,7 +8,6 @@
     font-size: 18px;
     border-radius: 5px;
     border: 2px solid #494949;
-
   }
   .buscar{
     padding: 3px 10px;
@@ -51,8 +50,10 @@
  }
 .cerrar{
 
-   padding: 8px 15px;
-    
+  text-align: center;
+
+  button{
+    padding: 8px 15px;
     border-radius: 8px;
     cursor: pointer;
     font-size: 20px;
@@ -62,9 +63,7 @@
     color: white;
     transition: background-color 0.3s, box-shadow 0.3s;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-    
-
-
+  }
 }
 
 }

@@ -24,6 +24,9 @@
     <h2>Información</h2>
     <p><strong>Diagnóstico* (máx 150 caracteres):</strong></p>
     <textarea rows="4" maxlength="150" [(ngModel)]="diagnostic" required></textarea>
+
+    <p *ngIf="!diagnostic && showValidation" style="color: red;">El diagnóstico es obligatorio.</p>
+
     <p><strong>Comentarios (máx 300 caracteres):</strong></p>
     <textarea rows="8" maxlength="300" [(ngModel)]="indications"></textarea>
 
@@ -34,6 +37,9 @@
     <div class="datos-medicamento">
       <h2>Datos del medicamento</h2>
       <button class="anadirMed" (click)="anadirMedicamento()">Añadir medicamento</button>
+
+      <p *ngIf="!medicamentos.length && showValidation" style="color: red;">Agregue por lo menos un medicamento.</p>
+
       <div *ngIf="medicamentos.length > 0">
         <table>
           <thead>
@@ -54,7 +60,10 @@
                 type="text"
                 [(ngModel)]="medicamento.indications"
                 placeholder="Ingrese indicaciones"
-              />
+                />
+
+                <p *ngIf="!medicamento.indications && showValidation" style="color: red;">Ingrese las indicaciones.</p>
+            
             </tr>
           </tbody>
         </table>
