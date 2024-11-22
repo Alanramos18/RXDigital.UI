@@ -18,7 +18,7 @@ import { EmisionCorrectaComponent } from '../emision-correcta/emision-correcta.c
 @Component({
   selector: 'app-emitir-receta',
   standalone: true,
-  imports: [FormsModule, CommonModule,EncabezadoComponent],
+  imports: [FormsModule, CommonModule, EncabezadoComponent],
   templateUrl: './emitir-receta.component.html',
   styleUrl: './emitir-receta.component.scss'
 })
@@ -34,7 +34,10 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
   indications: string;
   subs = new Subscription;
   pacienteDni: number;
-  
+
+  showValidation: boolean = false;
+
+
   constructor(private router: Router,
     private rxDigitalService: RxDigitalService,
     private stateService: RpStateService,
@@ -64,12 +67,12 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
   formaEnvio: string = 'email'; // Valor por defecto
 
   emitirReceta() {
-    // Validar si el diagnóstico está vacío antes de proceder
+    this.showValidation = true; // Marca para mostrar mensajes
     if (!this.diagnostic) {
       console.log('El diagnóstico es obligatorio');
-      return; 
+      return;
     }
-    
+
     let receta: RecetaNueva = new RecetaNueva();
 
     if (this.formaEnvio === 'whatsapp') {
@@ -95,7 +98,7 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
         const dialogRef = this.dialog.open(EmisionCorrectaComponent, {
           width: '400px'
         });
-    
+
         dialogRef.afterClosed().subscribe({
           next: (flag) => {
             this.router.navigate(['/ver-recetas-paciente/' + this.pacienteDni]);
@@ -104,6 +107,9 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
       },
       error: (err) => console.log(err)
     });
+
+    this.showValidation = false;
+
   }
 
   cancelar() {
@@ -133,7 +139,7 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
   anadirMedicamento() {
     const dialogRef = this.dialog.open(SearchModalComponent, {
       width: '600px',
-      height:'400px'
+      height: '400px'
     });
 
     dialogRef.afterClosed().subscribe({
