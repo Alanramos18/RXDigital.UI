@@ -20,9 +20,16 @@
         <div class="patient-actions">
           <button class="btn-view-details" (click)="verDetallePaciente()" title="Ver detalle del paciente">📄</button>
           <button class="btn-edit" (click)="modificarPaciente()" title="Modificar paciente">✏️</button>
-          <button class="btn-delete" (click)="eliminarPaciente()" title="Habilitar/Deshabilitar paciente">
+          <!-- <button class="btn-delete" (click)="eliminarPaciente()" title="Habilitar/Deshabilitar paciente">
             <img src="assets/icons/desactivar.png" alt="Eliminar" class="icono-eliminar">
-            </button>
+            </button> -->
+
+            <label class="switch" title="Habilitar/Deshabilitar paciente">
+              <input type="checkbox" [(ngModel)]="pacienteEstado" (change)="toggleEstado()">
+              <span class="slider"></span>
+            </label>
+          
+
         </div>
       </div>
     </section>

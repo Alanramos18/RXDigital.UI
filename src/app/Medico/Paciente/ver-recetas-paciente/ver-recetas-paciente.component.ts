@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../shared/confirm-dialog';
 import { EliminarRecetaComponent } from '../../Receta/eliminar-receta/eliminar-receta.component';
 import { debug } from 'console';
+import { msjNoHabilitadoDialogComponent } from '../../../shared/msjNoHabilitado-dialog';
 
 @Component({
   selector: 'app-ver-recetas-paciente',
@@ -29,6 +30,7 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
   pacienteDni: number;
   subs = new Subscription;
   codeFilter = "";
+  pacienteEstado: boolean;
 
   constructor(private rxService: RxDigitalService,
     private stateService: RpStateService,
@@ -82,7 +84,11 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
   }
 
   mostrarMensajeInhabilitado() {
-    alert('No se puede generar receta porque el paciente está deshabilitado para recibir recetas.');
+    const dialogRef = this.dialog.open(msjNoHabilitadoDialogComponent, {
+      width: '600px',
+      height:'200px'
+    });
+    //alert('No se puede generar receta porque el paciente está deshabilitado para recibir recetas.');
   }
 
   verDetalleReceta(codigoReceta: string) {
@@ -108,6 +114,14 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
         }
       }
     });
+  }
+
+  toggleEstado() {
+    this.paciente.habilitacion = this.pacienteEstado;
+
+    // agregar lógica adicional, como actualizar el estado en la base de datos
+    // volver a mostrar el estado de habilitacion en los datos del paciente
+    console.log(this.paciente.habilitacion ? 'Paciente habilitado' : 'Paciente deshabilitado');
   }
 
   eliminarPaciente() {
