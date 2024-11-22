@@ -15,9 +15,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 
   template: `
-    <h2 mat-dialog-title style="text-align: center; font-size: 35px;"> ELIMINAR PACIENTE</h2>
-    <mat-dialog-content style="color:black; font-size: 20px; text-align: center; ">¿Quiere eliminar al paciente?</mat-dialog-content>
-    <mat-dialog-content style="color:black; font-size: 20px;text-align: center;">¡Se eliminarán todas sus recetas!</mat-dialog-content>
+    <h2 mat-dialog-title style="text-align: center; font-size: 35px;"> DESHABILITAR PACIENTE</h2>
+    <mat-dialog-content style="color:black; font-size: 20px; text-align: center; ">¿Quiere deshabilitar al paciente?</mat-dialog-content>
+    <!-- <mat-dialog-content style="color:black; font-size: 20px;text-align: center;">¡Se eliminarán todas sus recetas!</mat-dialog-content> -->
 
     <mat-dialog-actions style="width: 80% display: flex; justify-content: space-evenly; ">
       <button  style="background-color: green; color:white; font-size: 25px" mat-button [mat-dialog-close]="true">Sí</button>

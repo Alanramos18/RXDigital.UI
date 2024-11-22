@@ -134,5 +134,9 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subs.unsubscribe();
   }
+
+  volver(){
+    this.router.navigate(['buscar-paciente']);
+  }
 }
 

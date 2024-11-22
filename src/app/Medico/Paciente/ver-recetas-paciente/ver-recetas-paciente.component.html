@@ -20,7 +20,9 @@
         <div class="patient-actions">
           <button class="btn-view-details" (click)="verDetallePaciente()" title="Ver detalle del paciente">📄</button>
           <button class="btn-edit" (click)="modificarPaciente()" title="Modificar paciente">✏️</button>
-          <button class="btn-delete" (click)="eliminarPaciente()" title="Habilitar/Deshabilitar paciente">🗑️</button>
+          <button class="btn-delete" (click)="eliminarPaciente()" title="Habilitar/Deshabilitar paciente">
+            <img src="assets/icons/desactivar.png" alt="Eliminar" class="icono-eliminar">
+            </button>
         </div>
       </div>
     </section>
@@ -56,7 +58,9 @@
                 <button *ngIf="receta.estado === 'Emitida'" class="btn-edit"
                   (click)="modificarReceta(receta.codigoReceta)">✏️</button>
                 <button *ngIf="receta.estado === 'Emitida'" class="btn-delete"
-                  (click)="eliminarReceta(receta.codigoReceta)">🗑️</button>
+                  (click)="eliminarReceta(receta.codigoReceta)">
+                  <img src="assets/icons/desactivar.png" alt="Eliminar" class="icono-eliminar">
+                  </button>
                 <button class="btn-view-details" (click)="verDetalleReceta(receta.codigoReceta)">📄</button>
               </div>
             </td>
@@ -69,7 +73,12 @@
       (click)="paciente?.habilitacion ? generarReceta() : mostrarMensajeInhabilitado()">
       Generar receta
       </button>
-      
+  
     </section>
+
+    <div class="footer">
+      <button class="back-button" (click)="volver()">Volver</button>
+    </div>
+
   </main>
 </div>
