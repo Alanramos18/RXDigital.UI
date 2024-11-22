@@ -4,6 +4,7 @@ import { RpStateService } from '../../../services/medic.service';
 import { MsjEmergenteComponent } from '../../../msj-emergente/msj-emergente.component';
 import { EmitirRecetaComponent } from '../emitir-receta/emitir-receta.component';
 import { Subscription } from 'rxjs';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-emision-correcta',
@@ -16,7 +17,7 @@ export class EmisionCorrectaComponent implements OnInit, OnDestroy  {
   doctorName: string;
   subs = new Subscription;
 
-  constructor(private router: Router, private stateService: RpStateService) {
+  constructor(private router: Router, private stateService: RpStateService, public dialogRef: MatDialogRef<EmisionCorrectaComponent>) {
   }
 
   ngOnInit(): void {
@@ -32,7 +33,6 @@ export class EmisionCorrectaComponent implements OnInit, OnDestroy  {
   }
 
   goHome() {
-    // Redirige a la pantalla de inicio o donde sea necesario
-    this.router.navigate(['/ver-recetas-paciente']);
+    this.dialogRef.close(true);
   }
 }

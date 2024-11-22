@@ -22,13 +22,13 @@
         </thead>
         <tbody>
             <tr *ngFor="let med of listaMedicamentos">
-                <td>{{ med.commercialName }}</td>
-                <td>{{ med.presentation }}</td>
-                <td>{{ med.concentration }}</td>
+                <td>{{ med.nombreComercial }}</td>
+                <td>{{ med.presentacion }}</td>
+                <td>{{ med.concentracion }}</td>
                 <td>
                     <div class='actions'>
                         <button class="btn-edit" (click)="modificarMedicamento(med)">✏️</button>
-                        <button class="btn-delete" (click)="eliminarMedicamento()">🗑️</button> 
+                        <button class="btn-delete" (click)="eliminarMedicamento(med.medicineId)">🗑️</button> 
                     </div>
                 </td>
             </tr>

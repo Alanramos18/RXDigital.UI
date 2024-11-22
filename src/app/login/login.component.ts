@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RxDigitalService } from '../services/rx-digital.service';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Roles } from '../models/roles.enums';
 import { jwtDecode } from 'jwt-decode';
@@ -11,7 +12,7 @@ import { lastValueFrom } from 'rxjs';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -50,6 +51,7 @@ export class LoginComponent {
           break;
       }
     } catch (error) {
+      console.log(error);
       this.errorMessage = 'Email o Contraseña incorrecta. Pruebe de nuevo.';
     }
   }

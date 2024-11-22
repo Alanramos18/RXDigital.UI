@@ -4,7 +4,7 @@ import { EncabezadoComponent } from '../../../../shared/encabezado/encabezado.co
 import { CommonModule, Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { NuevoMedicamento } from '../../../../models/medicamento';
+import { Medicamento, NuevoMedicamento } from '../../../../models/medicamento';
 import { RxDigitalService } from '../../../../services/rx-digital.service';
 
 @Component({
@@ -17,13 +17,11 @@ import { RxDigitalService } from '../../../../services/rx-digital.service';
 export class ModificarMedicamentoComponent implements OnInit, OnDestroy{
   medicamentoForm: FormGroup;
   subs = new Subscription;
-  med: NuevoMedicamento;
+  med: Medicamento;
   
   constructor(private router: Router, private fb: FormBuilder, private rxService: RxDigitalService, private location: Location) {}
 
   ngOnInit(): void {
-    debugger;
-
     this.med = history.state.medicamento;
 
     this.medicamentoForm = this.fb.group({
@@ -36,21 +34,23 @@ export class ModificarMedicamentoComponent implements OnInit, OnDestroy{
 
    onSubmit(): void {
     if (this.medicamentoForm.valid) {
-      this.med = this.medicamentoForm.value as NuevoMedicamento;
+      let updatedMed = new NuevoMedicamento();
 
-      this.rxService.updateMedicine(this.med).subscribe({
+      updatedMed = { 
+        ...this.medicamentoForm.value as NuevoMedicamento
+      }
+
+      this.rxService.updateMedicine(this.med.medicineId, updatedMed).subscribe({
         next: (res) => {
-          alert('Medicamento agregado correctamente');
-          this.router.navigate(['/gestionar-medicamentos']);
+          alert('Medicamento actualizado correctamente');
+          this.router.navigate(['/buscar-medicamento']);
         },
         error: (err) => {
           console.log(err);
         }
       })
     }
-
-    this.router.navigate(['/buscar-medicamento']);
-    }
+  }
   
    onCancel(): void {
     this.location.back();

@@ -4,9 +4,9 @@
   margin: 50px;
   margin-bottom: 0px;
 
-  
+
   align-items: center;
-  
+
   padding: 20px;
   background-color: #99e0cf;
   border-radius: 8px;
@@ -21,26 +21,24 @@
     font-size: 30px;
   }
 
-  .sectionReceta{
-      margin-top: 10px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      border-bottom: 4px dashed black;
-      
-      padding: 5px;
-      
-          p {
-            
-            margin: 4px 0;
-            font-size: 25px;
-            
-           
-          }
+  .sectionReceta {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 4px dashed black;
+
+    padding: 5px;
+
+    p {
+      margin: 4px 0;
+      font-size: 25px;
+    }
   }
-  
+
   .section {
     margin-top: 10px;
+
     p {
       margin: 4px 0;
       font-size: 25px;
@@ -52,41 +50,43 @@
     margin-top: 10px;
     border-collapse: collapse;
 
-    th, td {
+    th,
+    td {
       padding: 8px;
       text-align: left;
-      border: 1px solid  black;
+      border: 1px solid black;
       font-size: 25px;
     }
 
     th {
-      background-color:  lightgray;
+      background-color: lightgray;
       text-align: center;
     }
-    td{
-      max-width: 200px;       // Define el ancho máximo de la celda (ajústalo según tus necesidades)
-      word-wrap: break-word;  // Permite que las palabras largas se ajusten en múltiples líneas
+
+    td {
+      max-width: 200px; // Define el ancho máximo de la celda (ajústalo según tus necesidades)
+      word-wrap: break-word; // Permite que las palabras largas se ajusten en múltiples líneas
       white-space: normal;
-      background-color: white;    // Permite que el texto se divida en varias líneas
+      background-color: white; // Permite que el texto se divida en varias líneas
     }
   }
 }
- 
- 
- .contenedorBoton{
+
+
+.contenedorBoton {
   display: flex;
   justify-content: flex-end;
 
   button {
     //position: fixed;  // Cambiar a posición fija
-    bottom: 30px;     // Distancia desde el borde inferior
-    right: 30px;      // Distancia desde el borde derecho
+    bottom: 30px; // Distancia desde el borde inferior
+    right: 30px; // Distancia desde el borde derecho
     display: block;
     padding: 10px 20px;
     background-color: #1171d7;
     border: 2px solid #0e15cd;
     color: white;
-    
+
     border-radius: 8px;
     font-size: 20px;
     cursor: pointer;
@@ -95,29 +95,10 @@
     margin-top: 50px;
     transition: background-color 0.3s, box-shadow 0.3s;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+
     &:hover {
       background-color: #1171d7;
       box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+    }
   }
-    
-    
 }
-}
-
-// .form-group {
-//   width: 300px;
-//   margin: 0 auto;
-// }
-
-// .form-group label {
-//   display: block;
-//   text-align: left;
-//   margin-bottom: 5px;
-// }
-
-// .form-group input {
-//   width: 100%;
-//   height: 25px;
-//   margin-bottom: 15px;
-// }
-

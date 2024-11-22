@@ -6,18 +6,18 @@
 
   <div class="section">
     <h2>Datos del paciente</h2>
-    <p><strong>Apellido y nombre:</strong> {{ paciente.apellido }}, {{ paciente.nombre }} </p>
-    <p><strong>DNI:</strong> {{ paciente.dni }}</p>
-    <p><strong>Obra social:</strong> {{ paciente.obraSocial }}</p>
-    <p><strong>Plan de obra social:</strong> {{ paciente.planSocial }}</p>
-    <p><strong>Número de afiliado:</strong> {{ paciente.numeroAfiliado }}</p>
+    <p><strong>Apellido y nombre:</strong> {{ paciente?.apellido }}, {{ paciente?.nombre }} </p>
+    <p><strong>DNI:</strong> {{ paciente?.dni }}</p>
+    <p><strong>Obra social:</strong> {{ paciente?.obraSocial }}</p>
+    <p><strong>Plan de obra social:</strong> {{ paciente?.planSocial }}</p>
+    <p><strong>Número de afiliado:</strong> {{ paciente?.numeroAfiliado }}</p>
   </div>
 
   <div class="section">
     <h2>Datos del médico</h2>
-    <p><strong>Apellido y nombre:</strong> {{ medico.lastName }}, {{ medico.firstName }}</p>
-    <p><strong>Especialidad:</strong> {{ medico.speciality }}</p>
-    <p><strong>Matrícula nacional:</strong> {{ medico.registrationId }}</p>
+    <p><strong>Apellido y nombre:</strong> {{ medico?.lastName }}, {{ medico?.firstName }}</p>
+    <p><strong>Especialidad:</strong> {{ medico?.speciality }}</p>
+    <p><strong>Matrícula nacional:</strong> {{ medico?.registrationId }}</p>
   </div>
 
   <div class="section">
@@ -47,9 +47,9 @@
           </thead>
           <tbody>
             <tr *ngFor="let medicamento of medicamentos">
-              <td>{{ medicamento.commercialName }}</td>
-              <td>{{ medicamento.presentation }}</td>
-              <td>{{ medicamento.concentration }}</td>
+              <td>{{ medicamento?.nombreComercial }}</td>
+              <td>{{ medicamento?.presentacion }}</td>
+              <td>{{ medicamento?.concentracion }}</td>
               <input
                 type="text"
                 [(ngModel)]="medicamento.indications"

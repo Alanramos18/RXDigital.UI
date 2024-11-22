@@ -55,7 +55,8 @@ export class RegistrateComponent implements OnInit, OnDestroy {
       ...this.registrarseForm.value,
       roleId: parseInt(this.registrarseForm.value.roleId, 10),
       registration: this.registrarseForm.value.roleId === '1' ? null : this.registrarseForm.value.registration,
-      especialidadId: parseInt(this.registrarseForm.value.especialidad, 10)
+      especialidadId: parseInt(this.registrarseForm.value.especialidad, 10),
+      dni: parseInt(this.registrarseForm.value.dni, 10)
     }
 
     this.subs.add(this.rxService.register(user).subscribe({

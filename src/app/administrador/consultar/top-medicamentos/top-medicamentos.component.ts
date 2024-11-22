@@ -1,8 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { EncabezadoComponent } from '../../../shared/encabezado/encabezado.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { RxDigitalService } from '../../../services/rx-digital.service';
+import { TopMedicina } from '../../../models/topMediciona';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
+import { MatDialog } from '@angular/material/dialog';
+import { ExportarInformeComponent } from '../exportar-informe/exportar-informe.component';
 
 @Component({
   selector: 'app-top-medicamentos',
@@ -11,27 +18,64 @@ import { Router } from '@angular/router';
   templateUrl: './top-medicamentos.component.html',
   styleUrl: './top-medicamentos.component.scss'
 })
-export class TopMedicamentosComponent {
+export class TopMedicamentosComponent implements OnDestroy {
   
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private rxDigitalService: RxDigitalService, private location: Location, private dialog: MatDialog) { }
 
-  numResultados: number = 0; // Número de resultados ingresado por el usuario
-  medicos = [];
+  numResultados: string; // Número de resultados ingresado por el usuario
+  medsList: TopMedicina[] = [];
+  subs = new Subscription;
+  searchError: string | null = null;
 
-  get medicamentosFiltrados() {
-    return this.medicos.slice(0, this.numResultados); // Mostrar solo los primeros 'numResultados' médicos
+  getmedicamentosFiltrados() {
+    const numericValue = Number(this.numResultados);
+    if (!isNaN(numericValue)) {
+      this.searchError = null;
+
+      this.subs.add(this.rxDigitalService.getTopRx(this.numResultados).subscribe({
+        next: (res) => {
+          this.medsList = res;
+        }
+      }));
+    } else {
+      this.searchError = 'Por favor, ingrese un numero.'
+    }
+  }
+
+  exportToPdf() {
+    const doc = new jsPDF();
+
+    const head = [['Nombre comercial', 'Presentación', 'Concentración', 'Total recetados']];
+    const body = this.medsList.map(med => [med.nombreComercial, med.presentacion, med.concentracion, med.totalRecetado]);
+
+    autoTable(doc, {
+      head: head,
+      body: body,
+      margin: { top: 20 },
+      theme: 'striped'
+    });
+
+    doc.save('lista-medicamento.pdf');
   }
 
   exportar() {
-    // Lógica para exportar la lista de médicos con más recetas
-    this.router.navigate(['/exportar-informe']);
+    const dialogRef = this.dialog.open(ExportarInformeComponent);
+
+    dialogRef.afterClosed().subscribe({
+      next: (res) => {
+        if (res) {
+          this.exportToPdf();
+        }
+      }
+    });
   }
 
   volver() {
-    // Lógica para volver al panel de consulta
-    // Por ejemplo, usando el router para navegar a otra ruta
-    this.router.navigate(['/inicio-consultar']);
+    this.location.back();
   }
 
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
 }

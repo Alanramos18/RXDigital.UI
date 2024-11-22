@@ -10,9 +10,9 @@
       <th>Concentración</th>
     </tr>
     <tr *ngFor="let med of listaMedicamentos" (click)="selectItem(med)">
-      <td>{{ med.commercialName }}</td>
-      <td>{{ med.presentation }}</td>
-      <td>{{ med.concentration }}</td>
+      <td>{{ med.nombreComercial }}</td>
+      <td>{{ med.presentacion }}</td>
+      <td>{{ med.concentracion }}</td>
     </tr>
   </table>
 

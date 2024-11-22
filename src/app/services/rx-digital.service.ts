@@ -11,6 +11,11 @@ import { GetPrescriptionsPharmaceuticalProc } from '../models/getPrescriptionsPh
 import { Register } from '../models/register';
 import { Especialidad } from '../models/especialidad';
 import { RecetaFiltrada } from '../models/recetaFiltrada';
+import { TopMedicina } from '../models/topMediciona';
+import { TopMedico } from '../models/topMedico';
+import { Farmaceutico } from '../models/farmaceutico';
+import { Admin } from '../models/admin';
+import { Usuario } from '../models/usuario';
 
 
 
@@ -88,6 +93,18 @@ export class RxDigitalService {
     return this.http.get<RecetaFiltrada[]>(url);
   } 
 
+  getTopRx(top: string): Observable<TopMedicina[]> {
+    const url = `${this.apiUrl}/admin/get-top-rx?&top=${top}`;
+
+    return this.http.get<TopMedicina[]>(url);
+  } 
+
+  getTopMedics(top: string): Observable<TopMedico[]> {
+    const url = `${this.apiUrl}/admin/get-top-medics?&top=${top}`;
+
+    return this.http.get<TopMedico[]>(url);
+  } 
+
   //////////////////////// MEDICO ////////////////////////
 
   getMedicInfo(userId: string): Observable<Medico> {
@@ -110,10 +127,16 @@ export class RxDigitalService {
     return this.http.post(url, med);
   } 
 
-  updateMedicine(med: NuevoMedicamento): Observable<any> {
-    const url = `${this.apiUrl}/admin/modify-med`;
+  updateMedicine(id: number, med: NuevoMedicamento): Observable<any> {
+    const url = `${this.apiUrl}/admin/modify-med/${id}`;
 
     return this.http.put(url, med);
+  } 
+
+  deleteMedicine(id: number): Observable<any> {
+    const url = `${this.apiUrl}/admin/delete-med?medicineId=${id}`;
+
+    return this.http.delete(url);
   } 
 
   //////////////////////// OBRA SOCIAL ////////////////////////
@@ -124,6 +147,25 @@ export class RxDigitalService {
     return this.http.get<ObraSocial[]>(url);
   } 
 
+  //////////////////////// Admin ////////////////////////
+
+  getAdminInfo(userId: string): Observable<Admin> {
+    const url = `${this.apiUrl}/admin/getByUserId/${userId}`;
+
+    return this.http.get<Admin>(url);
+  }
+
+  getUsersForAdmin(): Observable<Usuario[]> {
+    const url = `${this.apiUrl}/admin/get-users`;
+
+    return this.http.get<Usuario[]>(url);
+  }
+
+  reviewUsers(userId: string, isApproved: boolean): Observable<any> {
+    const url = `${this.apiUrl}/admin/review-users/${userId}?isApproved=${isApproved}`;
+
+    return this.http.post(url, null);
+  }
   //////////////////////// FARMACEUTICO ////////////////////////
 
   getRx(rxCode: string): Observable<GetPrescriptionsPharmaceuticalProc> {
@@ -136,5 +178,11 @@ export class RxDigitalService {
     const url = `${this.apiUrl}/Pharmaceutical/rx/${rxCode}&isAccepted${isAccepted}`;
 
     return this.http.post(url, null);
+  }
+
+  getPharmaInfo(userId: string): Observable<Farmaceutico> {
+    const url = `${this.apiUrl}/pharmaceutical/getByUserId/${userId}`;
+
+    return this.http.get<Farmaceutico>(url);
   }
 }

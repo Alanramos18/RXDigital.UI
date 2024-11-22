@@ -11,7 +11,6 @@
           <th>DNI</th>
           <th>Rol</th>
           <th>E-Mail</th>
-          <th>Contraseña</th>
           <th>Matrícula</th>
           <th>Acciones</th>
         </tr>
@@ -22,16 +21,15 @@
           <td>{{ usuario.apellido }}</td>
           <td>{{ usuario.dni }}</td>
           <td>
-            {{ usuario.rol === '1' ? 'Administrador' : 
-               usuario.rol === '2' ? 'Médico' : 
-               usuario.rol === '3' ? 'Farmacéutico' : 'Rol desconocido' }}
+            {{ usuario.roleId === 1 ? 'Administrador' : 
+               usuario.roleId === 2 ? 'Médico' : 
+               usuario.roleId === 3 ? 'Farmacéutico' : 'Rol desconocido' }}
           </td>          
           <td>{{ usuario.email }}</td>
-          <td>{{ usuario.contrasena }}</td>
-          <td>{{ usuario.rol !== '1' ? usuario.matricula : 'N/A' }}</td>
+          <td>{{ usuario.roleId !== 1 ? usuario.matricula : 'N/A' }}</td>
           <td>
-            <button (click)="aprobarUsuario(usuario)">Aprobar</button>
-            <button (click)="rechazarUsuario(usuario)">Rechazar</button>
+            <button (click)="revisarUsuario(usuario.id, true)">Aprobar</button>
+            <button (click)="revisarUsuario(usuario.id, false)">Rechazar</button>
           </td>
         </tr>
       </tbody>

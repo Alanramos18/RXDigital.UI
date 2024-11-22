@@ -7,10 +7,14 @@
     <div class="subtitulo-tabla">
         <div class="formulario">
             <label for="numResultados">Ingrese número de resultados:</label>
-            <input id="numResultados" type="number" [(ngModel)]="numResultados" placeholder="n°" />
+            <input id="numResultados" type="text" [(ngModel)]="numResultados" placeholder="n°" />
+            <button (click)="getmedicosFiltrados()">Buscar</button>
+            <div>
+                <p *ngIf="searchError" style="color: red;">{{ searchError }}</p>
+            </div>
         </div>
 
-        <table class="tabla-medicos">
+        <table id="myTable" *ngIf="medsList.length > 0" class="tabla-medicos">
             <thead>
                 <tr>
                     <th>Número de matrícula</th>
@@ -19,17 +23,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let medico of medicosFiltrados">
+                <tr *ngFor="let medico of medsList">
                     <td>{{ medico.matricula }}</td>
-                    <td>{{ medico.nombre }}</td>
-                    <td>{{ medico.cantidadRecetas }}</td>
+                    <td>{{ medico.nombreMedico }}</td>
+                    <td>{{ medico.cantidadReceta }}</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
     <footer class="footer">
-        <button class="boton-exportar" (click)="exportar()">Exportar</button>
+        <button *ngIf="medsList.length > 0" class="boton-exportar" (click)="exportar()">Exportar</button>
         <button class="back-button" (click)="volver()">Volver al panel de consulta</button>
     </footer>
 
