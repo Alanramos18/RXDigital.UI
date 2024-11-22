@@ -62,9 +62,9 @@
             <td>{{ receta.estado }}</td>
             <td>
               <div class='receta-actions'>
-                <button *ngIf="receta.estado === 'Emitida'" class="btn-edit"
+                <button *ngIf="receta.estado === 'Emitida' && paciente?.habilitacion" class="btn-edit"
                   (click)="modificarReceta(receta.codigoReceta)">✏️</button>
-                <button *ngIf="receta.estado === 'Emitida'" class="btn-delete"
+                <button *ngIf="receta.estado === 'Emitida' && paciente?.habilitacion" class="btn-delete"
                   (click)="eliminarReceta(receta.codigoReceta)">
                   <img src="assets/icons/desactivar.png" alt="Eliminar" class="icono-eliminar">
                   </button>
