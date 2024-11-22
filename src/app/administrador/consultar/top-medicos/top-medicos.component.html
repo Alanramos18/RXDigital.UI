@@ -6,12 +6,13 @@
 
     <div class="subtitulo-tabla">
         <div class="formulario">
-            <label for="numResultados">Ingrese número de resultados:</label>
+            <label for="numResultados">Ranking de médicos:</label><br>
             <input id="numResultados" type="text" [(ngModel)]="numResultados" placeholder="n°" />
-            <button (click)="getmedicosFiltrados()">Buscar</button>
-            <div>
-                <p *ngIf="searchError" style="color: red;">{{ searchError }}</p>
-            </div>
+            <button (click)="getmedicosFiltrados()">🔍</button>
+            
+        </div>
+        <div>
+            <p *ngIf="searchError" style="color: red;font-size: 20px;">{{ searchError }}</p>
         </div>
 
         <table id="myTable" *ngIf="medsList.length > 0" class="tabla-medicos">

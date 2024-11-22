@@ -14,6 +14,7 @@ import autoTable from 'jspdf-autotable';
 @Component({
   selector: 'app-top-medicos',
   standalone: true,
+
   imports: [EncabezadoComponent, CommonModule, FormsModule],
   templateUrl: './top-medicos.component.html',
   styleUrl: './top-medicos.component.scss'
@@ -38,7 +39,7 @@ export class TopMedicosComponent implements OnDestroy {
         }
       }));
     } else {
-      this.searchError = 'Por favor, ingrese un numero.'
+      this.searchError = 'Por favor, ingrese un número.'
     }
   }
 

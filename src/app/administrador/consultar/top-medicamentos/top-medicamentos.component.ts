@@ -39,7 +39,7 @@ export class TopMedicamentosComponent implements OnDestroy {
         }
       }));
     } else {
-      this.searchError = 'Por favor, ingrese un numero.'
+      this.searchError = 'Por favor, ingrese un número.'
     }
   }
 

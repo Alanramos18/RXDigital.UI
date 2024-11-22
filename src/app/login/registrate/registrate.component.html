@@ -5,10 +5,7 @@
 
     <form [formGroup]="registrarseForm" (ngSubmit)="onSubmit()">
       <div class="formulario">
-        <div class="campo">
-          <label for="dni">DNI *</label>
-          <input id="dni" type="text" formControlName="dni" required>
-        </div>
+        
         <div class="campo">
           <label for="nombre">Nombres *</label>
           <input id="nombre" type="text" formControlName="firstName" required>
@@ -16,6 +13,10 @@
         <div class="campo">
           <label for="nombre">Apellidos *</label>
           <input id="apellido" type="text" formControlName="lastName" required>
+        </div>
+        <div class="campo">
+          <label for="dni">DNI *</label>
+          <input id="dni" type="text" formControlName="dni" required>
         </div>
 
         <div class="campo">
