@@ -7,33 +7,35 @@
     <div class="subtitulo-tabla">
         <div class="formulario">
             <label for="numResultados">Ingrese número de resultados:</label>
-            <input id="numResultados" type="number" [(ngModel)]="numResultados" placeholder="n°" />
+            <input id="numResultados" type="text" [(ngModel)]="numResultados" placeholder="n°" />
+            <button (click)="getmedicamentosFiltrados()">Buscar</button>
+            <div>
+                <p *ngIf="searchError" style="color: red;">{{ searchError }}</p>
+            </div>
         </div>
 
-        <table class="tabla-medicos">
+        <table *ngIf="medsList.length > 0" class="tabla-medicos">
             <thead>
                 <tr>
-                    <th>Id medicamento</th>
                     <th>Nombre comercial</th>
                     <th>Presentación</th>
                     <th>Concentración</th>
-                    <th>Indicaciones</th>
+                    <th>Total recetados</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let medicamento of medicamentosFiltrados">
-                    <td>{{ medicamento.medicineId }}</td>
-                    <td>{{ medicamento.commercialName }}</td>
-                    <td>{{ medicamento.presentation }}</td>
-                    <td>{{ medicamento.concentration }}</td>
-                    <td>{{ medicamento.indications | date }}</td>
+                <tr *ngFor="let medicamento of medsList">
+                    <td>{{ medicamento.nombreComercial }}</td>
+                    <td>{{ medicamento.presentacion }}</td>
+                    <td>{{ medicamento.concentracion }}</td>
+                    <td>{{ medicamento.totalRecetado }}</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
     <footer class="footer">
-        <button class="boton-exportar" (click)="exportar()">Exportar</button>
+        <button *ngIf="medsList.length > 0" class="boton-exportar" (click)="exportar()">Exportar</button>
         <button class="back-button" (click)="volver()">Volver al panel de consulta</button>
     </footer>
 

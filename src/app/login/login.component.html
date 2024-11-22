@@ -19,6 +19,9 @@
                         <input style="width: 100%; height: 25px;" type="password" name="contraseña" [(ngModel)]="password" required>
                     </div>
                     <button class="boton"(click)="login()">Iniciar Sesión</button>
+                    <div>
+                        <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
+                    </div>
                 </form>    
                 <p class="debajoBoton"><a (click)="recuperarCuenta()" style="color:black">¿Olvidaste tu contaseña?</a></p>
                 <p class="debajoBoton">¿No tienes una cuenta? 

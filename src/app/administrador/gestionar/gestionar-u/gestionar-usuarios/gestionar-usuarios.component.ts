@@ -1,17 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EncabezadoComponent } from '../../../../shared/encabezado/encabezado.component';
 import { Router } from '@angular/router';
-
-interface Usuario {
-  nombre: string;
-  apellido: string;
-  dni: string;
-  rol: string;
-  email: string;
-  contrasena: string;
-  matricula?: string;
-}
+import { Subscription } from 'rxjs';
+import { Usuario } from '../../../../models/usuario';
+import { RxDigitalService } from '../../../../services/rx-digital.service';
 
 @Component({
   selector: 'app-gestionar-usuarios',
@@ -20,32 +13,46 @@ interface Usuario {
   templateUrl: './gestionar-usuarios.component.html',
   styleUrl: './gestionar-usuarios.component.scss'
 })
-export class GestionarUsuariosComponent {
+export class GestionarUsuariosComponent implements OnInit, OnDestroy{
+  subs = new Subscription;
+  usuariosPendientes: Usuario[] = [];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private rxService: RxDigitalService) {}
 
-  usuariosPendientes: Usuario[] = [
-    { nombre: 'Juan', apellido: 'Perez', dni: '23456788', rol: '2', email: 'cuenta1@gmail.com', contrasena: 'hola123', matricula: 'MN1234' },
-    { nombre: 'Maria', apellido: 'Lopez', dni: '42567832', rol: '3', email: 'cuenta2@gmail.com', contrasena: 'hola456', matricula: 'MN3455' },
-    { nombre: 'Esteban', apellido: 'Quito', dni: '38238956', rol: '1', email: 'cuenta3@gmail.com', contrasena: 'hola567' },
-    // Otros usuarios simulados
-  ];
-
-  aprobarUsuario(usuario: Usuario) {
-    // Aquí va la lógica para aprobar al usuario
-    alert(`Usuario ${usuario.nombre} aprobado.`);
-    // Luego eliminar el usuario de la lista o actualizar el estado
-    this.usuariosPendientes = this.usuariosPendientes.filter(u => u !== usuario);
+  ngOnInit(): void {
+    this.subs.add(this.rxService.getUsersForAdmin().subscribe({
+      next: (res) => {
+        this.usuariosPendientes = res;
+      },
+      error:(err) => {
+        console.log(err);
+      }
+    }));
   }
 
-  rechazarUsuario(usuario: Usuario) {
-    // Aquí va la lógica para registrar el rechazo del usuario junto con el motivo
-    alert(`Usuario ${usuario.nombre} rechazado.`);
-    // Luego eliminar el usuario de la lista o actualizar el estado
-    this.usuariosPendientes = this.usuariosPendientes.filter(u => u !== usuario);
+  revisarUsuario(userId: string, isApproved: boolean) {
+    // Aquí va la lógica para aprobar al usuario
+    this.subs.add(this.rxService.reviewUsers(userId, isApproved).subscribe({
+      next: (res) => {
+        if (isApproved) {
+          alert(`Usuario aprobado!.`);
+        } else {
+          alert(`Usuario rechazado!.`);
+        }
+        // Luego eliminar el usuario de la lista o actualizar el estado
+        this.usuariosPendientes = this.usuariosPendientes.filter(u => u.id !== userId);
+      },
+      error:(err) => {
+        console.log(err);
+      }
+    }));
   }
 
   volver(){
     this.router.navigate(['/inicio-gestionar']);
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }

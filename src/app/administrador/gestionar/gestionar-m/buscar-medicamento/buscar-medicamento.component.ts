@@ -35,14 +35,27 @@ export class BuscarMedicamentoComponent implements OnDestroy{
   }
 
   modificarMedicamento(med: Medicamento){
-    debugger;
     this.router.navigate(['/modificar-medicamento'], { state: { medicamento: med } });
   }
 
-  eliminarMedicamento(){
-    const dialoRef = this.dialog.open(ElimMedDialogComponent, {
+  eliminarMedicamento(id: number){
+    const dialogRef = this.dialog.open(ElimMedDialogComponent, {
       width: '600px',
       height:'200px'
+    });
+
+    dialogRef.afterClosed().subscribe({
+      next: (res) => {
+        if (res) {
+          this.subs.add(this.rxDigitalService.deleteMedicine(id).subscribe({
+            next: x => {
+              this.listaMedicamentos = this.listaMedicamentos.filter(med => med.medicineId !== id);
+              alert('Se ha eliminado correctamente');
+            },
+            error: (err) => console.log(err)
+          }));
+        }
+      }
     });
   }
 

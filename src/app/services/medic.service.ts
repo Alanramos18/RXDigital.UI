@@ -8,12 +8,16 @@ import { TokenService } from './token.service';
 import { Medico } from '../models/medico';
 import { Paciente } from '../models/paciente';
 import { Roles } from '../models/roles.enums';
+import { Farmaceutico } from '../models/farmaceutico';
+import { Admin } from '../models/admin';
 
 const initialState: MainState = {
   role: null,
   userId: null,
   medic: null,
-  patient: null
+  patient: null,
+  pharmaceutic: null,
+  admin: null
 }
 
 @Injectable({
@@ -24,6 +28,8 @@ export class RpStateService implements OnDestroy {
   private subs = new Subscription();
   private medic$ = new BehaviorSubject<Medico>(null);
   private patient$ = new BehaviorSubject<Paciente>(null);
+  private admin$ = new BehaviorSubject<Admin>(null);
+  private pharmaceutic$ = new BehaviorSubject<Farmaceutico>(null);
   private role: Roles = null;
 
   constructor(private rxService: RxDigitalService, private tokenService: TokenService) {
@@ -50,12 +56,49 @@ export class RpStateService implements OnDestroy {
     }));
   }
 
+  initPharma() {
+    const userId: any = this.tokenService.retrieve('userId');
+    this.subs.add(this.rxService.getPharmaInfo(userId).subscribe({
+      next: (res) => {
+        this.pharmaceutic$.next(res);
+        this.role = Roles.Farmaceutico;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    }));
+  }
+
+  initAdmin() {
+    const userId: any = this.tokenService.retrieve('userId');
+    this.subs.add(this.rxService.getAdminInfo(userId).subscribe({
+      next: (res) => {
+        this.admin$.next(res);
+        this.role = Roles.Admin;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    }));
+  }
+
   initPatient(dni: number) {
     this.subs.add(this.rxService.getPatientInfo(dni).subscribe({
       next: (res) => {
         this.patient$.next(res);
       }
     }));
+  }
+
+  getAdminInfo() {
+    if (this.admin$.getValue() === null) {
+      this.initAdmin();
+    }
+    return this.admin$;
+  }
+
+  clearAdmin() {
+    this.admin$.next(null);
   }
 
   getMedicInfo() {
@@ -69,6 +112,16 @@ export class RpStateService implements OnDestroy {
     this.medic$.next(null);
   }
 
+  getPharmaInfo() {
+    if (this.pharmaceutic$.getValue() === null) {
+      this.initPharma();
+    }
+    return this.pharmaceutic$;
+  }
+
+  clearPharma() {
+    this.pharmaceutic$.next(null);
+  }
   // getPatientInfo(dni: number) {
   //   if (this.patient$.getValue() === null || this.patient$.getValue().dni !== dni) {
   //     this.initPatient(dni);

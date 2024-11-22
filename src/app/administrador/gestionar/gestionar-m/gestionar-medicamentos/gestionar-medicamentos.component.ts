@@ -28,8 +28,6 @@ export class GestionarMedicamentosComponent {
     console.log('Eliminar medicamento');
   }
 
-  
-
   volver() {
     console.log('Volver');
     this.router.navigate(['/inicio-gestionar']);

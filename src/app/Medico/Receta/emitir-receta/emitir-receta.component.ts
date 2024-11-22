@@ -13,6 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EncabezadoComponent } from '../../../shared/encabezado/encabezado.component';
 import { Subscription } from 'rxjs';
 import { CancelarRecetaComponent } from '../cancelar-receta/cancelar-receta.component';
+import { EmisionCorrectaComponent } from '../emision-correcta/emision-correcta.component';
 
 @Component({
   selector: 'app-emitir-receta',
@@ -79,7 +80,6 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
     receta.doctorRegistration = this.medico.registrationId;
     receta.patientId = this.paciente.dni;
     this.medicamentos.forEach(element => {
-      debugger;
       var med: MedicamentoReceta = {
         medicineId: element.medicineId,
         indications: element.indications
@@ -91,7 +91,17 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
     receta.indications = this.indications;
 
     this.rxDigitalService.emitPrescription(receta).subscribe({
-      next: (res) => this.router.navigate(['/emision-correcta']),
+      next: (res) => {
+        const dialogRef = this.dialog.open(EmisionCorrectaComponent, {
+          width: '400px'
+        });
+    
+        dialogRef.afterClosed().subscribe({
+          next: (flag) => {
+            this.router.navigate(['/ver-recetas-paciente/' + this.pacienteDni]);
+          }
+        });
+      },
       error: (err) => console.log(err)
     });
   }

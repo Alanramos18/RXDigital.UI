@@ -1,9 +1,10 @@
 export class Medicamento {
     medicineId: number;
-    commercialName: string;
-    presentation: string;
-    concentration: number;
+    nombreComercial: string;
+    presentacion: string;
+    concentracion: number;
     indications: string;
+    descripcion: string;
 }
 
 export class NuevoMedicamento {

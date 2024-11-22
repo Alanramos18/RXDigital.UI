@@ -1,8 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { EncabezadoComponent } from '../../../shared/encabezado/encabezado.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TopMedico } from '../../../models/topMedico';
+import { Subscription } from 'rxjs';
+import { RxDigitalService } from '../../../services/rx-digital.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ExportarInformeComponent } from '../exportar-informe/exportar-informe.component';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 @Component({
   selector: 'app-top-medicos',
@@ -11,31 +18,63 @@ import { Router } from '@angular/router';
   templateUrl: './top-medicos.component.html',
   styleUrl: './top-medicos.component.scss'
 })
-export class TopMedicosComponent {
+export class TopMedicosComponent implements OnDestroy {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private rxDigitalService: RxDigitalService, private location: Location, private dialog: MatDialog) {}
 
-  numResultados: number = 0; // Número de resultados ingresado por el usuario
-  medicos = [
-    { matricula: '12345', nombre: 'Dr. García', cantidadRecetas: 120 },
-    { matricula: '23456', nombre: 'Dra. López', cantidadRecetas: 110 },
-    { matricula: '34567', nombre: 'Dr. Martínez', cantidadRecetas: 95 },
-    { matricula: '45678', nombre: 'Dra. Fernández', cantidadRecetas: 85 },
-    // Agrega más médicos según sea necesario
-  ];
+  numResultados: string; // Número de resultados ingresado por el usuario
+  medsList: TopMedico[] = [];
+  subs = new Subscription;
+  searchError: string | null = null;
 
-  get medicosFiltrados() {
-    return this.medicos.slice(0, this.numResultados); // Mostrar solo los primeros 'numResultados' médicos
+  getmedicosFiltrados() {
+    const numericValue = Number(this.numResultados);
+    if (!isNaN(numericValue)) {
+      this.searchError = null;
+
+      this.subs.add(this.rxDigitalService.getTopMedics(this.numResultados).subscribe({
+        next: (res) => {
+          this.medsList = res;
+        }
+      }));
+    } else {
+      this.searchError = 'Por favor, ingrese un numero.'
+    }
+  }
+
+  exportToPdf() {
+    const doc = new jsPDF();
+
+    const head = [['Número de matrícula', 'Nombre médico', 'Cantidad de recetas']];
+    const body = this.medsList.map(med => [med.matricula, med.nombreMedico, med.cantidadReceta]);
+
+    autoTable(doc, {
+      head: head,
+      body: body,
+      margin: { top: 20 },
+      theme: 'striped'
+    });
+
+    doc.save('lista-medicos.pdf');
   }
 
   exportar() {
-    // Lógica para exportar la lista de médicos con más recetas
-    this.router.navigate(['/exportar-informe']);
+    const dialogRef = this.dialog.open(ExportarInformeComponent);
+
+    dialogRef.afterClosed().subscribe({
+      next: (res) => {
+        if (res) {
+          this.exportToPdf();
+        }
+      }
+    });
   }
 
   volver() {
-    // Lógica para volver al panel de consulta
-    // Por ejemplo, usando el router para navegar a otra ruta
-    this.router.navigate(['/inicio-consultar']);
+    this.location.back();
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }

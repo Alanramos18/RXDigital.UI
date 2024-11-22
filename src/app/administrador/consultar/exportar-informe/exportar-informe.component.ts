@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { EncabezadoComponent } from '../../../shared/encabezado/encabezado.component';
 import { Router, RouterModule } from '@angular/router';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-exportar',
@@ -14,20 +15,9 @@ import { Router, RouterModule } from '@angular/router';
 export class ExportarInformeComponent {
   [x: string]: any;
   selectedFormat: string = '';
-  constructor(private router: Router) {}
+  constructor(public dialogRef: MatDialogRef<ExportarInformeComponent>) {}
 
-  volver(): void {
-    // Implement navigation logic to go back
-    this['router'].navigate(['/inicio-consultar']);
-  }
-
-  exportar(): void {
-    // Implement export logic based on selected format
-    alert(`Exporting as ${this.selectedFormat}`);
-  }
-
-  cancelar(): void {
-    // Implement cancel logic
-    this.selectedFormat = '';
+  close(flag: boolean) {
+    this.dialogRef.close(flag);
   }
 }
