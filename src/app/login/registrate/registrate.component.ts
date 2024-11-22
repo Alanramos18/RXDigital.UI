@@ -7,10 +7,13 @@ import { Register } from '../../models/register';
 import { Router } from '@angular/router';
 import { Especialidad } from '../../models/especialidad';
 
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { RegistroPendienteDialogComponent } from '../../shared/registroPendiente-dialog';
+
 @Component({
   selector: 'app-registrate',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, MatDialogModule],
   templateUrl: './registrate.component.html',
   styleUrls: ['./registrate.component.scss']
 })
@@ -21,7 +24,7 @@ export class RegistrateComponent implements OnInit, OnDestroy {
   subs = new Subscription;
   especialidades: Especialidad[];
  
-  constructor( private fb: FormBuilder, private rxService: RxDigitalService, private router: Router) {}
+  constructor( private fb: FormBuilder, private dialog:MatDialog, private rxService: RxDigitalService, private router: Router) {}
  
   ngOnInit(): void {
     this.registrarseForm = this.fb.group({
@@ -57,10 +60,17 @@ export class RegistrateComponent implements OnInit, OnDestroy {
 
     this.subs.add(this.rxService.register(user).subscribe({
       next: (res) => {
-        this.router.navigate(['/login']);
+        const dialogRef = this.dialog.open(RegistroPendienteDialogComponent, {
+          width: '600px',
+          height:'300px'
+        });
+    
+        dialogRef.afterClosed().subscribe(() => {
+          this.router.navigate(['/login']);
+        });
       },
       error:(err) => {
-        console.log(err);
+        console.log('Error al registrar usuario:',err);
       }
     }));
   }
