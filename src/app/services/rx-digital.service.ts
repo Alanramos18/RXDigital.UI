@@ -16,6 +16,7 @@ import { TopMedico } from '../models/topMedico';
 import { Farmaceutico } from '../models/farmaceutico';
 import { Admin } from '../models/admin';
 import { Usuario } from '../models/usuario';
+import { RejectRxResquestDto } from '../models/rejectRxResquestDto';
 
 
 
@@ -85,6 +86,12 @@ export class RxDigitalService {
     const url = `${this.apiUrl}/doctor/create-prescription`;
 
     return this.http.post<number>(url, body);
+  } 
+
+  updatePrescription(rxCode: string, body: RecetaNueva): Observable<any> {
+    const url = `${this.apiUrl}/doctor/update-prescription/${rxCode}`;
+
+    return this.http.put(url, body);
   } 
 
   deletePrescription(code: string): Observable<any> {
@@ -180,10 +187,16 @@ export class RxDigitalService {
     return this.http.get<GetPrescriptionsPharmaceuticalProc>(url);
   }
   
-  processRx(rxCode: string, isAccepted: boolean): Observable<any> {
-    const url = `${this.apiUrl}/Pharmaceutical/rx/${rxCode}&isAccepted${isAccepted}`;
+  acceptRx(rxCode: string, matricula: number): Observable<any> {
+    const url = `${this.apiUrl}/Pharmaceutical/rx/${rxCode}?matricula=${matricula}`;
 
     return this.http.post(url, null);
+  }
+
+  rejectRx(dto: RejectRxResquestDto): Observable<any> {
+    const url = `${this.apiUrl}/Pharmaceutical/rx`;
+
+    return this.http.post(url, dto);
   }
 
   getPharmaInfo(userId: string): Observable<Farmaceutico> {

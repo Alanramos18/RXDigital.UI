@@ -11,6 +11,13 @@ import { RxInfo } from '../../models/RxInfo';
 import { MedicineInfo } from '../../models/medicineInfo';
 import { BlobOptions } from 'buffer';
 import { MatDialog } from '@angular/material/dialog';
+import { AcceptRxDialogComponent } from '../../shared/aceptar-receta-dialog';
+import { ErrorDialogComponent } from '../../shared/error-dialog';
+import { RejectRxResquestDto } from '../../models/rejectRxResquestDto';
+import { MotivoRechazoComponent } from '../motivo-rechazo/motivo-rechazo.component';
+import { RejectRxDialogComponent } from '../../shared/rechazo-receta-dialog';
+import { Farmaceutico } from '../../models/farmaceutico';
+import { RpStateService } from '../../services/medic.service';
 
 @Component({
   selector: 'app-revisar-receta',
@@ -24,9 +31,11 @@ export class RevisarRecetaComponent implements OnInit, OnDestroy {
   subs = new Subscription;
   rxCode: string;
   rxInfo: RxInfo;
+  pharma: Farmaceutico;
+  loading: boolean = false;
   medicines: MedicineInfo[];
 
-  constructor(private rxService: RxDigitalService, public dialog: MatDialog, private activatedRoute: ActivatedRoute, private location: Location) {}
+  constructor(private rxService: RxDigitalService, private stateService: RpStateService, public dialog: MatDialog, private activatedRoute: ActivatedRoute, private location: Location, private router: Router) {}
 
   ngOnInit(): void {
     this.subs.add(this.activatedRoute.params.subscribe({
@@ -40,16 +49,11 @@ export class RevisarRecetaComponent implements OnInit, OnDestroy {
         this.medicines = info.medicineList;
       }
     }));
-  }
-
-  async aceptarReceta() {
-    var res = await this.processRx(true);
-    //this.router.navigate(['/buscar-receta']);
-  }
-
-  rechazarReceta() {
-    this.processRx(false);
-    // this.router.navigate(['/motivo-rechazo']);
+    this.subs.add(this.stateService.getPharmaInfo().subscribe({
+      next: (pharma) => {
+        this.pharma = pharma;
+      }
+    }));
   }
 
   openAceptarDialog() {
@@ -63,21 +67,82 @@ export class RevisarRecetaComponent implements OnInit, OnDestroy {
     }, 3000);  // Espera el tiempo especificado antes de redirigir
   }
 
-  // openRechazarDialog() {
+  aceptarReceta() {
+    this.loading = true;
+    this.subs.add(this.rxService.acceptRx(this.rxCode, this.pharma.registrationId).subscribe({
+      next: (info) => {
+        this.loading = false;
+        const dialogRef = this.dialog.open(AcceptRxDialogComponent, {
+          width: '600px',
+          height:'200px'
+        });
+    
+        dialogRef.afterClosed().subscribe({
+          next: (res) => {
+            this.router.navigate(['/buscar-receta']);
+            }
+        });
+      },
+      error: (err) => {
+        this.loading = false;
+        const dialogRef = this.dialog.open(ErrorDialogComponent);
+        dialogRef.afterClosed().subscribe({
+          next: (res) => {
+          }
+        });
+      }
+    }));
+  }
 
-  // }
+  rechazarReceta() {
+    debugger;
+    let body: RejectRxResquestDto = {
+      codigo: this.rxCode,
+      matricula: this.pharma.registrationId,
+      motivoRechazo: null
+    }
 
-  processRx(isAccepted: boolean): Promise<boolean> {
-    return new Promise((resolve) => {
-      this.subs.add(this.rxService.processRx(this.rxCode, isAccepted).subscribe({
-        next: (info) => { 
-          resolve(true);
-        },
-        error: (err) => {
-          resolve(false);
-        }
-      }))
+    const dialogRef = this.dialog.open(MotivoRechazoComponent, {
+      width: '900px',
+      height:'500px'
     });
+
+    dialogRef.afterClosed().subscribe({
+      next: ({res, motivoRechazo}) => {
+        if (res) {
+          body.motivoRechazo = motivoRechazo;
+          this.loading = true;
+    this.subs.add(this.rxService.rejectRx(body).subscribe({
+      next: (info) => {
+        this.loading = false;
+        const dialogRef = this.dialog.open(RejectRxDialogComponent, {
+          width: '600px',
+          height:'200px'
+        });
+    
+        dialogRef.afterClosed().subscribe({
+          next: (res) => {
+            this.router.navigate(['/buscar-receta']);
+            }
+        });
+      },
+      error: (err) => {
+        this.loading = false;
+        const dialogRef = this.dialog.open(ErrorDialogComponent);
+        dialogRef.afterClosed().subscribe({
+          next: (res) => {
+          }
+        });
+      }
+    }));
+        }
+        else {
+          return;
+        }
+      }
+    });
+    
+    
   }
 
   buscarOtraReceta() {

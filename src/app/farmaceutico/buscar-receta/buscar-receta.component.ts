@@ -25,14 +25,26 @@ export class BuscarRecetaComponent implements OnDestroy {
       console.log('Buscando receta con código:', this.codigoReceta);
       this.subs.add(this.rxService.getRx(this.codigoReceta).subscribe({
         next: (info) => {
-          console.log(info);
-          this.router.navigate(['revisar-receta/' + this.codigoReceta.toLocaleUpperCase()]);
+          switch (info.rxInfo.estado)
+          {
+            case 'Emitida':
+              this.router.navigate(['revisar-receta/' + this.codigoReceta.toLocaleUpperCase()]);
+              break;
+            case 'Eliminada':
+              this.searchError = 'La receta ya fue eliminada.';
+              break;
+            case 'Aceptada':
+              this.searchError = 'La receta ya fue aceptada.';
+              break;
+            case 'Rechazada':
+              this.searchError = 'La receta ya fue rechazada.';
+              break;
+          } 
         },
         error: (err) => {
           this.searchError = 'No se encontraron resultados para la búsqueda.';
         }
       }));
-      //Llamar a un servicio para obtener los datos de la receta.
     } else {
       this.searchError = 'Por favor, ingrese un código de receta.';
     }

@@ -29,6 +29,9 @@ export class EncabezadoComponent implements OnInit, OnDestroy {
         this.subs.add(this.stateService.getAdminInfo().subscribe({
           next: (admin) => {
             this.userName =`${admin?.lastName}, ${admin?.firstName}`;
+          },
+          error: (err) => {
+            this.errorPage();
           }
         }));
         break;
@@ -38,6 +41,9 @@ export class EncabezadoComponent implements OnInit, OnDestroy {
         this.subs.add(this.stateService.getMedicInfo().subscribe({
           next: (medic) => {
             this.userName =`${medic?.lastName}, ${medic?.firstName}`;
+          },
+          error: (err) => {
+            this.errorPage();
           }
         }));
         break;
@@ -47,21 +53,27 @@ export class EncabezadoComponent implements OnInit, OnDestroy {
         this.subs.add(this.stateService.getPharmaInfo().subscribe({
           next: (pharma) => {
             this.userName =`${pharma?.lastName}, ${pharma?.firstName}`;
+          },
+          error: (err) => {
+            this.errorPage();
           }
         }));
         break;
     }
-
-
   }
   
+  errorPage() {
+    this.router.navigate(['/error/500']);
+    this.tokenService.clean();
+  }
+
   ngOnDestroy(): void {
     this.subs.unsubscribe();
   }
 
   cerrarSesion(){
     this.router.navigate(['/login']);
-    sessionStorage.clear();
+    this.tokenService.clean();
   }
 
 }

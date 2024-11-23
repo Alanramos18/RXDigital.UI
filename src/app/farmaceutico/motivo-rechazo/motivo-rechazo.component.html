@@ -1,11 +1,6 @@
-<app-msj-emergente>
-    <h2>Motivo del Rechazo:</h2>
-    <textarea rows="5" maxlength="300" [(ngModel)]="motivoRechazo" placeholder="Escriba el motivo del rechazo"></textarea>
-    <div class="botones">
-        <button class="conRechazo" (click)="confirmarRechazo()">Confirmar rechazo</button>
-        <button class="cancelar" (click)="cancelarRechazo()">Cancelar</button>
-    </div>
-    <div fondo-difuminado>
-        <app-revisar-receta></app-revisar-receta>
-    </div>
-</app-msj-emergente>
+<h2>Motivo del Rechazo:</h2>
+<textarea rows="5" maxlength="300" [(ngModel)]="motivoRechazo" placeholder="Escriba el motivo del rechazo"></textarea>
+<div class="botones">
+    <button class="conRechazo" (click)="confirmarRechazo()">Confirmar rechazo</button>
+    <button class="cancelar" (click)="cancelarRechazo()">Cancelar</button>
+</div>

@@ -2,7 +2,7 @@ export class Medicamento {
     medicineId: number;
     nombreComercial: string;
     presentacion: string;
-    concentracion: number;
+    concentracion: string;
     indications: string;
     descripcion: string;
 }

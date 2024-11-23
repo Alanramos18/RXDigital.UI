@@ -10,6 +10,7 @@ import { Paciente } from '../models/paciente';
 import { Roles } from '../models/roles.enums';
 import { Farmaceutico } from '../models/farmaceutico';
 import { Admin } from '../models/admin';
+import { Route, Router } from '@angular/router';
 
 const initialState: MainState = {
   role: null,
@@ -32,7 +33,7 @@ export class RpStateService implements OnDestroy {
   private pharmaceutic$ = new BehaviorSubject<Farmaceutico>(null);
   private role: Roles = null;
 
-  constructor(private rxService: RxDigitalService, private tokenService: TokenService) {
+  constructor(private rxService: RxDigitalService, private tokenService: TokenService, private router: Router) {
   }
 
   // resetState() {
@@ -51,7 +52,7 @@ export class RpStateService implements OnDestroy {
         this.role = Roles.Medico;
       },
       error: (err) => {
-        console.log(err);
+        this.router.navigate(['/error/500']);
       }
     }));
   }
@@ -64,7 +65,7 @@ export class RpStateService implements OnDestroy {
         this.role = Roles.Farmaceutico;
       },
       error: (err) => {
-        console.log(err);
+        this.router.navigate(['/error/500']);
       }
     }));
   }
@@ -77,7 +78,7 @@ export class RpStateService implements OnDestroy {
         this.role = Roles.Admin;
       },
       error: (err) => {
-        console.log(err);
+        this.router.navigate(['/error/500']);
       }
     }));
   }

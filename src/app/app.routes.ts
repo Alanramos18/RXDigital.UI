@@ -62,10 +62,8 @@ export const routes: Routes = [
     { path: 'recetas-fecha',component: RecetasFechaComponent},
     { path: 'top-medicamentos', component: TopMedicamentosComponent/*, canActivate: [authGuard]*/ },
     { path: 'top-medicos', component: TopMedicosComponent/*, canActivate: [authGuard]*/ },
-    { path: 'error', component: ErrorComponent},
+    { path: 'error/:id', component: ErrorComponent},
     { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path: '**', redirectTo: '/login' },
-    //
-    
+    { path: '**', redirectTo: '/error/404' }    
 ];  
 

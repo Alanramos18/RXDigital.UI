@@ -42,8 +42,16 @@
         <thead>
           <tr>
             <th>Código receta</th>
-            <th>Fecha emisión</th>
-            <th>Fecha de vencimiento</th>
+            <th (click)="ordenar('fechaEmision')">Fecha emisión
+              <span *ngIf="sortColumn === 'fechaEmision'">
+                {{ sortDirection === 'asc' ? '🢁' : '🢃' }}
+              </span>
+            </th>
+            <th (click)="ordenar('expirationDate')">Fecha de vencimiento
+              <span *ngIf="sortColumn === 'expirationDate'">
+                {{ sortDirection === 'asc' ? '🢁' : '🢃' }}
+              </span>
+            </th>
             <th>Diagnóstico</th>
             <th>Comentario</th>
             <th>Estado</th>

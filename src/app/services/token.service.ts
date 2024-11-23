@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
-
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
   expiration = 0;
   
   public getDataFromToken<T>(token: string): T {
@@ -36,23 +37,27 @@ export class TokenService {
   }
 
   public store(key: string, value: any): void {
-    sessionStorage.setItem(key, JSON.stringify(value));
+    if (isPlatformBrowser(this.platformId)) {
+      sessionStorage.setItem(key, JSON.stringify(value));
+    }
   }
 
   public retrieve(key: string): any {
-    if (typeof sessionStorage !== 'undefined') {
-      const item = sessionStorage.getItem(key);
-      let json = "";
-  
-      if(item && item !== 'undefined') {
-        try {
-          json = JSON.parse(item);
-        } catch (error) {
-          json = "";
+    if (isPlatformBrowser(this.platformId)) {
+      if (typeof sessionStorage !== 'undefined') {
+        const item = sessionStorage.getItem(key);
+        let json = "";
+    
+        if(item && item !== 'undefined') {
+          try {
+            json = JSON.parse(item);
+          } catch (error) {
+            json = "";
+          }
         }
+    
+        return json;
       }
-  
-      return json;
     }
   }
 
@@ -66,7 +71,9 @@ export class TokenService {
   }
 
   public clean(): void {
-    sessionStorage.clear();
+    if (isPlatformBrowser(this.platformId)) {
+      sessionStorage.clear();
+    }
   }
 
   isTokenExpired(): boolean {

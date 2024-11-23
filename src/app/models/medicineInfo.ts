@@ -1,6 +1,7 @@
 export class MedicineInfo {
     nombreComercial: string;
     presentacion: string;
-    concentracion: number;
+    concentracion: string;
     indicaciones: string;
+    medicineId: number;
 }

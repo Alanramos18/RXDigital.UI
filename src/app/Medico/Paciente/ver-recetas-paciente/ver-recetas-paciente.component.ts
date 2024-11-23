@@ -32,6 +32,8 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
   codeFilter = "";
   pacienteEstado: boolean;
   loading: boolean;
+  sortColumn: string = '';
+  sortDirection: 'asc' | 'desc' = 'asc';
 
   constructor(private rxService: RxDigitalService,
     private stateService: RpStateService,
@@ -68,6 +70,27 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
       }
     }));
 
+  }
+
+  ordenar(columna: string) {
+    if (this.sortColumn === columna) {
+      // Alternar entre ascendente y descendente
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+      // Nueva columna, ordenar en ascendente
+      this.sortColumn = columna;
+      this.sortDirection = 'asc';
+    }
+
+    this.recetasFiltradas.sort((a: any, b: any) => {
+      const valueA = a[columna];
+      const valueB = b[columna];
+
+      if (valueA === valueB) return 0;
+
+      const comparison = valueA > valueB ? 1 : -1;
+      return this.sortDirection === 'asc' ? comparison : -comparison;
+    });
   }
 
   filterCodes(): void {

@@ -14,6 +14,7 @@ import { EncabezadoComponent } from '../../../shared/encabezado/encabezado.compo
 import { Subscription } from 'rxjs';
 import { CancelarRecetaComponent } from '../cancelar-receta/cancelar-receta.component';
 import { EmisionCorrectaComponent } from '../emision-correcta/emision-correcta.component';
+import { ErrorDialogComponent } from '../../../shared/error-dialog';
 
 @Component({
   selector: 'app-emitir-receta',
@@ -29,11 +30,12 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
   medicamentoActual: Medicamento;
   medicamentos: Medicamento[] = [];
 
-  showModal: boolean = false;
   diagnostic: string;
   indications: string;
   subs = new Subscription;
   pacienteDni: number;
+  flag: boolean = false;
+  loading: boolean = false;
 
   showValidation: boolean = false;
 
@@ -47,32 +49,46 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.loading = true;
     this.subs.add(this.activatedRoute.params.subscribe({
       next: (params) => {
         this.pacienteDni = params["id"];
+        this.loading = false;
       }
     }));
     this.subs.add(this.stateService.getPatientInfo(this.pacienteDni).subscribe({
       next: (patient) => {
         this.paciente = patient;
+        this.loading = false;
       }
     }));
     this.subs.add(this.stateService.getMedicInfo().subscribe({
       next: (medic) => {
         this.medico = medic;
+        this.loading = false;
       }
     }));
   }
 
-  formaEnvio: string = 'email'; // Valor por defecto
-
   emitirReceta() {
     this.showValidation = true; // Marca para mostrar mensajes
+    this.flag = false;
     if (!this.diagnostic || !this.medicamentos || this.medicamentos.length == 0) {
       return;
     }
 
-    
+
+    this.medicamentos.forEach(med => {
+      if (!med.indications || med.indications === '') {
+        this.flag = true;
+        return;
+      }
+    });
+
+    if (this.flag) {
+      return;
+    }
+
     let receta: RecetaNueva = new RecetaNueva();
 
     receta.doctorRegistration = this.medico.registrationId;
@@ -87,9 +103,11 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
     });
     receta.diagnostic = this.diagnostic;
     receta.indications = this.indications;
+    this.loading = true;
 
     this.rxDigitalService.emitPrescription(receta).subscribe({
       next: (res) => {
+        this.loading = false;
         const dialogRef = this.dialog.open(EmisionCorrectaComponent, {
           width: '400px'
         });
@@ -100,11 +118,18 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
           }
         });
       },
-      error: (err) => console.log(err)
+      error: (err) => {
+        const dialogRef = this.dialog.open(ErrorDialogComponent);
+
+        dialogRef.afterClosed().subscribe({
+          next: (res) => {
+            this.loading = false;
+          }
+        });
+      }
     });
 
     this.showValidation = false;
-
   }
 
   cancelar() {
@@ -124,7 +149,6 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
   onItemSelected(med: Medicamento) {
     this.medicamentoActual = med;
     this.medicamentos.push(med);
-    this.showModal = false;
   }
 
   clearSelection() {

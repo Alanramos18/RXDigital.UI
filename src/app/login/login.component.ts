@@ -51,7 +51,11 @@ export class LoginComponent {
           break;
       }
     } catch (error) {
-      this.errorMessage = error.error;
+      if(error.status === 0) {
+        this.router.navigate(['/error/500']);
+      } else {
+        this.errorMessage = error.error;
+      }
     }
   }
 

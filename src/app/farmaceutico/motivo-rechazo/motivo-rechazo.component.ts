@@ -3,6 +3,7 @@ import { RevisarRecetaComponent } from '../revisar-receta/revisar-receta.compone
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MsjEmergenteComponent } from '../../msj-emergente/msj-emergente.component';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-motivo-rechazo',
@@ -14,18 +15,18 @@ import { MsjEmergenteComponent } from '../../msj-emergente/msj-emergente.compone
 
 export class MotivoRechazoComponent {
   motivoRechazo = '';
-  constructor(private router: Router) {}
+  constructor(public dialogRef: MatDialogRef<MotivoRechazoComponent>) {}
+  
   confirmarRechazo() {
     if (this.motivoRechazo.trim() === '') {
       alert('Por favor, ingrese el motivo del rechazo.');
       return;
     }
-    alert('La receta fue rechazada. Motivo: ' + this.motivoRechazo);
-    this.motivoRechazo = '';
     
-    this.router.navigate(['/buscar-receta']);
+    this.dialogRef.close({ res: true, motivoRechazo: this.motivoRechazo });
   }
+
   cancelarRechazo() {
-    this.router.navigate(['/revisar-receta']);
+    this.dialogRef.close({ res: false, motivoRechazo: null });
   }
 }

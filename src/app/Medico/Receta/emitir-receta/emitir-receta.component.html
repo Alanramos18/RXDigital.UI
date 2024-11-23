@@ -55,18 +55,24 @@
               <td>{{ medicamento?.nombreComercial }}</td>
               <td>{{ medicamento?.presentacion }}</td>
               <td>{{ medicamento?.concentracion }}</td>
-              <input
-                type="text"
-                [(ngModel)]="medicamento.indications"
-                placeholder="Ingrese indicaciones"
-                />
+              <td>
+                <div style="width: 100%; height: 100%; display: flex; align-items: center;">
+                  <input
+                    type="text"
+                    [(ngModel)]="medicamento.indications"
+                    placeholder="Ingrese indicaciones"
+                    style="width: 100%; box-sizing: border-box; padding: 5px;"
+                  />
+                </div>
+              </td>
               </tr>
             </tbody>
           </table>
         </div>
         <button class="x" (click)="clearSelection()">✖</button>
         <p *ngIf="!medicamentos.length && showValidation" style="color: red;">Agregue por lo menos un medicamento.</p>
-    </div>
+        <p *ngIf="flag && showValidation" style="color: red;">Hay medicamentos sin indicaciones.</p>
+      </div>
 
     <div class="forma-envio">
       <h2>Se enviará un email automático al paciente con la descripción de la receta.</h2>
@@ -79,3 +85,6 @@
   <button (click)="emitirReceta()">Emitir</button>
   <button (click)="cancelar()">Cancelar</button>
 </div>
+<div *ngIf="loading" class="spinner-overlay">
+  <div class="spinner"></div>
+</div> 

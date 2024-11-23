@@ -6,7 +6,9 @@ export class RxInfo {
     numeroAfiliado: string;
     nombreMedico: string;
     matricula: number;
+    especialidad: string;
     diagnostico: string;
+    motivoRechazo: string | null;
     indicaciones: string;
     fechaEmision: Date;
     expiracion: Date; 
