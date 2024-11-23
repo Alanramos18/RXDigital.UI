@@ -61,6 +61,12 @@ export class RxDigitalService {
     return this.http.post(url, patient);
   }
 
+  updatePatient(id:number, patient: Paciente): Observable<any> {
+    const url = `${this.apiUrl}/patient/${id}`;
+
+    return this.http.put(url, patient);
+  }
+
   deletePatient(dni: number): Observable<any> {
     const url = `${this.apiUrl}/patient/${dni}`;
 

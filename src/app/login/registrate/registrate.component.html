@@ -52,11 +52,12 @@
           </select>
         </div>
       </div>
+      <p *ngIf="errorMessage" style="color: red; font-size: 18px;">{{ errorMessage }}</p>
 
       <div class="boton">
         <button type="submit" class="registrate">Registrarse</button>
       </div>
-
+      
       <div class="footer">
         <button class="back-button" (click)="volver()">Volver</button>
       </div>

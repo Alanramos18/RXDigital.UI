@@ -20,21 +20,19 @@
         <div class="patient-actions">
           <button class="btn-view-details" (click)="verDetallePaciente()" title="Ver detalle del paciente">📄</button>
           <button class="btn-edit" (click)="modificarPaciente()" title="Modificar paciente">✏️</button>
-          <!-- <button class="btn-delete" (click)="eliminarPaciente()" title="Habilitar/Deshabilitar paciente">
-            <img src="assets/icons/desactivar.png" alt="Eliminar" class="icono-eliminar">
-            </button> -->
-
             <label class="switch" title="Habilitar/Deshabilitar paciente">
-              <input type="checkbox" [(ngModel)]="pacienteEstado" (change)="toggleEstado()">
-              <span class="slider"></span>
+              <input type="checkbox" (change)="toggleEstado()" [checked]="this.pacienteEstado">
+              <span class="slider" ></span>
             </label>
           
 
         </div>
       </div>
+      <h2 style="margin-top: 20px;" *ngIf="!recetas || recetas?.length == 0">El paciente no tiene recetas!</h2>
     </section>
 
-    <section class="prescription-history">
+
+    <section *ngIf="recetas?.length > 0" class="prescription-history">
       <h2>Historial de recetas</h2>
       <div class="search-bar">
         <input type="text" placeholder="Ingrese código de receta" [(ngModel)]="codeFilter" (input)="filterCodes()">
@@ -66,7 +64,7 @@
                   (click)="modificarReceta(receta.codigoReceta)">✏️</button>
                 <button *ngIf="receta.estado === 'Emitida' && paciente?.habilitacion" class="btn-delete"
                   (click)="eliminarReceta(receta.codigoReceta)">
-                  <img src="assets/icons/desactivar.png" alt="Eliminar" class="icono-eliminar">
+                  🗑️
                   </button>
                 <button class="btn-view-details" (click)="verDetalleReceta(receta.codigoReceta)">📄</button>
               </div>
@@ -75,17 +73,19 @@
         </tbody>
       </table>
 
-      <button class="generate-recipe"
-      [ngClass]="{'inhabilitado': !paciente?.habilitacion}"
-      (click)="paciente?.habilitacion ? generarReceta() : mostrarMensajeInhabilitado()">
-      Generar receta
-      </button>
-  
+      
     </section>
-
+    
+    <button class="generate-recipe"
+    [ngClass]="{'inhabilitado': !paciente?.habilitacion}"
+    (click)="paciente?.habilitacion ? generarReceta() : mostrarMensajeInhabilitado()">
+    Generar receta
+    </button>
     <div class="footer">
       <button class="back-button" (click)="volver()">Volver</button>
     </div>
-
+    <div *ngIf="loading" class="spinner-overlay">
+      <div class="spinner"></div>
+    </div>    
   </main>
 </div>

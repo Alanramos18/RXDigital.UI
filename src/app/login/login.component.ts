@@ -51,8 +51,7 @@ export class LoginComponent {
           break;
       }
     } catch (error) {
-      console.log(error);
-      this.errorMessage = 'Email o Contraseña incorrecta. Pruebe de nuevo.';
+      this.errorMessage = error.error;
     }
   }
 

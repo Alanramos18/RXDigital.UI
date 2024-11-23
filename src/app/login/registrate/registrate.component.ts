@@ -23,6 +23,7 @@ export class RegistrateComponent implements OnInit, OnDestroy {
   registrarseForm: FormGroup;
   subs = new Subscription;
   especialidades: Especialidad[];
+  errorMessage: string;
  
   constructor( private fb: FormBuilder, private dialog:MatDialog, private rxService: RxDigitalService, private router: Router) {}
  
@@ -43,7 +44,7 @@ export class RegistrateComponent implements OnInit, OnDestroy {
         this.especialidades = res;
       },
       error:(err) => {
-        console.log(err);
+        this.errorMessage = err.error;
       }
     }));
   }
@@ -71,7 +72,7 @@ export class RegistrateComponent implements OnInit, OnDestroy {
         });
       },
       error:(err) => {
-        console.log('Error al registrar usuario:',err);
+        this.errorMessage = err.error;
       }
     }));
   }

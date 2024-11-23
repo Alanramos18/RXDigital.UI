@@ -69,12 +69,12 @@
       <div class="campo">
         <label for="planSocial">Plan de obra social: *</label>
         <select id="planSocial" formControlName="planSocial" required>
-          <option *ngFor="let plan of planes" [value]="2">
+          <option *ngFor="let plan of planes; let index = index" [value]="index + 1">
             {{ plan }}
           </option>
         </select>
       </div>
-      <div class="campo">
+      <div *ngIf="mostrarAfi" class="campo">
         <label for="numeroAfiliado">Número de afiliado: *</label>
         <input id="numeroAfiliado" type="text" formControlName="numeroAfiliado">
       </div>

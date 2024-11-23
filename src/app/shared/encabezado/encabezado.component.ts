@@ -16,6 +16,7 @@ export class EncabezadoComponent implements OnInit, OnDestroy {
 
   userName: string;
   subs = new Subscription;
+  rol: string = '';
 
   constructor(private stateService: RpStateService, private router: Router, private tokenService: TokenService) {}
 
@@ -24,6 +25,7 @@ export class EncabezadoComponent implements OnInit, OnDestroy {
 
     switch(Number(roleId)) {
       case Roles.Admin:
+        this.rol = 'Administrador';
         this.subs.add(this.stateService.getAdminInfo().subscribe({
           next: (admin) => {
             this.userName =`${admin?.lastName}, ${admin?.firstName}`;
@@ -32,6 +34,7 @@ export class EncabezadoComponent implements OnInit, OnDestroy {
         break;
 
       case Roles.Medico:
+        this.rol = 'Médico';
         this.subs.add(this.stateService.getMedicInfo().subscribe({
           next: (medic) => {
             this.userName =`${medic?.lastName}, ${medic?.firstName}`;
@@ -40,6 +43,7 @@ export class EncabezadoComponent implements OnInit, OnDestroy {
         break;
 
       case Roles.Farmaceutico:
+        this.rol = 'Farmacéutico';
         this.subs.add(this.stateService.getPharmaInfo().subscribe({
           next: (pharma) => {
             this.userName =`${pharma?.lastName}, ${pharma?.firstName}`;

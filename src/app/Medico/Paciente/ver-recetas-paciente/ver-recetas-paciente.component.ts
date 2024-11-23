@@ -31,6 +31,7 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
   subs = new Subscription;
   codeFilter = "";
   pacienteEstado: boolean;
+  loading: boolean;
 
   constructor(private rxService: RxDigitalService,
     private stateService: RpStateService,
@@ -39,9 +40,11 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
     private dialog: MatDialog) {}
 
   ngOnInit(): void {
+    this.loading = true;
     this.subs.add(this.activatedRoute.params.subscribe({
       next: (params) => {
         this.pacienteDni = params["id"];
+        this.loading = false;
       }
     }));
     this.subs.add(this.rxService.getPrescriptions(this.pacienteDni).subscribe({
@@ -53,12 +56,15 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
           return isUnique;
         });
         this.recetasFiltradas = this.recetas;
+        this.loading = false;
       },
       error: (err) => console.log(err)
     }));
     this.subs.add(this.stateService.getPatientInfo(this.pacienteDni).subscribe({
       next: (patient) => {
         this.paciente = patient;
+        this.pacienteEstado = patient.habilitacion;
+        this.loading = false;
       }
     }));
 
@@ -117,11 +123,40 @@ export class VerRecetasPacienteComponent implements OnInit, OnDestroy {
   }
 
   toggleEstado() {
-    this.paciente.habilitacion = this.pacienteEstado;
-
-    // agregar lógica adicional, como actualizar el estado en la base de datos
-    // volver a mostrar el estado de habilitacion en los datos del paciente
-    console.log(this.paciente.habilitacion ? 'Paciente habilitado' : 'Paciente deshabilitado');
+    if(this.paciente.habilitacion) {
+      this.pacienteEstado = false;
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        width: '600px',
+        height:'300px'
+      });
+  
+      dialogRef.afterClosed().subscribe({
+        next: (res) => {
+          if (res) {
+            this.loading = true;
+            this.subs.add(this.rxService.deletePatient(this.pacienteDni).subscribe({
+              next: x => {
+                this.loading = false;
+                this.router.navigate(['buscar-paciente']);
+              },
+              error: (err) => console.log(err)
+            }));
+          } else {
+            this.pacienteEstado = true;
+          }
+        }
+      });
+    } else {
+      this.loading = true;
+      this.pacienteEstado = true;
+      this.subs.add(this.rxService.deletePatient(this.pacienteDni).subscribe({
+        next: x => {
+          this.loading = false;
+          this.paciente.habilitacion = true;
+        },
+        error: (err) => console.log(err)
+      }));
+    }
   }
 
   eliminarPaciente() {

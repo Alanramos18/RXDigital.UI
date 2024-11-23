@@ -15,8 +15,7 @@
       </div>
       <div class="campo">
         <label for="patientId">DNI: *</label>
-        
-        <span>{{ paciente?.dni }}</span>
+        <input id="patientId" type="text" [value]="paciente?.dni" readonly />
       </div>
       <div class="campo">
         <label for="fechaNacimiento">Fecha de nacimiento: *</label>
@@ -35,8 +34,8 @@
         <input id="nacionalidad" type="text" formControlName="nacionalidad" name="nacionalidad" />
       </div>
       <div class="campo">
-        <label for="domicilio">Domicilio: *</label>
-        <input id="domicilio" type="text" formControlName="domicilio" name="domicilio" />
+        <label for="direccion">Domicilio: *</label>
+        <input id="direccion" type="text" formControlName="direccion" name="direccion" />
       </div>
 
       <div class="campo">
@@ -61,27 +60,28 @@
         <input id="email" type="text" formControlName="email" name="email" />
       </div>
       <div class="campo">
-      <label for="socialPlan">Obra Social:</label>
-      <span>{{ paciente?.obraSocial }}</span>
-    </div>
-    <div class="campo">
-      <label for="socialWorkName">Plan de obra social:</label>
-      <span>{{ paciente?.planSocial }}</span>
-    </div>
+        <label for="obraSocial">Obra social: *</label>
+        <select id="obraSocial" formControlName="obraSocialId" (change)="onSelectionChange($event)" required>
+          <option *ngFor="let os of obraSociales" [value]="os.socialWorkId">
+            {{ os.name }}
+          </option>
+        </select>
+      </div>
       <div class="campo">
+        <label for="planSocial">Plan de obra social: *</label>
+        <select id="planSocial" formControlName="planSocial" required>
+          <option *ngFor="let plan of planes; let index = index" [value]="index + 1">
+            {{ plan }}
+          </option>
+        </select>
+      </div>
+      <div *ngIf="mostrarAfi" class="campo">
         <label for="numeroAfiliado">Número de afiliado: *</label>
         <input id="numeroAfiliado" type="text"  formControlName="numeroAfiliado" name="numeroAfiliado" />
       </div>
       <div class="campo">
-        <label for="isAvailable">Estado de habilitación: *</label>
-        <select id="genero" formControlName="habilitado" required>
-          <option value="false">Deshabilitado</option>
-          <option value="true">Habilitado</option>
-        </select>
-      </div>
-      <div class="campo">
         <label for="inscriptionDate">Fecha de inscripción:</label>
-        <span>{{ paciente?.fechaInscripcion | date: 'mediumDate' }}</span>
+        <input type="text" [value]="fechaInscri | date: 'mediumDate'" readonly />
       </div>
 
       <div class="botones">
@@ -91,4 +91,7 @@
       </div>
     </div>
   </form>
+  <div *ngIf="loading" class="spinner-overlay">
+    <div class="spinner"></div>
+  </div>    
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Paciente } from '../../../models/paciente';
 import { ReactiveFormsModule } from '@angular/forms'; // Importa ReactiveFormsModule aquí
@@ -6,6 +6,10 @@ import { EncabezadoComponent } from '../../../shared/encabezado/encabezado.compo
 import { RxDigitalService } from '../../../services/rx-digital.service';
 import { ObraSocial } from '../../../models/obraSocial';
 import { CommonModule, Location } from '@angular/common';
+import { Subscription } from 'rxjs';
+import { AddPaciDialogComponent } from '../../../shared/agregar-paci-dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorDialogComponent } from '../../../shared/error-dialog';
 
 
 @Component({
@@ -15,41 +19,43 @@ import { CommonModule, Location } from '@angular/common';
   imports: [ReactiveFormsModule, EncabezadoComponent, CommonModule],
   styleUrls: ['./agregar-paciente.component.scss']
 })
-export class AgregarPacienteComponent implements OnInit {
+export class AgregarPacienteComponent implements OnInit, OnDestroy {
   pacienteForm: FormGroup;
   paciente: Paciente;
   obraSociales: ObraSocial[];
   planes: string[];
+  subs = new Subscription;
+  mostrarAfi: boolean = true;
   
-  constructor(private fb: FormBuilder, private rxService: RxDigitalService,  private location: Location) {}
+  constructor(private fb: FormBuilder, private rxService: RxDigitalService,  private location: Location, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-
-    this.rxService.getSocialWorks().subscribe({
-      next: (res) => {
-        this.obraSociales = res;
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    })
-
+    this.subs.add(
+      this.rxService.getSocialWorks().subscribe({
+        next: (res) => {
+          this.obraSociales = res;
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      })
+    );
     this.pacienteForm = this.fb.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
       dni: ['', Validators.required],
-      numeroAfiliado: ['', Validators.required],
+      numeroAfiliado: [''],
       fechaNacimiento: ['', Validators.required],
-        genero: ['', Validators.required],
-        nacionalidad: ['', Validators.required],
-        direccion: ['', Validators.required],
-        celular: ['', Validators.required],
-        telefono: [''],
-        email: ['', [Validators.required, Validators.email]],
-        obraSocialId: [''], 
-        planSocial: [''], 
-        provincia: [''],
-        localidad: ['']
+      genero: ['', Validators.required],
+      nacionalidad: ['', Validators.required],
+      direccion: ['', Validators.required],
+      celular: ['', Validators.required],
+      telefono: [''],
+      email: ['', [Validators.required, Validators.email]],
+      obraSocialId: [''], 
+      planSocial: [''], 
+      provincia: [''],
+      localidad: ['']
     });
   }
 
@@ -58,10 +64,21 @@ export class AgregarPacienteComponent implements OnInit {
       this.paciente = this.pacienteForm.value as Paciente;
       this.rxService.createPatient(this.paciente).subscribe({
         next: (res) => {
-          console.log(res);
+          const dialogRef = this.dialog.open(AddPaciDialogComponent);
+
+          dialogRef.afterClosed().subscribe({
+            next: (res) => {
+              this.location.back();
+            }
+          });
         },
         error: (err) => {
-          console.log(err);
+          const dialogRef = this.dialog.open(ErrorDialogComponent);
+
+          dialogRef.afterClosed().subscribe({
+            next: (res) => {
+            }
+          });
         }
       })
     }
@@ -77,8 +94,18 @@ export class AgregarPacienteComponent implements OnInit {
 
     let name = this.obraSociales[index - 1].name;
 
+    if (name === 'Particular') {
+      this.mostrarAfi = false;
+    } else {
+      this.mostrarAfi = true;
+    }
+
     this.planes = this.obraSociales
         .filter(obraSocial => obraSocial.name === name)
         .map(obraSocial => obraSocial.socialPlan);
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }

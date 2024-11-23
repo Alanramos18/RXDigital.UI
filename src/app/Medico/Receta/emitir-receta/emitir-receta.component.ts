@@ -68,18 +68,13 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
 
   emitirReceta() {
     this.showValidation = true; // Marca para mostrar mensajes
-    if (!this.diagnostic) {
-      console.log('El diagnóstico es obligatorio');
+    if (!this.diagnostic || !this.medicamentos || this.medicamentos.length == 0) {
       return;
     }
 
+    
     let receta: RecetaNueva = new RecetaNueva();
 
-    if (this.formaEnvio === 'whatsapp') {
-      receta.channels = 1;
-    } else if (this.formaEnvio === 'email') {
-      receta.channels = 2;
-    }
     receta.doctorRegistration = this.medico.registrationId;
     receta.patientId = this.paciente.dni;
     this.medicamentos.forEach(element => {
@@ -144,7 +139,9 @@ export class EmitirRecetaComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe({
       next: (med) => {
-        this.onItemSelected(med);
+        if (med) {
+          this.onItemSelected(med);
+        }
       }
     });
   }

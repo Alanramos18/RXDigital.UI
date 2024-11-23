@@ -2,8 +2,9 @@
 
 <div class="gestionar-usuarios">
     <h1 class="titulo">GESTIÓN DE USUARIOS PENDIENTES</h1>
+    <h2 *ngIf="usuariosPendientes.length == 0">No tienes usuarios pendientes de revision!</h2>
   
-    <table class="tabla-usuarios">
+    <table *ngIf="usuariosPendientes.length > 0" class="tabla-usuarios">
       <thead>
         <tr>
           <th>Nombre</th>
@@ -37,5 +38,8 @@
     <div class="footer">
       <button class="back-button" (click)="volver()">Volver al panel de gestión</button>
     </div>
+    <div *ngIf="loading" class="spinner-overlay">
+      <div class="spinner"></div>
+    </div>    
   </div>
   

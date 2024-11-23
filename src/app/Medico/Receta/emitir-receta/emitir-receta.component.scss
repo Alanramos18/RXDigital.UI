@@ -71,23 +71,8 @@
   
 
   .forma-envio {
-    width: 300px;
-
-    p {
-      margin: 4px 0;
-      font-size: 25px;
-    }
-
-    label {
-      display: block;
-      margin: 10px 0;
-      font-size: 25px;
-    }
-
-    input[type="radio"] {
-      transform: scale(2); // Cambia 1.5 al valor que prefieras
-      margin-right: 10px; // Para separar el texto si es necesario
-    }
+    display: flex;
+    justify-content: center;
   }
 }
 
