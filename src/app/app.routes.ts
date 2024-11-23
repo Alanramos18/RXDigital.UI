@@ -31,6 +31,7 @@ import { TopMedicamentosComponent } from './administrador/consultar/top-medicame
 import { TopMedicosComponent } from './administrador/consultar/top-medicos/top-medicos.component';
 import { BuscarMedicamentoComponent } from './administrador/gestionar/gestionar-m/buscar-medicamento/buscar-medicamento.component';
 import { AgregarMedicamentoComponent } from './administrador/gestionar/gestionar-m/agregar-medicamento/agregar-medicamento.component';
+import { ErrorComponent } from './error/error.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -61,6 +62,7 @@ export const routes: Routes = [
     { path: 'recetas-fecha',component: RecetasFechaComponent},
     { path: 'top-medicamentos', component: TopMedicamentosComponent/*, canActivate: [authGuard]*/ },
     { path: 'top-medicos', component: TopMedicosComponent/*, canActivate: [authGuard]*/ },
+    { path: 'error', component: ErrorComponent},
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: '**', redirectTo: '/login' },
     //
