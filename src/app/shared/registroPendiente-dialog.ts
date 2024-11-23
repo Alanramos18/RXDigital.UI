@@ -17,7 +17,7 @@ import { MatDialogModule } from '@angular/material/dialog';
   template: `
   
     <h2 mat-dialog-title style="text-align: center; font-size: 35px;"> SOLICITUD DE REGISTRO ENVIADA</h2><br>
-    <mat-dialog-content style="color:black; font-size: 30px; text-align: center;" >Tu solicitud ha sido procesada con éxito y está en estado pendiente de aprobación..</mat-dialog-content>
+    <mat-dialog-content style="color:black; font-size: 30px; text-align: center;" >Tu solicitud ha sido procesada con éxito y está en estado pendiente de aprobación.</mat-dialog-content>
     
     <mat-dialog-actions style="width: 80% display: flex; justify-content: space-evenly; ">
       <button  style="background-color: green; color:white; font-size: 25px" mat-button [mat-dialog-close]="false">Salir</button>
